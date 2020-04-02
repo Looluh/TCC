@@ -11,7 +11,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{8EAF6557-D5B3-E04A-3D65-0DB2974D0BEE}</ProjectGuid>
+    <ProjectGuid>{6CFF14DE-B549-E601-3A55-9877529BA413}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -62,31 +62,31 @@
      <Compile Include="Assets\Coisas do Projeto Ra\Look1.cs" />
      <Compile Include="Assets\Coisas do Projeto Ra\PlayerController.cs" />
  <Reference Include="Unity.Timeline.Editor">
- <HintPath>C:/Users/USER-PC/Desktop/Projeto Ra 001/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
+ <HintPath>C:/Users/USER-PC/Documents/GitHub/TCC/Projeto Ra 002/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.VSCode.Editor">
- <HintPath>C:/Users/USER-PC/Desktop/Projeto Ra 001/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
+ <HintPath>C:/Users/USER-PC/Documents/GitHub/TCC/Projeto Ra 002/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.TextMeshPro.Editor">
- <HintPath>C:/Users/USER-PC/Desktop/Projeto Ra 001/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+ <HintPath>C:/Users/USER-PC/Documents/GitHub/TCC/Projeto Ra 002/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.UI">
- <HintPath>C:/Users/USER-PC/Desktop/Projeto Ra 001/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
+ <HintPath>C:/Users/USER-PC/Documents/GitHub/TCC/Projeto Ra 002/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
  </Reference>
  <Reference Include="Unity.Timeline">
- <HintPath>C:/Users/USER-PC/Desktop/Projeto Ra 001/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
+ <HintPath>C:/Users/USER-PC/Documents/GitHub/TCC/Projeto Ra 002/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
  </Reference>
  <Reference Include="Unity.CollabProxy.Editor">
- <HintPath>C:/Users/USER-PC/Desktop/Projeto Ra 001/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
+ <HintPath>C:/Users/USER-PC/Documents/GitHub/TCC/Projeto Ra 002/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.Rider.Editor">
- <HintPath>C:/Users/USER-PC/Desktop/Projeto Ra 001/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
+ <HintPath>C:/Users/USER-PC/Documents/GitHub/TCC/Projeto Ra 002/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.TextMeshPro">
- <HintPath>C:/Users/USER-PC/Desktop/Projeto Ra 001/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+ <HintPath>C:/Users/USER-PC/Documents/GitHub/TCC/Projeto Ra 002/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.UI">
- <HintPath>C:/Users/USER-PC/Desktop/Projeto Ra 001/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
+ <HintPath>C:/Users/USER-PC/Documents/GitHub/TCC/Projeto Ra 002/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.AIModule">
  <HintPath>C:/Users/USER-PC/Desktop/IslandSandbox(Geraldo)/2019.3.6f1/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>

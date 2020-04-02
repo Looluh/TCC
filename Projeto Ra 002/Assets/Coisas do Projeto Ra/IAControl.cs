@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,6 +11,7 @@ public class IAControl : MonoBehaviour
     float myrot;
     void Start()
     {
+        player = GameObject.FindWithTag("Player");
         if (!chtr)
             chtr = GetComponent<CharacterController>();
        // Cursor.lockState = CursorLockMode.Locked;
