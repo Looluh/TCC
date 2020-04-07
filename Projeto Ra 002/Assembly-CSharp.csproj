@@ -55,12 +55,20 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Coisas do Projeto Ra\BulletController.cs" />
-     <Compile Include="Assets\Coisas do Projeto Ra\GunController.cs" />
-     <Compile Include="Assets\Coisas do Projeto Ra\IAControl.cs" />
-     <Compile Include="Assets\Coisas do Projeto Ra\Look.cs" />
-     <Compile Include="Assets\Coisas do Projeto Ra\Look1.cs" />
-     <Compile Include="Assets\Coisas do Projeto Ra\PlayerController.cs" />
+     <Compile Include="Assets\Coisas do Projeto Ra\Scripts\BulletController.cs" />
+     <Compile Include="Assets\Coisas do Projeto Ra\Scripts\EnemyPuzzle.cs" />
+     <Compile Include="Assets\Coisas do Projeto Ra\Scripts\GunController.cs" />
+     <Compile Include="Assets\Coisas do Projeto Ra\Scripts\IAControl.cs" />
+     <Compile Include="Assets\Coisas do Projeto Ra\Scripts\InteractPls.cs" />
+     <Compile Include="Assets\Coisas do Projeto Ra\Scripts\Look.cs" />
+     <Compile Include="Assets\Coisas do Projeto Ra\Scripts\Look1.cs" />
+     <Compile Include="Assets\Coisas do Projeto Ra\Scripts\PlayerController.cs" />
+     <Compile Include="Assets\Coisas do Projeto Ra\Scripts\ProjectileShotAt.cs" />
+     <Compile Include="Assets\Coisas do Projeto Ra\Scripts\PuzzleEnemyNo.cs" />
+     <Compile Include="Assets\Coisas do Projeto Ra\Scripts\ShotAtTimedButton.cs" />
+     <Compile Include="Assets\Coisas do Projeto Ra\Scripts\SimpleButton.cs" />
+     <Compile Include="Assets\Coisas do Projeto Ra\Scripts\SpawnEnemy.cs" />
+     <Compile Include="Assets\Coisas do Projeto Ra\Scripts\TimedButton.cs" />
  <Reference Include="Unity.Timeline.Editor">
  <HintPath>C:/Users/USER-PC/Documents/GitHub/TCC/Projeto Ra 002/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
  </Reference>
