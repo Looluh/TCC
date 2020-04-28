@@ -1,5 +1,5 @@
 sceneSetups:
-- path: Assets/Coisas do Projeto Ra/Scenes/SampleScene.unity
+- path: Assets/Coisas do Projeto Ra/Scenes/gameplay.unity
   isLoaded: 1
   isActive: 1
   isSubScene: 0
