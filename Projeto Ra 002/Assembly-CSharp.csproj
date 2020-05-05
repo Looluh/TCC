@@ -64,6 +64,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\BulletController.cs" />
+    <Compile Include="Assets\Scripts\DeathPlane.cs" />
     <Compile Include="Assets\Scripts\EnemyPuzzle.cs" />
     <Compile Include="Assets\Scripts\GodController.cs" />
     <Compile Include="Assets\Scripts\GodShotAt.cs" />
@@ -81,6 +82,7 @@
     <Compile Include="Assets\Scripts\SwordController.cs" />
     <Compile Include="Assets\Scripts\SwordTrigger.cs" />
     <Compile Include="Assets\Scripts\TakeDamageEnemy.cs" />
+    <Compile Include="Assets\Scripts\TakeDamagePlayer.cs" />
     <Compile Include="Assets\Scripts\TeleshotEnemy.cs" />
     <Compile Include="Assets\Scripts\TimedButton.cs" />
     <Compile Include="Assets\Scripts\jank\SpawnEnemy.cs" />

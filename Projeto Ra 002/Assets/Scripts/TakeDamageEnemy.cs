@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TakeDamageEnemy : MonoBehaviour
 {
-    public float HP = 10;
+    public float HP = 3;
     public bool iFrames;
 
     public GameObject enm;
@@ -35,7 +35,7 @@ public class TakeDamageEnemy : MonoBehaviour
         if (HP <= 0)
         {
             enm.GetComponent<IAControl>().enabled = false;
-            Destroy(gameObject, 30);
+            Destroy(gameObject, 3);
         }
     }
 
@@ -47,7 +47,7 @@ public class TakeDamageEnemy : MonoBehaviour
         if (HP <= 0)
         {
             enm.GetComponent<IAControl>().enabled = false;
-            Destroy(gameObject, 30);
+            Destroy(gameObject, 3);
         }
 
     }
@@ -55,7 +55,7 @@ public class TakeDamageEnemy : MonoBehaviour
     public IEnumerator TakeDamage()
     {
         iFrames = true;
-        yield return new WaitForSeconds(1.0f);
+        yield return new WaitForSeconds(0.5f);
         iFrames = false;
     }
 }

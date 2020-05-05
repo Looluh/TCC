@@ -23,9 +23,10 @@ public class TeleshotEnemy : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Shot"))
         {
-            Debug.Log("d8uasghuasyfuyf");
+            player.GetComponent<CharacterController>().enabled = false;
             player.transform.position = myself.transform.position;
-            //player.position = new Vector3(0, 0, 0);
+            player.GetComponent<CharacterController>().enabled = true;
+            //Destroy(gameObject);
         }
     }
 }
