@@ -4,13 +4,15 @@ using UnityEngine;
 
 public class Look : MonoBehaviour
 {
+    [SerializeField]
     private Camera mainCamera;
     public GunController theGun;
+    //public Camera shootCam;
 
     // Start is called before the first frame update
     void Start()
     {
-        mainCamera = FindObjectOfType<Camera>();
+        
     }
     
 

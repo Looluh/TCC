@@ -27,7 +27,6 @@ public class TakeDamageEnemy : MonoBehaviour
         if (!iFrames && col.collider.tag == "Shot" || col.collider.tag == "Sword")
         {
             StartCoroutine(TakeDamage());
-            iFrames = true;
             HP--;
             Destroy(col.gameObject);
 
@@ -40,8 +39,22 @@ public class TakeDamageEnemy : MonoBehaviour
         }
     }
 
+    public void Damage()
+    {
+        StartCoroutine(TakeDamage());
+        HP--;
+        //Destroy(col.gameObject);
+        if (HP <= 0)
+        {
+            enm.GetComponent<IAControl>().enabled = false;
+            Destroy(gameObject, 30);
+        }
+
+    }
+
     public IEnumerator TakeDamage()
     {
+        iFrames = true;
         yield return new WaitForSeconds(1.0f);
         iFrames = false;
     }
