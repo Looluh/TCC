@@ -63,8 +63,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Menu\MainMenu.cs" />
-    <Compile Include="Assets\Menu\OptionsMenu.cs" />
+    <Compile Include="Assets\MainMenu.cs" />
+    <Compile Include="Assets\OptionsMenu.cs" />
     <Compile Include="Assets\Scripts\BulletController.cs" />
     <Compile Include="Assets\Scripts\ChangeCamera.cs" />
     <Compile Include="Assets\Scripts\DeathPlane.cs" />
@@ -73,25 +73,42 @@
     <Compile Include="Assets\Scripts\GodShotAt.cs" />
     <Compile Include="Assets\Scripts\GunController.cs" />
     <Compile Include="Assets\Scripts\IAControl.cs" />
+    <Compile Include="Assets\Scripts\InteractPlsDouble.cs" />
+    <Compile Include="Assets\Scripts\InteractPlsReverse.cs" />
+    <Compile Include="Assets\Scripts\InteractPlsTriple.cs" />
+    <Compile Include="Assets\Scripts\Lixo\Look1.cs" />
     <Compile Include="Assets\Scripts\Look.cs" />
     <Compile Include="Assets\Scripts\PlayerController.cs" />
     <Compile Include="Assets\Scripts\PuzzleEnemyNo.cs" />
-    <Compile Include="Assets\Scripts\ShotAtTimedButton.cs" />
+    <Compile Include="Assets\Scripts\ShotAtTimedButtonOff.cs" />
+    <Compile Include="Assets\Scripts\ShotAtTimedButtonOn.cs" />
     <Compile Include="Assets\Scripts\SimpleButton.cs" />
     <Compile Include="Assets\Scripts\SmashButton.cs" />
     <Compile Include="Assets\Scripts\SmoothFollow.cs" />
-    <Compile Include="Assets\Scripts\SmoothFollow2.cs" />
     <Compile Include="Assets\Scripts\SwordController.cs" />
     <Compile Include="Assets\Scripts\SwordTrigger.cs" />
     <Compile Include="Assets\Scripts\TakeDamageEnemy.cs" />
     <Compile Include="Assets\Scripts\TakeDamagePlayer.cs" />
     <Compile Include="Assets\Scripts\Teleshot.cs" />
     <Compile Include="Assets\Scripts\Teleswap.cs" />
-    <Compile Include="Assets\Scripts\TimedButton.cs" />
+    <Compile Include="Assets\Scripts\TimedButtonOff.cs" />
+    <Compile Include="Assets\Scripts\TimedButtonOn.cs" />
     <Compile Include="Assets\Scripts\jank\SpawnEnemy.cs" />
     <Compile Include="Assets\Scripts\jank\SpawnEnemy1.cs" />
     <Compile Include="Assets\Scripts\jank\SpawnEnemy2.cs" />
     <Compile Include="Assets\Scripts\jank\SpawnEnemy3.cs" />
+    <Compile Include="Assets\Scripts\jank2\ProjectileShotAt1.cs" />
+    <Compile Include="Assets\Scripts\jank2\ProjectileShotAt2.cs" />
+    <Compile Include="Assets\Scripts\jank2\ProjectileShotAt3.cs" />
+    <Compile Include="Assets\Scripts\jank2\ProjectileShotAt4.cs" />
+    <Compile Include="Assets\Scripts\jank2\ProjectileShotAt5.cs" />
+    <Compile Include="Assets\Scripts\jank2\ProjectileShotAt6.cs" />
+    <Compile Include="Assets\Scripts\jank2\ProjectileShotAt7.cs" />
+    <Compile Include="Assets\Scripts\jank2\ProjectileShotAt8.cs" />
+    <Compile Include="Assets\Scripts\jank2\ShotAtButtonOff.cs" />
+    <Compile Include="Assets\Scripts\jank2\ShotAtButtonOn.cs" />
+    <Compile Include="Assets\WinLose.cs" />
+    <Compile Include="Assets\uiClick.cs" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro.cginc" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile Overlay.shader" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Bitmap.shader" />
@@ -639,31 +656,31 @@
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.3.13f1/Editor/Data/NetStandard/compat/2.0.0/shims/netfx/System.Xml.Serialization.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Timeline.Editor">
-      <HintPath>C:/Users/Chic/Desktop/TCC/Projeto Ra 002/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
+      <HintPath>C:/Users/Chic/Desktop/Projeto Ra 002/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VSCode.Editor">
-      <HintPath>C:/Users/Chic/Desktop/TCC/Projeto Ra 002/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
+      <HintPath>C:/Users/Chic/Desktop/Projeto Ra 002/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro.Editor">
-      <HintPath>C:/Users/Chic/Desktop/TCC/Projeto Ra 002/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+      <HintPath>C:/Users/Chic/Desktop/Projeto Ra 002/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UI">
-      <HintPath>C:/Users/Chic/Desktop/TCC/Projeto Ra 002/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
+      <HintPath>C:/Users/Chic/Desktop/Projeto Ra 002/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Timeline">
-      <HintPath>C:/Users/Chic/Desktop/TCC/Projeto Ra 002/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
+      <HintPath>C:/Users/Chic/Desktop/Projeto Ra 002/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
     </Reference>
     <Reference Include="Unity.CollabProxy.Editor">
-      <HintPath>C:/Users/Chic/Desktop/TCC/Projeto Ra 002/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
+      <HintPath>C:/Users/Chic/Desktop/Projeto Ra 002/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Rider.Editor">
-      <HintPath>C:/Users/Chic/Desktop/TCC/Projeto Ra 002/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
+      <HintPath>C:/Users/Chic/Desktop/Projeto Ra 002/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
-      <HintPath>C:/Users/Chic/Desktop/TCC/Projeto Ra 002/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+      <HintPath>C:/Users/Chic/Desktop/Projeto Ra 002/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.UI">
-      <HintPath>C:/Users/Chic/Desktop/TCC/Projeto Ra 002/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
+      <HintPath>C:/Users/Chic/Desktop/Projeto Ra 002/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup></ItemGroup>

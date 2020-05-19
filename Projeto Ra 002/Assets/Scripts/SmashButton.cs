@@ -7,14 +7,14 @@ public class SmashButton : MonoBehaviour
     public float smashNo;
 
     public GameObject player;
-    public GameObject begone;
+    public GameObject[] begone;
 
-    public float range;
-
+    private float range;
+    public bool on;
     // Start is called before the first frame update
     void Start()
     {
-
+        range = 5;
     }
 
     // Update is called once per frame
@@ -26,8 +26,23 @@ public class SmashButton : MonoBehaviour
 
             if (smashNo <= 0)
             {
-                begone.GetComponent<Renderer>().enabled = false;
-                begone.GetComponent<Collider>().enabled = false;
+                if (on)
+                {
+                    for (int i = 0; i < begone.Length; i++)
+                    {
+                        begone[i].GetComponent<Renderer>().enabled = false;
+                        begone[i].GetComponent<Collider>().enabled = false;
+                    }
+                }
+
+                else if (!on)
+                {
+                    for (int i = 0; i < begone.Length; i++)
+                    {
+                        begone[i].GetComponent<Renderer>().enabled = true;
+                        begone[i].GetComponent<Collider>().enabled = true;
+                    }
+                }
             }
         }
     }

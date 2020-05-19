@@ -7,7 +7,6 @@ TagManager:
   - Shot
   - Sword
   - Enemy
-  - Off
   layers:
   - Default
   - TransparentFX

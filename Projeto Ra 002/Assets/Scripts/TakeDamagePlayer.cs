@@ -6,6 +6,7 @@ public class TakeDamagePlayer : MonoBehaviour
 {
     public float HP = 10;
     public bool iFrames;
+    public GameObject lose;
 
     public GameObject plr;//não usado, vindo do enemy
 
@@ -34,10 +35,12 @@ public class TakeDamagePlayer : MonoBehaviour
 
         if (HP <= 0)
         {
+            /*
             gameObject.GetComponent<CharacterController>().enabled = false;
             gameObject.transform.position = new Vector3(0, 1.5f, 13);
             gameObject.GetComponent<CharacterController>().enabled = true;
-            HP = 10;
+            HP = 10;*/
+            lose.SetActive(true);
         }
     }
 

@@ -142,7 +142,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c064f5a612bb574b80911fe9779cfb9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HP: 3
+  HP: 1
   iFrames: 0
   enm: {fileID: 5866995647273710598}
 --- !u!1 &6282685538570120715

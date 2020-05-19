@@ -11,7 +11,7 @@ public class PuzzleEnemyNo : MonoBehaviour
 
     public GameObject enemyToCount;
 
-    public GameObject begone;
+    public GameObject[] begone;
 
     // Start is called before the first frame update
     void Start()
@@ -36,8 +36,11 @@ public class PuzzleEnemyNo : MonoBehaviour
             if (enemyNoNow == enemyNoWanted)
             {
                 Debug.Log("Mesmo número");
-                begone.GetComponent<Renderer>().enabled = false;
-                begone.GetComponent<Collider>().enabled = false;
+                for (int i = 0; i < begone.Length; i++)
+                {
+                    begone[i].GetComponent<Renderer>().enabled = false;
+                    begone[i].GetComponent<Collider>().enabled = false;
+                }
             }
         }
     }

@@ -4,19 +4,20 @@ using UnityEngine;
 
 public class SimpleButton : MonoBehaviour
 {
-    private bool on;
-    public float range;
+    public bool on;
+    private float range;
 
     public GameObject player;
-    public GameObject begone;
+    public GameObject[] begone;
+
 
     // Start is called before the first frame update
     void Start()
     {
-        on = false;
+        
         range = 5;
     }
-    
+
 
     // Update is called once per frame
     void Update()
@@ -35,15 +36,23 @@ public class SimpleButton : MonoBehaviour
 
     void On()
     {
-        begone.GetComponent<Renderer>().enabled = false;
-        begone.GetComponent<Collider>().enabled = false;
+        for (int i = 0; i < begone.Length; i++)
+        {
+            begone[i].GetComponent<Renderer>().enabled = false;
+            begone[i].GetComponent<Collider>().enabled = false;
+        }
+
+
         on = true;
     }
 
     void Off()
     {
-        begone.GetComponent<Renderer>().enabled = true;
-        begone.GetComponent<Collider>().enabled = true;
+        for (int i = 0; i < begone.Length; i++)
+        {
+            begone[i].GetComponent<Renderer>().enabled = true;
+            begone[i].GetComponent<Collider>().enabled = true;
+        }
         on = false;
     }
 }
