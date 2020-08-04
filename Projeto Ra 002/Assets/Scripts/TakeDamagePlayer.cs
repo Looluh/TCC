@@ -4,11 +4,9 @@ using UnityEngine;
 
 public class TakeDamagePlayer : MonoBehaviour
 {
-    public float HP = 10;
+    public float hp = 10;
     public bool iFrames;
     public GameObject lose;
-
-    public GameObject plr;//não usado, vindo do enemy
 
     // Start is called before the first frame update
     void Start()
@@ -28,12 +26,12 @@ public class TakeDamagePlayer : MonoBehaviour
         if (!iFrames && other.tag == "Enemy")
         {
             StartCoroutine(TakeDamage());
-            HP--;
+            hp--;
             //Destroy(other.gameObject);
 
         }
 
-        if (HP <= 0)
+        if (hp <= 0)
         {
             /*
             gameObject.GetComponent<CharacterController>().enabled = false;
@@ -47,11 +45,10 @@ public class TakeDamagePlayer : MonoBehaviour
     public void Damage()
     {
         StartCoroutine(TakeDamage());
-        HP--;
+        hp--;
         //Destroy(col.gameObject);
-        if (HP <= 0)
+        if (hp <= 0)
         {
-            plr.GetComponent<IAControl>().enabled = false;
             Destroy(gameObject, 30);
         }
 

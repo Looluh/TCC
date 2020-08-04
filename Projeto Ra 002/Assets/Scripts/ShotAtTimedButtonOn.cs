@@ -5,16 +5,18 @@ using UnityEngine;
 public class ShotAtTimedButtonOn : MonoBehaviour
 {
     //começa desligado e aí liga
+    public GameObject activated;
+    public GameObject deactivated;
     public GameObject player;
     public GameObject[] begone;
     public float currCountdownValue;
 
-    private bool on;
+    private bool on = true;
 
     // Start is called before the first frame update
     void Start()
     {
-        on = true;
+        
     }
 
     // Update is called once per frame
@@ -57,6 +59,8 @@ public class ShotAtTimedButtonOn : MonoBehaviour
             begone[i].GetComponent<Collider>().enabled = false;
         }
         on = true;
+
+        Instantiate(activated, new Vector3(transform.position.x, transform.position.y + 2, transform.position.z), activated.transform.rotation);
     }
 
     void Off()
@@ -67,6 +71,8 @@ public class ShotAtTimedButtonOn : MonoBehaviour
             begone[i].GetComponent<Collider>().enabled = true;
         }
         on = false;
+
+        Instantiate(deactivated, new Vector3(transform.position.x, transform.position.y + 2, transform.position.z), deactivated.transform.rotation);
     }
 
     //yield break;

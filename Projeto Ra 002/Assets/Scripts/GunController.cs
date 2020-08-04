@@ -36,7 +36,7 @@ public class GunController : MonoBehaviour
             }
         }
         else
-            shotCounter = 0;
+            shotCounter = 0;//se tirar essa linha o player sempre vai obedecer o cooldown
     }
 }
 

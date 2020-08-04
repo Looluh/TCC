@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7505872258077419988}
   - component: {fileID: 7505872258077419979}
   m_Layer: 0
-  m_Name: Cylinder
+  m_Name: Press
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -107,6 +107,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 974df0bdd8955a24d93c6c6c57e38abc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  range: 2
+  on: 0
+  activated: {fileID: 2439928247122302396, guid: 59b02f1d0b0a14543b87fdf4426d4747,
+    type: 3}
+  deactivated: {fileID: 7013403024148444771, guid: 320c876d7bdc7f74fab79b6a8ecf0523,
+    type: 3}
   player: {fileID: 0}
-  begone: {fileID: 0}
+  begone:
+  - {fileID: 0}

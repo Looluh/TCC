@@ -6,6 +6,8 @@ public class SmashButton : MonoBehaviour
 {
     public float smashNo;
 
+    public GameObject activated;
+    public GameObject deactivated;
     public GameObject player;
     public GameObject[] begone;
 
@@ -24,7 +26,7 @@ public class SmashButton : MonoBehaviour
         {
             smashNo--;
 
-            if (smashNo <= 0)
+            if (smashNo == 0)
             {
                 if (on)
                 {
@@ -33,6 +35,8 @@ public class SmashButton : MonoBehaviour
                         begone[i].GetComponent<Renderer>().enabled = false;
                         begone[i].GetComponent<Collider>().enabled = false;
                     }
+
+                    Instantiate(deactivated, new Vector3(transform.position.x, transform.position.y + 2, transform.position.z), deactivated.transform.rotation);
                 }
 
                 else if (!on)
@@ -42,6 +46,8 @@ public class SmashButton : MonoBehaviour
                         begone[i].GetComponent<Renderer>().enabled = true;
                         begone[i].GetComponent<Collider>().enabled = true;
                     }
+
+                    Instantiate(activated, new Vector3(transform.position.x, transform.position.y + 2, transform.position.z), activated.transform.rotation);
                 }
             }
         }

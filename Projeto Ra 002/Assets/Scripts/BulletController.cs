@@ -18,5 +18,13 @@ public class BulletController : MonoBehaviour
     {
         transform.Translate(Vector3.forward * speed * Time.deltaTime);
     }
+
+    private void OnCollisionEnter(Collision col)
+    {
+        if (!col.collider.CompareTag("Player") || !col.collider.CompareTag("Enemy") || !col.collider.CompareTag("ShotAt"))
+        {
+            Destroy(gameObject);
+        }
+    }
 }
 

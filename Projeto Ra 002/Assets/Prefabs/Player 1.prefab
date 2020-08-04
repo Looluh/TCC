@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 53418181640112996}
   - component: {fileID: 53418181640112999}
   - component: {fileID: 53418181640112998}
+  - component: {fileID: 6102277058704317103}
   m_Layer: 0
   m_Name: Player 1
   m_TagString: Player
@@ -144,7 +145,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a6e58763d9c14e4b9a700bf3067bbd1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mainCamera: {fileID: 0}
   theGun: {fileID: 53418183281455291}
+--- !u!114 &6102277058704317103
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 53418181640113001}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb102edcce2c9a740b13febb3606ad17, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HP: 10
+  iFrames: 0
+  lose: {fileID: 0}
+  plr: {fileID: 0}
 --- !u!1 &53418182042920444
 GameObject:
   m_ObjectHideFlags: 0

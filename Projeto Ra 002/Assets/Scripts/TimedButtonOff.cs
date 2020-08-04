@@ -5,6 +5,8 @@ using UnityEngine;
 public class TimedButtonOff : MonoBehaviour
 {
     //começa ligado e aí desliga
+    public GameObject activated;
+    public GameObject deactivated;
 
     private float range;
 
@@ -64,6 +66,8 @@ public class TimedButtonOff : MonoBehaviour
             begone[i].GetComponent<Collider>().enabled = false;
         }
         on = true;
+
+        Instantiate(activated, new Vector3(transform.position.x, transform.position.y + 2, transform.position.z), activated.transform.rotation);
     }
 
     void Off()
@@ -74,6 +78,8 @@ public class TimedButtonOff : MonoBehaviour
             begone[i].GetComponent<Collider>().enabled = true;
         }
         on = false;
+
+        Instantiate(deactivated, new Vector3(transform.position.x, transform.position.y + 2, transform.position.z), deactivated.transform.rotation);
     }
 
     //yield break;

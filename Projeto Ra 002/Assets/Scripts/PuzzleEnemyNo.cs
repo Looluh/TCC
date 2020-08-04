@@ -4,14 +4,17 @@ using UnityEngine;
 
 public class PuzzleEnemyNo : MonoBehaviour
 {
+    public GameObject activated;
+    public GameObject deactivated;
+
     [SerializeField]
     public float enemyNoWanted;
 
     public float enemyNoNow = 0;
-
     public GameObject enemyToCount;
 
     public GameObject[] begone;
+    public  bool on;
 
     // Start is called before the first frame update
     void Start()
@@ -36,10 +39,14 @@ public class PuzzleEnemyNo : MonoBehaviour
             if (enemyNoNow == enemyNoWanted)
             {
                 Debug.Log("Mesmo número");
-                for (int i = 0; i < begone.Length; i++)
+
+                if (on)
                 {
-                    begone[i].GetComponent<Renderer>().enabled = false;
-                    begone[i].GetComponent<Collider>().enabled = false;
+                    Off();
+                }
+                else if (!on)
+                {
+                    On();
                 }
             }
         }
@@ -53,5 +60,30 @@ public class PuzzleEnemyNo : MonoBehaviour
             enemyNoNow--;
         }
     }
+
+    void On()
+    {
+        for (int i = 0; i < begone.Length; i++)
+        {
+            begone[i].GetComponent<Renderer>().enabled = false;
+            begone[i].GetComponent<Collider>().enabled = false;
+        }
+        on = true;
+
+        Instantiate(deactivated, new Vector3(transform.position.x, transform.position.y + 2, transform.position.z), deactivated.transform.rotation);
+    }
+
+    void Off()
+    {
+        for (int i = 0; i < begone.Length; i++)
+        {
+            begone[i].GetComponent<Renderer>().enabled = true;
+            begone[i].GetComponent<Collider>().enabled = true;
+        }
+        on = false;
+
+        Instantiate(activated, new Vector3(transform.position.x, transform.position.y + 2, transform.position.z), activated.transform.rotation);
+    }
+
 }
 

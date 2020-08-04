@@ -5,7 +5,7 @@ using UnityEngine;
 public class ShotAtButtonOff : MonoBehaviour
 {
     //começa ligado e aí desliga
-
+    public GameObject deactivated;
     public GameObject[] begone;
 
     void OnCollisionEnter(Collision collision)
@@ -17,6 +17,8 @@ public class ShotAtButtonOff : MonoBehaviour
                 begone[i].GetComponent<Renderer>().enabled = false;
                 begone[i].GetComponent<Collider>().enabled = false;
             }
+
+            Instantiate(deactivated, new Vector3(transform.position.x, transform.position.y + 2, transform.position.z), deactivated.transform.rotation);
         }
     }
 

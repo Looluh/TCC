@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class TimedButtonOn : MonoBehaviour
 {
+    //começa desligado e aí liga
+    public GameObject activated;
+    public GameObject deactivated;
+
     private float range;
 
     public GameObject player;
@@ -62,6 +66,8 @@ public class TimedButtonOn : MonoBehaviour
             begone[i].GetComponent<Collider>().enabled = false;
         }
         on = true;
+
+        Instantiate(activated, new Vector3(transform.position.x, transform.position.y + 2, transform.position.z), activated.transform.rotation);
     }
 
     void Off()
@@ -72,6 +78,8 @@ public class TimedButtonOn : MonoBehaviour
             begone[i].GetComponent<Collider>().enabled = true;
         }
         on = false;
+
+        Instantiate(deactivated, new Vector3(transform.position.x, transform.position.y + 2, transform.position.z), deactivated.transform.rotation);
     }
 
     //yield break;

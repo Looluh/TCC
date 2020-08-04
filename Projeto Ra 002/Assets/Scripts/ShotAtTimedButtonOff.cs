@@ -5,6 +5,8 @@ using UnityEngine;
 public class ShotAtTimedButtonOff : MonoBehaviour
 {
     //começa ligado e aí desliga
+    public GameObject activated;
+    public GameObject deactivated;
     public GameObject player;
     public GameObject[] begone;
     public float currCountdownValue;
@@ -57,6 +59,8 @@ public class ShotAtTimedButtonOff : MonoBehaviour
             begone[i].GetComponent<Collider>().enabled = false;
         }
         on = true;
+
+        Instantiate(activated, new Vector3(transform.position.x, transform.position.y + 2, transform.position.z), activated.transform.rotation);
     }
 
     void Off()
@@ -67,6 +71,8 @@ public class ShotAtTimedButtonOff : MonoBehaviour
             begone[i].GetComponent<Collider>().enabled = true;
         }
         on = false;
+
+        Instantiate(deactivated, new Vector3(transform.position.x, transform.position.y + 2, transform.position.z), deactivated.transform.rotation);
     }
 
     //yield break;

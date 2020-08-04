@@ -4,18 +4,19 @@ ScriptsOnlyBuild:
     - BulletController
     - ChangeCamera
     - DeathPlane
+    - DestroyText
+    - DisplaySmash
     - GodController
     - GunController
     - IAControl
-    - InteractPls
-    - InteractPlsDouble
-    - InteractPlsTriple
     - Look
     - MainMenu
     - OptionsMenu
+    - PauseMenu
     - PlayerController
     - PuzzleEnemyNo
-    - ShotAtTimedButton
+    - ShotAtTimedButtonOff
+    - SimpleButton
     - SmashButton
     - SpawnEnemy
     - SpawnEnemy1
@@ -39,6 +40,7 @@ ScriptsOnlyBuild:
     - TMPro.TMP_SpriteAsset
     - TMPro.TMP_StyleSheet
     - TMPro.TMP_SubMeshUI
+    - TMPro.TextMeshPro
     - TMPro.TextMeshProUGUI
     UnityEditor.Graphs.dll:
     - UnityEditor.Graphs.AnimationBlendTree.Graph
@@ -108,69 +110,73 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 11262}
     - Class: 114
-      Script: {instanceID: 11318}
+      Script: {instanceID: 11320}
     - Class: 114
-      Script: {instanceID: 11380}
+      Script: {instanceID: 11382}
     - Class: 114
-      Script: {instanceID: 11436}
+      Script: {instanceID: 11438}
     - Class: 114
-      Script: {instanceID: 11720}
+      Script: {instanceID: 11574}
     - Class: 114
-      Script: {instanceID: 11760}
+      Script: {instanceID: 11728}
     - Class: 114
-      Script: {instanceID: 11772}
+      Script: {instanceID: 11768}
     - Class: 114
-      Script: {instanceID: 11798}
+      Script: {instanceID: 11780}
     - Class: 114
-      Script: {instanceID: 11886}
+      Script: {instanceID: 11806}
     - Class: 114
       Script: {instanceID: 11894}
     - Class: 114
-      Script: {instanceID: 11944}
+      Script: {instanceID: 11900}
     - Class: 114
-      Script: {instanceID: 11990}
+      Script: {instanceID: 11950}
     - Class: 114
-      Script: {instanceID: 12022}
+      Script: {instanceID: 11996}
     - Class: 114
-      Script: {instanceID: 12172}
+      Script: {instanceID: 12028}
     - Class: 114
-      Script: {instanceID: 12176}
+      Script: {instanceID: 12180}
     - Class: 114
-      Script: {instanceID: 12280}
+      Script: {instanceID: 12184}
     - Class: 114
-      Script: {instanceID: 12336}
+      Script: {instanceID: 12288}
     - Class: 114
-      Script: {instanceID: 12340}
+      Script: {instanceID: 12344}
     - Class: 114
-      Script: {instanceID: 12390}
+      Script: {instanceID: 12348}
     - Class: 114
-      Script: {instanceID: 12410}
+      Script: {instanceID: 12398}
     - Class: 114
-      Script: {instanceID: 12432}
+      Script: {instanceID: 12418}
     - Class: 114
-      Script: {instanceID: 12492}
+      Script: {instanceID: 12440}
     - Class: 114
-      Script: {instanceID: 12584}
+      Script: {instanceID: 12500}
     - Class: 114
-      Script: {instanceID: 12614}
+      Script: {instanceID: 12510}
+    - Class: 114
+      Script: {instanceID: 12536}
+    - Class: 114
+      Script: {instanceID: 12596}
     - Class: 114
       Script: {instanceID: 12626}
     - Class: 114
-      Script: {instanceID: 12680}
+      Script: {instanceID: 12638}
     - Class: 114
-      Script: {instanceID: 12736}
+      Script: {instanceID: 12692}
     - Class: 114
-      Script: {instanceID: 12766}
+      Script: {instanceID: 12748}
     - Class: 114
-      Script: {instanceID: 12830}
+      Script: {instanceID: 12778}
     - Class: 114
-      Script: {instanceID: 12850}
+      Script: {instanceID: 12842}
     - Class: 114
-      Script: {instanceID: 13040}
+      Script: {instanceID: 12944}
     - Class: 114
-      Script: {instanceID: 13042}
+      Script: {instanceID: 13054}
     - Class: 114
-      Script: {instanceID: 13112}
+      Script: {instanceID: 13124}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 135
@@ -219,43 +225,43 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 11220}
     - Class: 114
-      Script: {instanceID: 11340}
-    - Class: 114
       Script: {instanceID: 11342}
     - Class: 114
-      Script: {instanceID: 11380}
+      Script: {instanceID: 11344}
     - Class: 114
-      Script: {instanceID: 11602}
+      Script: {instanceID: 11382}
     - Class: 114
-      Script: {instanceID: 11680}
+      Script: {instanceID: 11606}
     - Class: 114
-      Script: {instanceID: 11772}
+      Script: {instanceID: 11688}
     - Class: 114
-      Script: {instanceID: 11800}
+      Script: {instanceID: 11780}
     - Class: 114
-      Script: {instanceID: 11972}
+      Script: {instanceID: 11808}
     - Class: 114
-      Script: {instanceID: 12090}
+      Script: {instanceID: 11978}
     - Class: 114
-      Script: {instanceID: 12176}
+      Script: {instanceID: 12096}
     - Class: 114
-      Script: {instanceID: 12410}
+      Script: {instanceID: 12184}
     - Class: 114
-      Script: {instanceID: 12424}
+      Script: {instanceID: 12418}
     - Class: 114
-      Script: {instanceID: 12614}
+      Script: {instanceID: 12432}
     - Class: 114
-      Script: {instanceID: 12680}
+      Script: {instanceID: 12626}
     - Class: 114
-      Script: {instanceID: 12832}
+      Script: {instanceID: 12692}
     - Class: 114
-      Script: {instanceID: 12986}
+      Script: {instanceID: 12844}
     - Class: 114
-      Script: {instanceID: 13042}
+      Script: {instanceID: 12998}
     - Class: 114
-      Script: {instanceID: 13056}
+      Script: {instanceID: 13054}
     - Class: 114
-      Script: {instanceID: 13072}
+      Script: {instanceID: 13068}
+    - Class: 114
+      Script: {instanceID: 13084}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -281,7 +287,7 @@ ScriptsOnlyBuild:
   scriptHashData:
   - hash:
       serializedVersion: 2
-      Hash: 85991a11c0f33e73fb0f730e88cfd73f
+      Hash: eb0e3c214e3ca98a1fb9601409ad8e4e
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: PuzzleEnemyNo
@@ -317,16 +323,22 @@ ScriptsOnlyBuild:
     className: Teleswap
   - hash:
       serializedVersion: 2
-      Hash: 95ad5041b49639c023ab643486499b48
+      Hash: ef605a5b41a79fd58eef4916c825c306
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
-    className: ProjectileShotAt
+    className: ShotAtButtonOff
   - hash:
       serializedVersion: 2
       Hash: e7a73f5f78ba6445195ec23b74a1ce2d
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
     className: TMP_ScrollbarEventHandler
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: UnityEngine.TestRunner.dll
+    namespaceName: UnityEngine.TestTools.TestRunner.Callbacks
+    className: PlayerQuitHandler
   - hash:
       serializedVersion: 2
       Hash: e4949b768699ef723b247f20b73f0f0c
@@ -341,10 +353,10 @@ ScriptsOnlyBuild:
     className: GroupTrack
   - hash:
       serializedVersion: 2
-      Hash: 5533155d9b41e2d141a897ab8068ab5c
+      Hash: 0c036439343f81bc9849146173d62498
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
-    className: ShotAtTimedButton
+    className: ShotAtTimedButtonOff
   - hash:
       serializedVersion: 2
       Hash: a5781dc71a671b1ad2b38de19f24b71f
@@ -455,6 +467,12 @@ ScriptsOnlyBuild:
     className: AspectRatioFitter
   - hash:
       serializedVersion: 2
+      Hash: db383debccf025fb7548a9120b6528c5
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: DisplaySmash
+  - hash:
+      serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
@@ -467,10 +485,22 @@ ScriptsOnlyBuild:
     className: TMP_SubMeshUI
   - hash:
       serializedVersion: 2
+      Hash: 0c036439343f81bc9849146173d62498
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: TimedButtonOn
+  - hash:
+      serializedVersion: 2
       Hash: 5ab533713adae59372fb3e10a585c186
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: AnimationPlayableAsset
+  - hash:
+      serializedVersion: 2
+      Hash: dd6b9f40eddde17c27743ada6e7b86b7
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: ShotAtTimedButtonOn
   - hash:
       serializedVersion: 2
       Hash: aba7b2852ef61d175dd9602e7723d5e5
@@ -539,12 +569,6 @@ ScriptsOnlyBuild:
     className: Teleshot
   - hash:
       serializedVersion: 2
-      Hash: 9d4b70e3d336d91fd4a82221d161bee7
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: SimpleButton
-  - hash:
-      serializedVersion: 2
       Hash: afc5b93a7b192de2dcb3832fe35a5c7e
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
@@ -587,10 +611,10 @@ ScriptsOnlyBuild:
     className: SmoothFollow
   - hash:
       serializedVersion: 2
-      Hash: 5533155d9b41e2d141a897ab8068ab5c
+      Hash: 0c036439343f81bc9849146173d62498
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
-    className: TimedButton
+    className: TimedButtonOff
   - hash:
       serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
@@ -615,6 +639,12 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.TestRunner.dll
     namespaceName: UnityEngine.TestTools.TestRunner.Callbacks
     className: RemoteTestResultSender
+  - hash:
+      serializedVersion: 2
+      Hash: cd84f655d6c5c7768812af2ee6455b43
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: ShotAtButtonOn
   - hash:
       serializedVersion: 2
       Hash: e4949b768699ef723b247f20b73f0f0c
@@ -671,7 +701,7 @@ ScriptsOnlyBuild:
     className: EnemyPuzzle
   - hash:
       serializedVersion: 2
-      Hash: e886ca8a5546c2fa8541cca7804f2ff8
+      Hash: 725d242b1db6c9848c7c615240f668a9
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: SmashButton
@@ -761,6 +791,18 @@ ScriptsOnlyBuild:
     className: SpawnEnemy
   - hash:
       serializedVersion: 2
+      Hash: 3b2bc070fef69479e4143ab92dd13ff2
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: PauseMenu
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: DestroyText
+  - hash:
+      serializedVersion: 2
       Hash: bac180db66360800238275668123f696
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
@@ -827,10 +869,10 @@ ScriptsOnlyBuild:
     className: MarkerTrack
   - hash:
       serializedVersion: 2
-      Hash: 674a65d9eb38fad32920c3941e6ed4b0
+      Hash: 5e734e93910b4ea1665f76358b70c536
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
-    className: InteractPls
+    className: SimpleButton
   - hash:
       serializedVersion: 2
       Hash: d791aa6007fa3640be1164ea75bb087d
