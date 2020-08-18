@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+//using System.Numerics;
 using UnityEngine;
 
 public class Teleswap : MonoBehaviour
@@ -8,10 +9,12 @@ public class Teleswap : MonoBehaviour
     public Transform myself;
     public Transform brain;
 
+    public Vector3 up;
+
     // Start is called before the first frame update
     void Start()
     {
-        //ainda não funciona. n faço a minima ideia do pq.
+        //up = new Vector3(0, 1.65f, 0);
     }
 
     // Update is called once per frame
@@ -24,13 +27,14 @@ public class Teleswap : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Shot"))
         {
-            brain.transform.position = player.transform.position ;
+            brain.transform.position = player.transform.position;
 
             player.GetComponent<CharacterController>().enabled = false;
-            player.transform.position = myself.transform.position;
+            player.transform.position = new Vector3(myself.transform.position.x, player.transform.position.y + 0.15f, myself.transform.position.z) ;
             player.GetComponent<CharacterController>().enabled = true;
 
-            myself.transform.position = brain.transform.position;
+            //myself.transform.position = brain.transform.position;
+            myself.transform.position = new Vector3(brain.transform.position.x, myself.transform.position.y, brain.transform.position.z);
             //Destroy(gameObject);
         }
     }

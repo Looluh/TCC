@@ -24,7 +24,7 @@ public class Teleshot : MonoBehaviour
         if (other.gameObject.CompareTag("Shot"))
         {
             player.GetComponent<CharacterController>().enabled = false;
-            player.transform.position = myself.transform.position;
+            player.transform.position = new Vector3(myself.transform.position.x, player.transform.position.y, myself.transform.position.z);
             player.GetComponent<CharacterController>().enabled = true;
             //Destroy(gameObject);
         }
