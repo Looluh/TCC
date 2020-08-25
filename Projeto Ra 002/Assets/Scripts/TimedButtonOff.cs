@@ -11,8 +11,8 @@ public class TimedButtonOff : MonoBehaviour
     private float range;
 
     public GameObject player;
-    public GameObject[] begone;
     public float currCountdownValue;
+    public Animator[] anim;
 
     public bool on;
 
@@ -37,6 +37,8 @@ public class TimedButtonOff : MonoBehaviour
             Debug.Log("Cu1");
             //On();
             StartCoroutine(StartCountdown());
+
+
         }
     }
 
@@ -60,10 +62,9 @@ public class TimedButtonOff : MonoBehaviour
 
     void On()
     {
-        for (int i = 0; i < begone.Length; i++)
+        for (int i = 0; i < anim.Length; i++)
         {
-            begone[i].GetComponent<Renderer>().enabled = false;
-            begone[i].GetComponent<Collider>().enabled = false;
+            anim[i].Play("DoorClose");
         }
         on = true;
 
@@ -72,10 +73,9 @@ public class TimedButtonOff : MonoBehaviour
 
     void Off()
     {
-        for (int i = 0; i < begone.Length; i++)
+        for (int i = 0; i < anim.Length; i++)
         {
-            begone[i].GetComponent<Renderer>().enabled = true;
-            begone[i].GetComponent<Collider>().enabled = true;
+            anim[i].Play("DoorOpen");
         }
         on = false;
 

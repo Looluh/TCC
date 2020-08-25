@@ -110,6 +110,7 @@
      <Compile Include="Assets\UIScripts\OptionsMenu.cs" />
      <Compile Include="Assets\Scripts\jank2\ProjectileShotAt4.cs" />
      <Compile Include="Assets\Scripts\Lixo\InteractPlsDouble.cs" />
+     <Compile Include="Assets\Scripts\EnemyNav.cs" />
      <Compile Include="Assets\Scripts\jank\SpawnEnemy3.cs" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro.cginc" />
      <None Include="Assets\OutlineToolkit\Shader\EdgeDetect.shader" />
@@ -138,6 +139,7 @@
      <None Include="Assets\OutlineToolkit\Shader\ProcessedEdges.shader" />
      <None Include="Assets\OutlineToolkit\Shader\Outline.shader" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile Masking.shader" />
+     <None Include="Assets\Pot\NewSurfaceShader.shader" />
      <None Include="Assets\NastyWizard_CelSobel\CelShadingSobel\Shaders\Post\PostFunctions.cginc" />
      <None Include="Assets\OutlineToolkit\README.txt" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF Overlay.shader" />

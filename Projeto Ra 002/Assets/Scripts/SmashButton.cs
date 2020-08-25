@@ -9,7 +9,8 @@ public class SmashButton : MonoBehaviour
     public GameObject activated;
     public GameObject deactivated;
     public GameObject player;
-    public GameObject[] begone;
+    public Animator[] anim;
+
 
     private float range;
     public bool on;
@@ -30,10 +31,9 @@ public class SmashButton : MonoBehaviour
             {
                 if (on)
                 {
-                    for (int i = 0; i < begone.Length; i++)
+                    for (int i = 0; i < anim.Length; i++)
                     {
-                        begone[i].GetComponent<Renderer>().enabled = false;
-                        begone[i].GetComponent<Collider>().enabled = false;
+                        anim[i].Play("DoorOpen");
                     }
 
                     Instantiate(deactivated, new Vector3(transform.position.x, transform.position.y + 2, transform.position.z), deactivated.transform.rotation);
@@ -41,10 +41,9 @@ public class SmashButton : MonoBehaviour
 
                 else if (!on)
                 {
-                    for (int i = 0; i < begone.Length; i++)
+                    for (int i = 0; i < anim.Length; i++)
                     {
-                        begone[i].GetComponent<Renderer>().enabled = true;
-                        begone[i].GetComponent<Collider>().enabled = true;
+                        anim[i].Play("DoorClose");
                     }
 
                     Instantiate(activated, new Vector3(transform.position.x, transform.position.y + 2, transform.position.z), activated.transform.rotation);

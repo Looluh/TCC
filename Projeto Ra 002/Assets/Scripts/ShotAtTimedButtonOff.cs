@@ -8,8 +8,8 @@ public class ShotAtTimedButtonOff : MonoBehaviour
     public GameObject activated;
     public GameObject deactivated;
     public GameObject player;
-    public GameObject[] begone;
     public float currCountdownValue;
+    public Animator[] anim;
 
     public bool on;
 
@@ -53,11 +53,11 @@ public class ShotAtTimedButtonOff : MonoBehaviour
 
     void On()
     {
-        for (int i = 0; i < begone.Length; i++)
+        for (int i = 0; i < anim.Length; i++)
         {
-            begone[i].GetComponent<Renderer>().enabled = false;
-            begone[i].GetComponent<Collider>().enabled = false;
+            anim[i].Play("DoorOpen");
         }
+
         on = true;
 
         Instantiate(activated, new Vector3(transform.position.x, transform.position.y + 2, transform.position.z), activated.transform.rotation);
@@ -65,11 +65,11 @@ public class ShotAtTimedButtonOff : MonoBehaviour
 
     void Off()
     {
-        for (int i = 0; i < begone.Length; i++)
+        for (int i = 0; i < anim.Length; i++)
         {
-            begone[i].GetComponent<Renderer>().enabled = true;
-            begone[i].GetComponent<Collider>().enabled = true;
+            anim[i].Play("DoorClose");
         }
+
         on = false;
 
         Instantiate(deactivated, new Vector3(transform.position.x, transform.position.y + 2, transform.position.z), deactivated.transform.rotation);

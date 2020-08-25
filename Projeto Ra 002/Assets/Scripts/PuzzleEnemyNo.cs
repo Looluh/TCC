@@ -13,7 +13,7 @@ public class PuzzleEnemyNo : MonoBehaviour
     public float enemyNoNow = 0;
     public GameObject enemyToCount;
 
-    public GameObject[] begone;
+    public Animator[] anim;
     public  bool on;
 
     // Start is called before the first frame update
@@ -63,10 +63,9 @@ public class PuzzleEnemyNo : MonoBehaviour
 
     void On()
     {
-        for (int i = 0; i < begone.Length; i++)
+        for (int i = 0; i < anim.Length; i++)
         {
-            begone[i].GetComponent<Renderer>().enabled = false;
-            begone[i].GetComponent<Collider>().enabled = false;
+            anim[i].Play("DoorOpen");
         }
         on = true;
 
@@ -75,10 +74,9 @@ public class PuzzleEnemyNo : MonoBehaviour
 
     void Off()
     {
-        for (int i = 0; i < begone.Length; i++)
+        for (int i = 0; i < anim.Length; i++)
         {
-            begone[i].GetComponent<Renderer>().enabled = true;
-            begone[i].GetComponent<Collider>().enabled = true;
+            anim[i].Play("DoorClose");
         }
         on = false;
 
