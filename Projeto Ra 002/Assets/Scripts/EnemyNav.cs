@@ -91,6 +91,7 @@ public class EnemyNav : MonoBehaviour
     void Dying()
     {
         agent.isStopped = true;
+        
         //anim.SetBool("Attack", false);
         //currentState = IaState.Follow;
 

@@ -12,18 +12,30 @@ public class SimpleButton : MonoBehaviour
     public GameObject deactivated;
     public GameObject player;
     public Animator[] anim;
-    public bool ok = true;
+    public bool ok;
+    public bool IniOpen = false;
 
     // Start is called before the first frame update
     void Start()
     {
+        
         range = 5;
+
+        if (IniOpen = true)
+        {
+            Off();
+            StartCoroutine("OkCheck");
+
+        }
+        
     }
 
 
     // Update is called once per frame
     void Update()
     {
+        ok = true;
+
         if (Input.GetKeyDown(KeyCode.E) && (player.transform.position - transform.position).sqrMagnitude < range * range && !on && ok)// /?
         {
             On();
@@ -34,6 +46,7 @@ public class SimpleButton : MonoBehaviour
             Off();
             StartCoroutine("OkCheck");
         }//else if (Input.GetKeyDown(KeyCode.E) && (player.transform.position - transform.position).sqrMagnitude < range * range && on && anim[].GetCurrentAnimatorStateInfo(0).normalizedTime > 1 && !anim.IsInTransition(0))// /?
+
 
     }
 

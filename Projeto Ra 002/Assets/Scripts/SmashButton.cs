@@ -9,8 +9,8 @@ public class SmashButton : MonoBehaviour
     public GameObject activated;
     public GameObject deactivated;
     public GameObject player;
-    public Animator[] anim;
-
+    public GameObject[] begone;
+    
 
     private float range;
     public bool on;
@@ -18,6 +18,8 @@ public class SmashButton : MonoBehaviour
     void Start()
     {
         range = 5;
+
+        
     }
 
     // Update is called once per frame
@@ -31,9 +33,10 @@ public class SmashButton : MonoBehaviour
             {
                 if (on)
                 {
-                    for (int i = 0; i < anim.Length; i++)
+                    for (int i = 0; i < begone.Length; i++)
                     {
-                        anim[i].Play("DoorOpen");
+                        begone[i].SetActive(false);
+                        // anim[i].Play("DoorOpen");
                     }
 
                     Instantiate(deactivated, new Vector3(transform.position.x, transform.position.y + 2, transform.position.z), deactivated.transform.rotation);
@@ -41,9 +44,10 @@ public class SmashButton : MonoBehaviour
 
                 else if (!on)
                 {
-                    for (int i = 0; i < anim.Length; i++)
+                    for (int i = 0; i < begone.Length; i++)
                     {
-                        anim[i].Play("DoorClose");
+                        begone[i].SetActive(true);
+                        //anim[i].Play("DoorClose");
                     }
 
                     Instantiate(activated, new Vector3(transform.position.x, transform.position.y + 2, transform.position.z), activated.transform.rotation);
