@@ -33,7 +33,11 @@ public class SmashButton : MonoBehaviour
                 {
                     for (int i = 0; i < anim.Length; i++)
                     {
+<<<<<<< Updated upstream
                         anim[i].Play("DoorOpen");
+=======
+                        anim[i].SetBool("Aberto", true);
+>>>>>>> Stashed changes
                     }
 
                     Instantiate(deactivated, new Vector3(transform.position.x, transform.position.y + 2, transform.position.z), deactivated.transform.rotation);
@@ -43,7 +47,11 @@ public class SmashButton : MonoBehaviour
                 {
                     for (int i = 0; i < anim.Length; i++)
                     {
+<<<<<<< Updated upstream
                         anim[i].Play("DoorClose");
+=======
+                        anim[i].SetBool("Aberto", false);
+>>>>>>> Stashed changes
                     }
 
                     Instantiate(activated, new Vector3(transform.position.x, transform.position.y + 2, transform.position.z), activated.transform.rotation);

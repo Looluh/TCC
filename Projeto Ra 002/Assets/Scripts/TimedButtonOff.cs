@@ -64,7 +64,7 @@ public class TimedButtonOff : MonoBehaviour
     {
         for (int i = 0; i < anim.Length; i++)
         {
-            anim[i].Play("DoorClose");
+            anim[i].SetBool("Aberto", false);
         }
         on = true;
 
@@ -75,7 +75,7 @@ public class TimedButtonOff : MonoBehaviour
     {
         for (int i = 0; i < anim.Length; i++)
         {
-            anim[i].Play("DoorOpen");
+            anim[i].SetBool("Aberto", true);
         }
         on = false;
 

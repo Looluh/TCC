@@ -13,13 +13,13 @@ public class DisplayHP : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        player = GameObject.Find("Player1");
+        player = GameObject.Find("Player 1");
     }
 
     // Update is called once per frame
     void Update()
     {
-        GetComponent<TextMeshProUGUI>().text = "Health:" + player.GetComponent<TakeDamagePlayer>().hp.ToString();
+        GetComponent<TextMeshProUGUI>().text = "Health:" + player.GetComponent<TakeDamagePlayer>().HP.ToString();
         //Debug.Log(player.GetComponent("TakeDamagePlayer"));
     }
 }

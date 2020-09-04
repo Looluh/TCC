@@ -4,60 +4,126 @@ using UnityEngine;
 
 public class TakeDamagePlayer : MonoBehaviour
 {
-    public float hp = 10;
-    public bool iFrames;
-    public GameObject lose;
+    //public Animator anim;
+
+    public GameObject lose;//canvas lose
+    public bool iFrames = false;
+    public float HP;
+    public enum PlayerState
+    {
+        Still,
+        Walk,
+        Attack,
+        Hurt,
+        Dying,
+        Dead,
+    }
+    public PlayerState currentState;
 
     // Start is called before the first frame update
     void Start()
     {
-        iFrames = false;
-    }
 
+    }
 
     // Update is called once per frame
     void Update()
     {
+        switch (currentState)
+        {
+            case PlayerState.Still:
+                Still();
+                break;
+            case PlayerState.Walk:
+                Walk();
+                break;
+            case PlayerState.Attack:
+                Attack();
+                break;
+            case PlayerState.Hurt:
+                Hurt();
+                break;
+            case PlayerState.Dying:
+                Dying();
+                break;
+            case PlayerState.Dead:
+                Dead();
+                break;
+        }
+        //agent.SetDestination(target.transform.position);
+    }
 
+    void Still()
+    {
+
+    }
+
+    void Walk()
+    {
+        //anim.SetBool("Attack", false);
+    }
+
+    void Attack()
+    {
+
+    }
+
+    void Hurt()
+    {
+        //anim.SetTrigger("Hit");
+        if (!iFrames)
+        {
+            currentState = PlayerState.Still;
+        }
+    }
+    void Dying()
+    {
+        //destruir script que faz ele se mover?
+        //anim.SetBool("Attack", false);
+    }
+
+    void Dead()
+    {
+        lose.SetActive(true);
     }
 
     void OnTriggerEnter(Collider other)
     {
-        if (!iFrames && other.tag == "Enemy")
+        if (!iFrames && other.gameObject.tag == "EnemyShot")
         {
-            StartCoroutine(TakeDamage());
-            hp--;
-            //Destroy(other.gameObject);
+            if (HP > 0)
+            {
+                HP--;
+                StartCoroutine(TakeDamage());
 
+                currentState = PlayerState.Hurt;
+                Destroy(other.gameObject);
+            }
+            else
+            {
+                currentState = PlayerState.Dead;//trocar pra dying
+            }
         }
-
-        if (hp <= 0)
+        else if (!iFrames && other.gameObject.tag == "Enemy")
         {
-            /*
-            gameObject.GetComponent<CharacterController>().enabled = false;
-            gameObject.transform.position = new Vector3(0, 1.5f, 13);
-            gameObject.GetComponent<CharacterController>().enabled = true;
-            HP = 10;*/
-            lose.SetActive(true);
-        }
-    }
+            if (HP > 0)
+            {
+                HP--;
+                StartCoroutine(TakeDamage());
 
-    public void Damage()
-    {
-        StartCoroutine(TakeDamage());
-        hp--;
-        //Destroy(col.gameObject);
-        if (hp <= 0)
-        {
-            Destroy(gameObject, 30);
+                currentState = PlayerState.Hurt;
+            }
+            else
+            {
+                currentState = PlayerState.Dead;//trocar pra dying
+            }
         }
-
     }
 
     public IEnumerator TakeDamage()
     {
         iFrames = true;
-        yield return new WaitForSeconds(3.0f);
+        yield return new WaitForSeconds(5f);
         iFrames = false;
     }
 }

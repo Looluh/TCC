@@ -14,7 +14,7 @@ public class ShotAtButtonOn : MonoBehaviour
         {
             for (int i = 0; i < anim.Length; i++)
             {
-                anim[i].Play("DoorClose");
+                anim[i].SetBool("Aberto", false);
             }
             done = true;
             Instantiate(activated, new Vector3(transform.position.x, transform.position.y + 2, transform.position.z), activated.transform.rotation);

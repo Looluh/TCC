@@ -5,6 +5,8 @@ using UnityEngine.AI;
 
 public class EnemyNav : MonoBehaviour
 {
+    //inclui TakeDamageEnemy
+
     public NavMeshAgent agent;
     public GameObject target;
 
@@ -26,7 +28,8 @@ public class EnemyNav : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Follow();
+        target = GameObject.FindGameObjectWithTag("Player");
+        currentState = IaState.Follow;
     }
 
     // Update is called once per frame
@@ -107,10 +110,9 @@ public class EnemyNav : MonoBehaviour
         {
             if (HP > 0)
             {
+                currentState = IaState.Hurt;
                 HP--;
                 StartCoroutine(TakeDamage());
-
-                currentState = IaState.Hurt;
                 Destroy(other.gameObject);
             }
             else
@@ -122,10 +124,9 @@ public class EnemyNav : MonoBehaviour
         {
             if (HP > 0)
             {
+                currentState = IaState.Hurt;
                 HP--;
                 StartCoroutine(TakeDamage());
-
-                currentState = IaState.Hurt;
             }
             else
             {
@@ -137,9 +138,11 @@ public class EnemyNav : MonoBehaviour
 
     public IEnumerator TakeDamage()
     {
+
         iFrames = true;
         yield return new WaitForSeconds(5f);
         iFrames = false;
+
     }
 
 }

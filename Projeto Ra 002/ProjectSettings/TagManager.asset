@@ -8,6 +8,7 @@ TagManager:
   - Sword
   - Enemy
   - ShotAt
+  - respawnBrain
   layers:
   - Default
   - TransparentFX
