@@ -1621,6 +1621,7 @@ MonoBehaviour:
   deactivated: {fileID: 0}
   anim:
   - {fileID: 1546065434}
+  waiting: 0
   on: 1
 --- !u!1001 &873977373
 PrefabInstance:
@@ -2088,7 +2089,7 @@ PrefabInstance:
     - target: {fileID: 53418183281455291, guid: 597ee4d4b24da754fad685c6ea35e8a0,
         type: 3}
       propertyPath: timeBetweenShots
-      value: 1
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 6102277058704317103, guid: 597ee4d4b24da754fad685c6ea35e8a0,
         type: 3}

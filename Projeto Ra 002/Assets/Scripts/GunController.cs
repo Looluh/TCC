@@ -10,7 +10,7 @@ public class GunController : MonoBehaviour
     public float bulletSpeed;
 
     public float timeBetweenShots;
-    public float shotCounter;
+    public float shotTimer;
 
     public Transform firePoint;
     //public GunController theGun;
@@ -25,19 +25,18 @@ public class GunController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (shotCounter > 0)
+        if (shotTimer > 0)
         {
-            shotCounter -= Time.deltaTime;
+            shotTimer -= Time.deltaTime;
         }
 
         if (isFiring)
         {
-            if (shotCounter <= 0)
+            if (shotTimer <= 0)
             {
-                shotCounter = timeBetweenShots;
+                shotTimer = timeBetweenShots;
                 BulletController newBullet = Instantiate(bullet, firePoint.position, firePoint.rotation);
                 newBullet.speed = bulletSpeed;
-                isFiring = false;
             }
         }
         /*else
