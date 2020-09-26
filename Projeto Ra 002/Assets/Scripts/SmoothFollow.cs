@@ -5,6 +5,7 @@ namespace UnityStandardAssets.Utility
 {
 	public class SmoothFollow : MonoBehaviour
 	{
+		private RespawnBrain rB;
 
 		// The target we are following
 		[SerializeField]
@@ -14,7 +15,7 @@ namespace UnityStandardAssets.Utility
 		private float distance = 10.0f;
 		// the height we want the camera to be above the target
 		[SerializeField]
-		private float height = 5.0f;
+		private float height;//= 5.0f;
 
 		[SerializeField]
 		private float rotationDamping;
@@ -22,7 +23,11 @@ namespace UnityStandardAssets.Utility
 		private float heightDamping;
 
 		// Use this for initialization
-		void Start() { }
+		void Start() 
+		{
+			rB = GameObject.FindGameObjectWithTag("respawnBrain").GetComponent<RespawnBrain>();
+			height = rB.height;
+		}
 
 		// Update is called once per frame
 		void LateUpdate()
@@ -45,7 +50,8 @@ namespace UnityStandardAssets.Utility
 			currentHeight = Mathf.Lerp(currentHeight, wantedHeight, heightDamping * Time.deltaTime);
 
 			// Convert the angle into a rotation
-			var currentRotation = Quaternion.Euler(0, currentRotationAngle, 0);
+			var currentRotation = Quaternion.Euler(0, 0, 0);//			var currentRotation = Quaternion.Euler(0, currentRotationAngle, 0);
+
 
 			// Set the position of the camera on the x-z plane to:
 			// distance meters behind the target

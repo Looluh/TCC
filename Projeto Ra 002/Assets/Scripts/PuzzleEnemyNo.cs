@@ -16,6 +16,8 @@ public class PuzzleEnemyNo : MonoBehaviour
     public Animator[] anim;
     public  bool on;
 
+    public bool done = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -31,7 +33,7 @@ public class PuzzleEnemyNo : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Enemy")
+        if (other.gameObject.CompareTag("Enemy") && !done)
         {
             Debug.Log("Entrou");
             enemyNoNow++;
@@ -39,7 +41,7 @@ public class PuzzleEnemyNo : MonoBehaviour
             if (enemyNoNow == enemyNoWanted)
             {
                 Debug.Log("Mesmo número");
-
+                done = true;
                 if (on)
                 {
                     Off();
@@ -54,7 +56,7 @@ public class PuzzleEnemyNo : MonoBehaviour
 
     void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.tag == "Zumbi")
+        if (other.gameObject.CompareTag("Enemy") && !done)
         {
             Debug.Log("Saiu");
             enemyNoNow--;
@@ -67,7 +69,7 @@ public class PuzzleEnemyNo : MonoBehaviour
         {
             anim[i].SetBool("Aberto", true);
         }
-        on = true;
+        //on = true;
 
         Instantiate(deactivated, new Vector3(transform.position.x, transform.position.y + 2, transform.position.z), deactivated.transform.rotation);
     }
@@ -78,7 +80,7 @@ public class PuzzleEnemyNo : MonoBehaviour
         {
             anim[i].SetBool("Aberto", false);
         }
-        on = false;
+        //on = false;
 
         Instantiate(activated, new Vector3(transform.position.x, transform.position.y + 2, transform.position.z), activated.transform.rotation);
     }

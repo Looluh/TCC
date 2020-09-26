@@ -9,10 +9,20 @@ public class OptionsMenu : MonoBehaviour
 {
     public AudioMixer audioMix;
 
+    private RespawnBrain rB;
+    private GameObject FoVSlider;
+    private float volume;
+
     Resolution[] resolutions;
     public TMP_Dropdown resolutionDropdown;
     void Start()
     {
+        FoVSlider = GameObject.Find("FoV Slider");
+        rB = GameObject.FindGameObjectWithTag("respawnBrain").GetComponent<RespawnBrain>();
+
+        SetVolume(volume);
+        SetFoV();
+
         resolutions = Screen.resolutions;
         resolutionDropdown.ClearOptions();
         List<string> options = new List<string>();
@@ -54,4 +64,13 @@ public class OptionsMenu : MonoBehaviour
     {
         Screen.fullScreen = isFullscreen;
     }
+
+    public void SetFoV()
+    {
+        FoVSlider = GameObject.Find("FoV Slider");
+        rB = GameObject.FindGameObjectWithTag("respawnBrain").GetComponent<RespawnBrain>();
+
+        rB.height = GameObject.Find("FoV Slider").GetComponent<Slider>().value;
+    }
+
 }

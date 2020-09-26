@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6125643578724495051}
   - component: {fileID: 6125643578724495050}
   m_Layer: 0
-  m_Name: time but (3)
+  m_Name: S e T
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -57,6 +57,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -81,6 +82,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!136 &6125643578724495051
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -107,8 +109,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a60a9b71f27ca4d418d2da1e6661a3cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  range: 0
-  player: {fileID: 0}
-  begone: {fileID: 0}
+  activated: {fileID: 0}
+  deactivated: {fileID: 0}
   currCountdownValue: 0
+  anim: []
   on: 0

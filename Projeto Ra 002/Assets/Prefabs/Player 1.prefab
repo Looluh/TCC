@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 1503916477}
   - component: {fileID: 1503916482}
   - component: {fileID: 1503916481}
-  - component: {fileID: 1503916480}
   - component: {fileID: 1503916479}
   - component: {fileID: 1503916478}
   m_Layer: 0
@@ -89,14 +88,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1503916476}
   m_Mesh: {fileID: 0}
---- !u!222 &1503916480
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1503916476}
-  m_CullTransparentMesh: 0
 --- !u!114 &1503916479
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -219,7 +210,7 @@ GameObject:
   - component: {fileID: 6102277058704317103}
   - component: {fileID: 1353792945}
   - component: {fileID: 7701544366294227133}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Player 1
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -302,7 +293,7 @@ CapsuleCollider:
   m_GameObject: {fileID: 53418181640113001}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   m_Radius: 0.5
   m_Height: 2
   m_Direction: 1
@@ -443,7 +434,8 @@ GameObject:
   - component: {fileID: 53418182748337460}
   - component: {fileID: 53418182748337463}
   - component: {fileID: 461048939}
-  m_Layer: 0
+  - component: {fileID: 1712263337}
+  m_Layer: 11
   m_Name: swobj
   m_TagString: Sword
   m_Icon: {fileID: 0}
@@ -521,7 +513,7 @@ MeshCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 53418182748337465}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
   m_Convex: 1
@@ -573,6 +565,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   iFrames: 0
+--- !u!54 &1712263337
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 53418182748337465}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &53418183281455293
 GameObject:
   m_ObjectHideFlags: 0
@@ -684,5 +692,6 @@ MonoBehaviour:
   isFiring: 0
   bullet: {fileID: 4369762561926635150, guid: af85bfe611588284e877cf026b986055, type: 3}
   bulletSpeed: 60
-  timeBetweenShots: 1
-  firePoint: {fileID: 53418182042920445}
+  timeBetweenShots: 0.2
+  shotTimer: 0
+  firePoint: {fileID: 0}

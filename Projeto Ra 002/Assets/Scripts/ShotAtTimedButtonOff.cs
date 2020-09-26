@@ -7,7 +7,6 @@ public class ShotAtTimedButtonOff : MonoBehaviour
     //começa ligado e aí desliga
     public GameObject activated;
     public GameObject deactivated;
-    public GameObject player;
     public float currCountdownValue;
     public Animator[] anim;
 
@@ -35,6 +34,7 @@ public class ShotAtTimedButtonOff : MonoBehaviour
 
     public IEnumerator StartCountdown(float countdownValue = 10)
     {
+        on = true;
         currCountdownValue = countdownValue;
         On();
         while (currCountdownValue > 0)
@@ -44,7 +44,7 @@ public class ShotAtTimedButtonOff : MonoBehaviour
             currCountdownValue--;
         }
 
-        if(currCountdownValue <= 0)
+        if (currCountdownValue <= 0)
         {
             Off();
             Debug.Log("enum");
@@ -58,7 +58,6 @@ public class ShotAtTimedButtonOff : MonoBehaviour
             anim[i].SetBool("Aberto", true);
         }
 
-        on = true;
 
         Instantiate(activated, new Vector3(transform.position.x, transform.position.y + 2, transform.position.z), activated.transform.rotation);
     }

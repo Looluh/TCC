@@ -8,13 +8,10 @@ public class Teleswap : MonoBehaviour
     public Transform player;
     public Transform myself;
     public Transform brain;
-
-    public Vector3 up;
-
     // Start is called before the first frame update
     void Start()
     {
-        //up = new Vector3(0, 1.65f, 0);
+
     }
 
     // Update is called once per frame
@@ -33,9 +30,7 @@ public class Teleswap : MonoBehaviour
             player.transform.position = new Vector3(myself.transform.position.x, player.transform.position.y + 0.15f, myself.transform.position.z) ;
             player.GetComponent<CharacterController>().enabled = true;
 
-            //myself.transform.position = brain.transform.position;
             myself.transform.position = new Vector3(brain.transform.position.x, myself.transform.position.y, brain.transform.position.z);
-            //Destroy(gameObject);
         }
     }
 }

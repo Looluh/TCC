@@ -7,6 +7,7 @@ public class RespawnBrain : MonoBehaviour
     private static RespawnBrain instance;
 
     public Vector3 lastCheckpointPos;
+    public float height;
 
     void Awake()
     {
