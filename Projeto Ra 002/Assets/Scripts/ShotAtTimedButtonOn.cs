@@ -11,12 +11,22 @@ public class ShotAtTimedButtonOn : MonoBehaviour
     public float currCountdownValue;
     public Animator[] anim;
 
-    private bool on = true;
+    private bool on;
+
+    public BallGlow balGlo;
+    public enum ColorGlow
+    {
+        Frog,
+        Owl,
+        Dragonfly,
+        Hippo,
+    }
+    public ColorGlow currColorGlow;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        on = false;
     }
 
     // Update is called once per frame
@@ -27,7 +37,7 @@ public class ShotAtTimedButtonOn : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        if (collision.collider.tag == "Shot" && on)//adicionar limitador
+        if (collision.collider.CompareTag("Shot") && !on)//adicionar limitador
         {
             StartCoroutine(StartCountdown());
         }
@@ -35,12 +45,28 @@ public class ShotAtTimedButtonOn : MonoBehaviour
 
     public IEnumerator StartCountdown(float countdownValue = 10)
     {
+        switch (currColorGlow)
+        {
+            case ColorGlow.Frog:
+                balGlo.Green();
+                break;
+            case ColorGlow.Owl:
+                balGlo.Brown();
+                break;
+            case ColorGlow.Dragonfly:
+                balGlo.Purple();
+                break;
+            case ColorGlow.Hippo:
+                balGlo.Aqua();
+                break;
+        }
+
         currCountdownValue = countdownValue;
         Off();
         while (currCountdownValue > 0)
         {
             Debug.Log("Countdown: " + currCountdownValue);
-            yield return new WaitForSeconds(1.0f);
+            yield return new WaitForSeconds(1.05f);
             currCountdownValue--;
         }
 
@@ -58,7 +84,7 @@ public class ShotAtTimedButtonOn : MonoBehaviour
             anim[i].SetBool("Aberto", true);
         }
 
-        on = true;
+        on = false;
 
         Instantiate(activated, new Vector3(transform.position.x, transform.position.y + 2, transform.position.z), activated.transform.rotation);
     }
@@ -70,7 +96,7 @@ public class ShotAtTimedButtonOn : MonoBehaviour
             anim[i].SetBool("Aberto", false);
         }
 
-        on = false;
+        on = true;
 
         Instantiate(deactivated, new Vector3(transform.position.x, transform.position.y + 2, transform.position.z), deactivated.transform.rotation);
     }

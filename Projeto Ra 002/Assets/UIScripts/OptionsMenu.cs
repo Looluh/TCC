@@ -4,6 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
+using UnityStandardAssets.Utility;
 
 public class OptionsMenu : MonoBehaviour
 {
@@ -11,17 +12,24 @@ public class OptionsMenu : MonoBehaviour
 
     private RespawnBrain rB;
     private GameObject FoVSlider;
+    private GameObject VolumeSlider;
     private float volume;
 
     Resolution[] resolutions;
     public TMP_Dropdown resolutionDropdown;
+
+    public SmoothFollow cameraScript;
     void Start()
     {
         FoVSlider = GameObject.Find("FoV Slider");
+        VolumeSlider = GameObject.Find("Volume Slider");
         rB = GameObject.FindGameObjectWithTag("respawnBrain").GetComponent<RespawnBrain>();
 
-        SetVolume(volume);
-        SetFoV();
+        FoVSlider.GetComponent<Slider>().value = rB.height;
+        VolumeSlider.GetComponent<Slider>().value = rB.volume;
+
+        //SetVolume(volume);
+        //SetFoV();
 
         resolutions = Screen.resolutions;
         resolutionDropdown.ClearOptions();
@@ -52,7 +60,8 @@ public class OptionsMenu : MonoBehaviour
 
     public void SetVolume(float volume)
     {
-        audioMix.SetFloat("Volume", volume);
+        rB.volume = GameObject.Find("Volume Slider").GetComponent<Slider>().value;
+        audioMix.SetFloat("Volume", rB.volume);
     }
 
     public void SetQuality(int qualityIndex)
@@ -67,10 +76,12 @@ public class OptionsMenu : MonoBehaviour
 
     public void SetFoV()
     {
-        FoVSlider = GameObject.Find("FoV Slider");
-        rB = GameObject.FindGameObjectWithTag("respawnBrain").GetComponent<RespawnBrain>();
+        //FoVSlider = GameObject.Find("FoV Slider");
+        //rB = GameObject.FindGameObjectWithTag("respawnBrain").GetComponent<RespawnBrain>();
 
         rB.height = GameObject.Find("FoV Slider").GetComponent<Slider>().value;
+        if (cameraScript != null)
+            cameraScript.UpdateCamera();
     }
 
 }

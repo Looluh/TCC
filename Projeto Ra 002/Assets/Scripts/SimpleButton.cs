@@ -14,10 +14,60 @@ public class SimpleButton : MonoBehaviour
     public Animator[] anim;
     public bool ok = true;
 
+    public Animator glowA;
+    public Light glowL;
+    public Material glowM;
+
+    public bool frog;
+    public bool owl;
+    public bool dragonfly;
+    public bool hippo;
+
+    public Color frogC;
+    public Color owlC;
+    public Color dragonflyC;
+    public Color hippoC;
+
+    public BallGlow balGlo;
+    public enum ColorGlow
+    {
+        Frog,
+        Owl,
+        Dragonfly,
+        Hippo,
+    }
+    public ColorGlow currColorGlow;
+
     // Start is called before the first frame update
     void Start()
     {
         range = 5;
+
+        if (frog)
+        {
+            glowM.SetColor("_EmissionColor", frogC);
+            glowL.color = frogC;
+            currColorGlow = ColorGlow.Frog;
+        }
+        else if (owl)
+        {
+            glowM.SetColor("_EmissionColor", owlC);
+            glowL.color = owlC;
+            currColorGlow = ColorGlow.Owl;
+        }
+        else if (dragonfly)
+        {
+            glowM.SetColor("_EmissionColor", dragonflyC);
+            glowL.color = dragonflyC;
+            currColorGlow = ColorGlow.Dragonfly;
+        }
+        else if (hippo)
+        {
+            glowM.SetColor("_EmissionColor", hippoC);
+            glowL.color = hippoC;
+            currColorGlow = ColorGlow.Hippo;
+        }
+
     }
 
 
@@ -68,6 +118,25 @@ public class SimpleButton : MonoBehaviour
     public IEnumerator OkCheck()
     {
         ok = false;
+
+        switch (currColorGlow)
+        {
+            case ColorGlow.Frog:
+                balGlo.Green();
+                break;
+            case ColorGlow.Owl:
+                balGlo.Brown();
+                break;
+            case ColorGlow.Dragonfly:
+                balGlo.Purple();
+                break;
+            case ColorGlow.Hippo:
+                balGlo.Aqua();
+                break;
+        }
+
+        glowA.SetTrigger("Glow");
+
         yield return new WaitForSeconds(2f);
         ok = true;
     }

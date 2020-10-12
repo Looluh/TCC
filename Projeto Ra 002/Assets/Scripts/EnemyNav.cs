@@ -13,6 +13,7 @@ public class EnemyNav : MonoBehaviour
     //public Animator anim;
 
     public bool iFrames = false;
+    public bool stunFrames = false;
     public float HP;
     public enum IaState
     {
@@ -20,6 +21,7 @@ public class EnemyNav : MonoBehaviour
         Follow,
         Attack,
         Hurt,
+        Stun,
         Dying,
         Dead,
     }
@@ -49,6 +51,9 @@ public class EnemyNav : MonoBehaviour
             case IaState.Hurt:
                 Hurt();
                 break;
+            case IaState.Stun:
+                Stun();
+                break;
             case IaState.Dying:
                 Dying();
                 break;
@@ -56,11 +61,6 @@ public class EnemyNav : MonoBehaviour
                 Dead();
                 break;
         }
-
-
-        //agent.SetDestination(target.transform.position);
-
-
     }
 
     void Asleep()
@@ -74,18 +74,25 @@ public class EnemyNav : MonoBehaviour
         //anim.SetBool("Attack", false);
 
     }
-
     void Attack()
     {
 
     }
-
     void Hurt()
     {
         agent.isStopped = true;
 
         //anim.SetTrigger("Hit");
         if (!iFrames)
+        {
+            currentState = IaState.Follow;
+        }
+
+    }
+    void Stun()
+    {
+        agent.isStopped = true;
+        if (!stunFrames)
         {
             currentState = IaState.Follow;
         }
@@ -98,7 +105,6 @@ public class EnemyNav : MonoBehaviour
         //currentState = IaState.Follow;
 
     }
-
     void Dead()
     {
         agent.isStopped = true;
@@ -106,13 +112,13 @@ public class EnemyNav : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (!iFrames && other.gameObject.tag == "Shot")
+        if (!iFrames && !stunFrames && other.gameObject.tag == "Shot")
         {
             if (HP > 0)
             {
                 currentState = IaState.Hurt;
                 HP--;
-                StartCoroutine(TakeDamage());
+                StartCoroutine(IFrames());
                 Destroy(other.gameObject);
             }
             else
@@ -120,13 +126,26 @@ public class EnemyNav : MonoBehaviour
                 currentState = IaState.Dead;//trocar pra dying
             }
         }
-        else if (!iFrames && other.gameObject.tag == "Sword")
+        else if (!iFrames && !stunFrames && other.gameObject.tag == "Sword")
         {
             if (HP > 0)
             {
                 currentState = IaState.Hurt;
                 HP--;
-                StartCoroutine(TakeDamage());
+                StartCoroutine(IFrames());
+            }
+            else
+            {
+                currentState = IaState.Dead;//trocar pra dying
+            }
+        }
+        else if (!stunFrames && other.gameObject.tag == "StunAttack")
+        {
+            if (HP > 0)
+            {
+                currentState = IaState.Stun;
+                HP--;
+                StartCoroutine(StunFrames());
             }
             else
             {
@@ -136,13 +155,16 @@ public class EnemyNav : MonoBehaviour
 
     }
 
-    public IEnumerator TakeDamage()
+    public IEnumerator IFrames()
     {
-
         iFrames = true;
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(1f);
         iFrames = false;
-
     }
-
+    public IEnumerator StunFrames()
+    {
+        stunFrames = true;
+        yield return new WaitForSeconds(5f);
+        stunFrames = false;
+    }
 }

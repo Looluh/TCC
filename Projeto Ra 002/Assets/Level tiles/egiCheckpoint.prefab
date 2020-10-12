@@ -322,6 +322,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a50242e24f234aa4ead1514fe3a0092f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  textpoint: {fileID: 7013403024148444771, guid: 44b38dc984c5da544bb55caafff2d71d,
+    type: 3}
   tdP: {fileID: 0}
   checkpointHeal: 0
 --- !u!65 &8142298593366638051

@@ -18,6 +18,7 @@
 		_EmissiveBlend("Emissive Blend", Color) = (1, 1, 1, 1)
 
 		[Space(25)]_ColorBlend("Color", Color) = (1, 1, 1, 1)
+
 	}
 		SubShader{
 			Tags{ "RenderType" = "Opaque" }

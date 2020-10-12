@@ -8,10 +8,13 @@ public class Teleswap : MonoBehaviour
     public Transform player;
     public Transform myself;
     public Transform brain;
+
+    public AudioSource audS;
+    public AudioClip audC;
     // Start is called before the first frame update
     void Start()
     {
-
+        brain = GameObject.FindWithTag("respawnBrain").transform;
     }
 
     // Update is called once per frame
@@ -31,6 +34,8 @@ public class Teleswap : MonoBehaviour
             player.GetComponent<CharacterController>().enabled = true;
 
             myself.transform.position = new Vector3(brain.transform.position.x, myself.transform.position.y, brain.transform.position.z);
+
+            audS.PlayOneShot(audC);
         }
     }
 }

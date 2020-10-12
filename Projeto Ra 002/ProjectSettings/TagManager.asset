@@ -9,6 +9,7 @@ TagManager:
   - Enemy
   - ShotAt
   - respawnBrain
+  - StunAttack
   layers:
   - Default
   - TransparentFX

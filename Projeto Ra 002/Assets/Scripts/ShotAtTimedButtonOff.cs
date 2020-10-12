@@ -12,6 +12,16 @@ public class ShotAtTimedButtonOff : MonoBehaviour
 
     public bool on;
 
+    public BallGlow balGlo;
+    public enum ColorGlow
+    {
+        Frog,
+        Owl,
+        Dragonfly,
+        Hippo,
+    }
+    public ColorGlow currColorGlow;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -26,7 +36,7 @@ public class ShotAtTimedButtonOff : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        if (collision.collider.tag == "Shot" && !on)//adicionar limitador
+        if (collision.collider.CompareTag("Shot") && !on)//adicionar limitador
         {
             StartCoroutine(StartCountdown());
         }
@@ -34,13 +44,28 @@ public class ShotAtTimedButtonOff : MonoBehaviour
 
     public IEnumerator StartCountdown(float countdownValue = 10)
     {
-        on = true;
+        switch (currColorGlow)
+        {
+            case ColorGlow.Frog:
+                balGlo.Green();
+                break;
+            case ColorGlow.Owl:
+                balGlo.Brown();
+                break;
+            case ColorGlow.Dragonfly:
+                balGlo.Purple();
+                break;
+            case ColorGlow.Hippo:
+                balGlo.Aqua();
+                break;
+        }
+
         currCountdownValue = countdownValue;
         On();
         while (currCountdownValue > 0)
         {
             Debug.Log("Countdown: " + currCountdownValue);
-            yield return new WaitForSeconds(1.0f);
+            yield return new WaitForSeconds(1.05f);
             currCountdownValue--;
         }
 
@@ -57,6 +82,7 @@ public class ShotAtTimedButtonOff : MonoBehaviour
         {
             anim[i].SetBool("Aberto", true);
         }
+        on = true;
 
 
         Instantiate(activated, new Vector3(transform.position.x, transform.position.y + 2, transform.position.z), activated.transform.rotation);

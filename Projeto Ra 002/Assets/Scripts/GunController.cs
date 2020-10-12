@@ -13,6 +13,9 @@ public class GunController : MonoBehaviour
     public float shotTimer;
 
     public Transform firePoint;
+
+    public AudioClip aud;
+    public AudioSource audSour;
     //public GunController theGun;
 
     // Start is called before the first frame update
@@ -37,6 +40,8 @@ public class GunController : MonoBehaviour
                 shotTimer = timeBetweenShots;
                 BulletController newBullet = Instantiate(bullet, firePoint.position, firePoint.rotation);
                 newBullet.speed = bulletSpeed;
+                audSour.pitch = Random.Range(0.9f, 1.1f);
+                audSour.PlayOneShot(aud, 0.8f);
             }
         }
         /*else

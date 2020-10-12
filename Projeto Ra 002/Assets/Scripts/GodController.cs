@@ -18,10 +18,10 @@ public class GodController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        gameObject.GetComponent<SpawnEnemy>().enabled = true;
-        gameObject.GetComponent<SpawnEnemy1>().enabled = true;
-        gameObject.GetComponent<SpawnEnemy2>().enabled = true;
-        gameObject.GetComponent<SpawnEnemy3>().enabled = true;
+        //gameObject.GetComponent<SpawnEnemy>().enabled = true;
+        //gameObject.GetComponent<SpawnEnemy1>().enabled = true;
+        //gameObject.GetComponent<SpawnEnemy2>().enabled = true;
+        //gameObject.GetComponent<SpawnEnemy3>().enabled = true;
 
     }
 }

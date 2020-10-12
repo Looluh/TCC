@@ -29,6 +29,11 @@ namespace UnityStandardAssets.Utility
 			height = rB.height;
 		}
 
+		public void UpdateCamera()
+        {
+			height = rB.height;
+		}
+
 		// Update is called once per frame
 		void LateUpdate()
 		{

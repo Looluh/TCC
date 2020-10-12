@@ -18,7 +18,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &5780917675215214707
 Transform:
@@ -112,13 +112,14 @@ MonoBehaviour:
     type: 3}
   deactivated: {fileID: 7013403024148444771, guid: 320c876d7bdc7f74fab79b6a8ecf0523,
     type: 3}
-  enemyNoWanted: 0
+  enemyNoWanted: 2
   enemyNoNow: 0
   enemyToCount: {fileID: 5866995647273710598, guid: 54ce2d7ad0509824582d9dcf75589b40,
     type: 3}
   anim:
   - {fileID: 0}
   on: 0
+  done: 0
 --- !u!1 &3515253145038187791
 GameObject:
   m_ObjectHideFlags: 0
@@ -133,7 +134,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &4288377582558328757
 Transform:
@@ -167,7 +168,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &6665742884962609449
 Transform:
@@ -210,9 +211,9 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
+  - {fileID: 0}
   - {fileID: 2100000, guid: f0790d175dc60b5478c96e0f0791dcc6, type: 2}
-  - {fileID: 2100000, guid: f0790d175dc60b5478c96e0f0791dcc6, type: 2}
-  - {fileID: 2100000, guid: f0790d175dc60b5478c96e0f0791dcc6, type: 2}
+  - {fileID: 2100000, guid: ee51b6b49e24ba941a8a76b30864ca4c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
