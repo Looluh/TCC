@@ -14,7 +14,7 @@ public class RespawnBrain : MonoBehaviour
     public float volume;
     public AudioMixer audioMix;
 
-    public SmoothFollow cameraScript;
+    //public SmoothFollow cameraScript;
 
     void Awake()
     {

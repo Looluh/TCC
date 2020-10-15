@@ -9,19 +9,69 @@ public class PlayerController : MonoBehaviour
     Vector3 playeraxis;
     public CharacterController cctrl;
 
-    public bool groundedPlayer;
-    public Vector3 playerVelocity;
-    public float gravityValue = -9;
+    public Animator UIDamage;
+    public Animator anim;
+
+    public int noOfClicks;
+    public bool canClick;
+
+    public enum PlayerState
+    {
+        Idle,
+        Run,
+        Walk,
+        Hurt,
+        Canalization,
+        Victory,
+        Dead,
+    }
+    public PlayerState currentState;
+
+    public float timerCombo;
+    AnimationClip[] clips;
+    //public bool groundedPlayer;
+    //public Vector3 playerVelocity;
+    //public float gravityValue = -9;
+
     // Start is called before the first frame update
     void Start()
     {
-        //Cursor.lockState = CursorLockMode.Locked;
+        anim = GetComponent<Animator>();
+        clips = anim.runtimeAnimatorController.animationClips;
+
+        noOfClicks = 0;
+        canClick = true;
+
+        currentState = PlayerState.Idle;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        switch (currentState)
+        {
+            case PlayerState.Idle:
+                Idle();
+                break;
+            case PlayerState.Run:
+                Run();
+                break;
+            case PlayerState.Walk:
+                Walk();
+                break;
+            case PlayerState.Hurt:
+                Hurt();
+                break;
+            case PlayerState.Canalization:
+                Canalization();
+                break;
+            case PlayerState.Victory:
+                Victory();
+                break;
+            case PlayerState.Dead:
+                Dead();
+                break;
+        }
         playeraxis = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
         //Vector3 movimentoGlobal = transform.TransformDirection(playeraxis * playerSpeed);
         cctrl.SimpleMove(playeraxis * playerSpeed);//Move?
@@ -43,7 +93,7 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKey(KeyCode.W))
         {
-            transform.rotation =  Quaternion.Euler(0, 0, 0);
+            transform.rotation = Quaternion.Euler(0, 0, 0);
         }
         if (Input.GetKey(KeyCode.S))
         {
@@ -75,5 +125,144 @@ public class PlayerController : MonoBehaviour
         {
             transform.rotation = Quaternion.Euler(0, 225, 0);
         }
+
+        if (Input.GetMouseButtonDown(0) && noOfClicks < 3) 
+        { 
+            ComboStarter(); //combo
+        }
+
+        if (timerCombo <= 0) 
+        {
+            ResetCombo();
+        }
+        else
+        {
+            timerCombo -= Time.deltaTime;        //if (timerCombo > 0)
+        }
     }
+
+    void Idle()
+    {
+        if (cctrl.velocity.magnitude > 0.1f)
+        {
+            currentState = PlayerState.Run;
+        }
+    }
+    void Run()
+    {
+        anim.SetFloat("Velocity", cctrl.velocity.magnitude);
+        if (cctrl.velocity.magnitude < 0.1f)
+        {
+            currentState = PlayerState.Idle;
+        }
+    }
+    void Walk()
+    {
+
+    }
+
+    void Hurt()
+    {
+
+    }
+
+    void Canalization()
+    {
+
+    }
+
+    void Victory()
+    {
+
+    }
+
+    void Dead()
+    {
+
+    }
+
+    #region Combo
+    void ComboStarter()
+    {
+        if (canClick)
+        {
+            noOfClicks++;
+            //timerCombo += 1f;
+            if (noOfClicks == 1)
+            {
+                timerCombo = clips[2].length/2;
+            }
+            else if (noOfClicks == 2)
+            {
+                timerCombo += clips[1].length/10;
+            }
+            else if (noOfClicks == 3)
+            {
+                timerCombo += clips[3].length/2;
+            }
+            else if (noOfClicks > 3 || noOfClicks == 0)
+            {
+                canClick = true;
+            }
+            //if (timerCombo>3)
+            //{
+            //    timerCombo = 2.3f;
+            //}
+            //clips.
+        }
+
+        /*if (noOfClicks == 1)
+        {
+            anim.SetInteger("Attack", 1);
+        }*/
+        anim.SetInteger("Attack", noOfClicks);
+        //Invoke("ResetCombo", 1);
+        canClick = false;
+        //anim.t
+    }
+    
+    void ResetCombo()
+    {
+        anim.SetInteger("Attack", 0);
+        noOfClicks = 0;
+        timerCombo = 0;
+        canClick = true;
+    }
+
+    public void ComboCheck()
+    {
+
+        canClick = true;
+        //noOfClicks = 0;
+        //anim.SetInteger("Attack", noOfClicks);
+        /*if (anim.GetCurrentAnimatorStateInfo(0).IsName("Ataque") || anim.GetCurrentAnimatorStateInfo(0).IsName("AtaqueRun") && noOfClicks == 1)
+        {//If the first animation is still playing and only 1 click has happened, return to idle
+            anim.SetInteger("Attack", 0);
+            canClick = true;
+            noOfClicks = 0;
+        }
+        else if (anim.GetCurrentAnimatorStateInfo(0).IsName("Ataque") || anim.GetCurrentAnimatorStateInfo(0).IsName("AtaqueRun") && noOfClicks >= 2)
+        {//If the first animation is still playing and at least 2 clicks have happened, continue the combo          
+            anim.SetInteger("Attack", 2);
+            canClick = true;
+        }
+        else if (anim.GetCurrentAnimatorStateInfo(0).IsName("Ataque2") || anim.GetCurrentAnimatorStateInfo(0).IsName("Ataque2Run") && noOfClicks == 2)
+        {  //If the second animation is still playing and only 2 clicks have happened, return to idle         
+            anim.SetInteger("Attack", 0);
+            canClick = true;
+            noOfClicks = 0;
+        }
+        else if (anim.GetCurrentAnimatorStateInfo(0).IsName("Ataque2") || anim.GetCurrentAnimatorStateInfo(0).IsName("Ataque2Run") && noOfClicks >= 3)
+        {  //If the second animation is still playing and at least 3 clicks have happened, continue the combo         
+            anim.SetInteger("Attack", 3);
+            canClick = true;
+        }
+        else if (anim.GetCurrentAnimatorStateInfo(0).IsName("Ataque3") || anim.GetCurrentAnimatorStateInfo(0).IsName("Ataque3Run"))
+        { //Since this is the third and last animation, return to idle          
+            anim.SetInteger("Attack", 0);
+            canClick = true;
+            noOfClicks = 0;
+        }*/
+    }
+    #endregion
 }
