@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 3264577133235968888}
   - component: {fileID: 1937040483094861021}
   - component: {fileID: 4396981391904694295}
+  - component: {fileID: 6107604459017054487}
+  - component: {fileID: 1908948698754766452}
   m_Layer: 0
   m_Name: Pot2
   m_TagString: Untagged
@@ -25,13 +27,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2739819388274524610}
-  m_LocalRotation: {x: 0, y: 0, z: 1, w: -6.123234e-17}
+  m_LocalRotation: {x: 0, y: 0, z: -1, w: 0}
   m_LocalPosition: {x: -12.071402, y: -0.39856339, z: 8.101563}
-  m_LocalScale: {x: 1, y: 1.6751359, z: 1}
+  m_LocalScale: {x: 0.25070322, y: 0.41996193, z: 0.25070322}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -180}
 --- !u!33 &1937040483094861021
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -81,3 +83,33 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!136 &6107604459017054487
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2739819388274524610}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 1.317
+  m_Height: 3.71
+  m_Direction: 1
+  m_Center: {x: 0.00000029802322, y: -0.046542645, z: -0.000000059604645}
+--- !u!208 &1908948698754766452
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2739819388274524610}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 0
+  m_Extents: {x: 1.317, y: 1.855, z: 1.317}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: -0.047000002, z: 0}
+  m_TimeToStationary: 0.5

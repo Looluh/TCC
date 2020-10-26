@@ -2096,6 +2096,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8656007537650163455}
   - component: {fileID: 176210175}
+  - component: {fileID: 8239397518538268298}
   m_Layer: 0
   m_Name: candleHolder
   m_TagString: Untagged
@@ -2142,3 +2143,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!208 &8239397518538268298
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8316882230505735237}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 1.5, y: 0.5, z: 1.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: -2.05, y: 0, z: -0.81}
+  m_TimeToStationary: 0.5

@@ -70,7 +70,7 @@ AvatarMask:
   - m_Path: polySurface7
     m_Weight: 0
   - m_Path: Root
-    m_Weight: 1
+    m_Weight: 0
   - m_Path: Root/ColunaA
     m_Weight: 1
   - m_Path: Root/ColunaA/ColunaB

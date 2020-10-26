@@ -70,7 +70,7 @@ AvatarMask:
   - m_Path: polySurface7
     m_Weight: 1
   - m_Path: Root
-    m_Weight: 1
+    m_Weight: 0
   - m_Path: Root/ColunaA
     m_Weight: 1
   - m_Path: Root/ColunaA/ColunaB
@@ -134,7 +134,7 @@ AvatarMask:
   - m_Path: Root/ColunaA/ColunaB/ColunaC/OmbroESQ_A/OmbroESQ_B/CotoveloESQ/PunhoESQ
     m_Weight: 1
   - m_Path: "Root/ColunaA/ColunaB/ColunaC/OmbroESQ_A/OmbroESQ_B/CotoveloESQ/PunhoESQ/M\xE3oESQ"
-    m_Weight: 0
+    m_Weight: 1
   - m_Path: "Root/ColunaA/ColunaB/ColunaC/OmbroESQ_A/OmbroESQ_B/CotoveloESQ/PunhoESQ/M\xE3oESQ/AnelarESQ"
     m_Weight: 1
   - m_Path: "Root/ColunaA/ColunaB/ColunaC/OmbroESQ_A/OmbroESQ_B/CotoveloESQ/PunhoESQ/M\xE3oESQ/AnelarESQ/AnelarESQ_B"
@@ -180,7 +180,7 @@ AvatarMask:
   - m_Path: "Root/ColunaA/ColunaB/ColunaC/Pesco\xE7o/Cabe\xE7a 1/Cabe\xE7a_FIM"
     m_Weight: 1
   - m_Path: Root/Quadril
-    m_Weight: 1
+    m_Weight: 0
   - m_Path: Root/Quadril/PernaDIR
     m_Weight: 0
   - m_Path: Root/Quadril/PernaDIR/JoelhoDIR

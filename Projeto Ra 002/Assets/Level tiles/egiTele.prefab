@@ -499,7 +499,7 @@ GameObject:
   - component: {fileID: 3739279230081256508}
   - component: {fileID: 3739279230081256509}
   m_Layer: 0
-  m_Name: egiTele 1
+  m_Name: egiTele
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -578,6 +578,7 @@ MonoBehaviour:
   currCountdownValue: 0
   tB:
   - {fileID: 0}
+  pC: {fileID: 0}
 --- !u!1 &4800340989094814829
 GameObject:
   m_ObjectHideFlags: 0

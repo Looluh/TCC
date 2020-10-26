@@ -15,6 +15,10 @@ public class PlayerController : MonoBehaviour
     public int noOfClicks;
     public bool canClick;
 
+    public GameObject swordCol1;
+    public GameObject swordCol2;
+
+    public GameObject UIDead;
     public enum PlayerState
     {
         Idle,
@@ -41,7 +45,8 @@ public class PlayerController : MonoBehaviour
 
         noOfClicks = 0;
         canClick = true;
-
+        swordCol1 = GameObject.Find("KhoCol1");
+        swordCol2 = GameObject.Find("KhoCol2");
         currentState = PlayerState.Idle;
     }
 
@@ -126,13 +131,17 @@ public class PlayerController : MonoBehaviour
             transform.rotation = Quaternion.Euler(0, 225, 0);
         }
 
-        if (Input.GetMouseButtonDown(0) && noOfClicks < 3) 
-        { 
+        if (Input.GetMouseButtonDown(0) && noOfClicks < 3)
+        {
+            swordCol1.SetActive(true);
+            swordCol2.SetActive(true);
             ComboStarter(); //combo
         }
 
-        if (timerCombo <= 0) 
+        if (timerCombo <= 0)
         {
+            swordCol1.SetActive(false);
+            swordCol2.SetActive(false);
             ResetCombo();
         }
         else
@@ -156,30 +165,88 @@ public class PlayerController : MonoBehaviour
             currentState = PlayerState.Idle;
         }
     }
-    void Walk()
+    void Walk()//talvez
     {
 
     }
 
     void Hurt()
     {
-
+        anim.SetTrigger("Hurt");
+        currentState = PlayerState.Idle;
+        UIDamage.SetTrigger("Play");
     }
 
     void Canalization()
     {
-
+        anim.SetTrigger("Canalization");
+        currentState = PlayerState.Idle;
     }
-
+    public bool win = false;//doesnt repeat animation
     void Victory()
     {
-
+        if (!win)
+        {
+            anim.SetTrigger("Victory");
+            win = true;
+        }
     }
 
     void Dead()
     {
-
+        if (!iFrames)
+        {
+            UIDamage.SetTrigger("Play");
+            anim.SetTrigger("Dead");
+            iFrames = true;
+            Debug.Log("aaaa");
+        }
     }
+
+    #region TakeDamagePlayer
+    public GameObject lose;//canvas lose
+    public bool iFrames = false;
+    public float HP;
+    void OnTriggerEnter(Collider other)
+    {
+        if (!iFrames && other.gameObject.CompareTag("EnemyShot"))
+        {
+            if (HP > 0)
+            {
+                HP--;
+                StartCoroutine(TakeDamage());
+
+                currentState = PlayerState.Hurt;
+                Destroy(other.gameObject);
+            }
+            else
+            {
+                currentState = PlayerState.Dead;//trocar pra dying
+            }
+        }
+        else if (!iFrames && other.gameObject.CompareTag("Enemy") || other.gameObject.CompareTag("attackCol") && !iFrames)
+        {
+            if (HP > 0)
+            {
+                HP--;
+                StartCoroutine(TakeDamage());
+
+                currentState = PlayerState.Hurt;
+            }
+            else
+            {
+                currentState = PlayerState.Dead;//trocar pra dying
+            }
+        }
+    }
+
+    public IEnumerator TakeDamage()
+    {
+        iFrames = true;
+        yield return new WaitForSeconds(5f);
+        iFrames = false;
+    }
+    #endregion
 
     #region Combo
     void ComboStarter()
@@ -190,15 +257,15 @@ public class PlayerController : MonoBehaviour
             //timerCombo += 1f;
             if (noOfClicks == 1)
             {
-                timerCombo = clips[2].length/2;
+                timerCombo = clips[2].length / 4;
             }
             else if (noOfClicks == 2)
             {
-                timerCombo += clips[1].length/10;
+                timerCombo += clips[1].length / 3.5f;
             }
             else if (noOfClicks == 3)
             {
-                timerCombo += clips[3].length/2;
+                timerCombo += clips[3].length / 4;
             }
             else if (noOfClicks > 3 || noOfClicks == 0)
             {
@@ -220,7 +287,7 @@ public class PlayerController : MonoBehaviour
         canClick = false;
         //anim.t
     }
-    
+
     void ResetCombo()
     {
         anim.SetInteger("Attack", 0);

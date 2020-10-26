@@ -1,0 +1,209 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!319 &31900000
+AvatarMask:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: enemyWalkMask
+  m_Mask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+  m_Elements:
+  - m_Path: 
+    m_Weight: 1
+  - m_Path: BaseMesh_Malha6
+    m_Weight: 1
+  - m_Path: Curvas
+    m_Weight: 1
+  - m_Path: "ikHandle_Bra\xE7o_DIR"
+    m_Weight: 1
+  - m_Path: "ikHandle_Bra\xE7o_ESQ"
+    m_Weight: 1
+  - m_Path: ikHandle_Perna_DIR
+    m_Weight: 1
+  - m_Path: ikHandle_Perna_ESQ
+    m_Weight: 1
+  - m_Path: Master_CRV
+    m_Weight: 1
+  - m_Path: Master_CRV/Membros
+    m_Weight: 1
+  - m_Path: "Master_CRV/Membros/Bra\xE7o_DIR_CRV"
+    m_Weight: 1
+  - m_Path: "Master_CRV/Membros/Bra\xE7o_DIR_PoleV"
+    m_Weight: 1
+  - m_Path: "Master_CRV/Membros/Bra\xE7o_ESQ_CRV"
+    m_Weight: 1
+  - m_Path: "Master_CRV/Membros/Bra\xE7o_ESQ_PoleV"
+    m_Weight: 1
+  - m_Path: Master_CRV/Membros/Perna_DIR_CRV
+    m_Weight: 1
+  - m_Path: "Master_CRV/Membros/Perna_DIR_CRV/P\xE92_CRV"
+    m_Weight: 1
+  - m_Path: Master_CRV/Membros/Perna_ESQ_CRV
+    m_Weight: 1
+  - m_Path: "Master_CRV/Membros/Perna_ESQ_CRV/P\xE92_CRV 1"
+    m_Weight: 1
+  - m_Path: Master_CRV/Root_CRV
+    m_Weight: 1
+  - m_Path: Master_CRV/Root_CRV/ColunaA_CRV
+    m_Weight: 1
+  - m_Path: Master_CRV/Root_CRV/ColunaA_CRV/ColunaB_CRV
+    m_Weight: 1
+  - m_Path: "Master_CRV/Root_CRV/ColunaA_CRV/ColunaB_CRV/Cabe\xE7a_CRV"
+    m_Weight: 1
+  - m_Path: Master_CRV/Root_CRV/Quadril_CRV
+    m_Weight: 1
+  - m_Path: Master_CRV/Root_CRV/Quadril_CRV/Perna_DIR_PoleV
+    m_Weight: 1
+  - m_Path: Master_CRV/Root_CRV/Quadril_CRV/Perna_ESQ_PoleV
+    m_Weight: 1
+  - m_Path: Root
+    m_Weight: 0
+  - m_Path: Root/ColunaA
+    m_Weight: 1
+  - m_Path: Root/ColunaA/ColunaB
+    m_Weight: 1
+  - m_Path: Root/ColunaA/ColunaB/Peito_DIR
+    m_Weight: 1
+  - m_Path: Root/ColunaA/ColunaB/Peito_DIR/Ombro_DIR
+    m_Weight: 1
+  - m_Path: Root/ColunaA/ColunaB/Peito_DIR/Ombro_DIR/Cotovelo_DIR
+    m_Weight: 1
+  - m_Path: Root/ColunaA/ColunaB/Peito_DIR/Ombro_DIR/Cotovelo_DIR/Punho_DIR
+    m_Weight: 1
+  - m_Path: "Root/ColunaA/ColunaB/Peito_DIR/Ombro_DIR/Cotovelo_DIR/Punho_DIR/M\xE3o_DIR"
+    m_Weight: 1
+  - m_Path: "Root/ColunaA/ColunaB/Peito_DIR/Ombro_DIR/Cotovelo_DIR/Punho_DIR/M\xE3o_DIR/AnelarA"
+    m_Weight: 1
+  - m_Path: "Root/ColunaA/ColunaB/Peito_DIR/Ombro_DIR/Cotovelo_DIR/Punho_DIR/M\xE3o_DIR/AnelarA/AnelarB"
+    m_Weight: 1
+  - m_Path: "Root/ColunaA/ColunaB/Peito_DIR/Ombro_DIR/Cotovelo_DIR/Punho_DIR/M\xE3o_DIR/AnelarA/AnelarB/AnelarC"
+    m_Weight: 1
+  - m_Path: "Root/ColunaA/ColunaB/Peito_DIR/Ombro_DIR/Cotovelo_DIR/Punho_DIR/M\xE3o_DIR/AnelarA/AnelarB/AnelarC/Anelar_FIM"
+    m_Weight: 1
+  - m_Path: "Root/ColunaA/ColunaB/Peito_DIR/Ombro_DIR/Cotovelo_DIR/Punho_DIR/M\xE3o_DIR/IndicadorA"
+    m_Weight: 1
+  - m_Path: "Root/ColunaA/ColunaB/Peito_DIR/Ombro_DIR/Cotovelo_DIR/Punho_DIR/M\xE3o_DIR/IndicadorA/IndicadorB"
+    m_Weight: 1
+  - m_Path: "Root/ColunaA/ColunaB/Peito_DIR/Ombro_DIR/Cotovelo_DIR/Punho_DIR/M\xE3o_DIR/IndicadorA/IndicadorB/IndicadorC"
+    m_Weight: 1
+  - m_Path: "Root/ColunaA/ColunaB/Peito_DIR/Ombro_DIR/Cotovelo_DIR/Punho_DIR/M\xE3o_DIR/IndicadorA/IndicadorB/IndicadorC/Indicador_FIM"
+    m_Weight: 1
+  - m_Path: "Root/ColunaA/ColunaB/Peito_DIR/Ombro_DIR/Cotovelo_DIR/Punho_DIR/M\xE3o_DIR/MedioA"
+    m_Weight: 1
+  - m_Path: "Root/ColunaA/ColunaB/Peito_DIR/Ombro_DIR/Cotovelo_DIR/Punho_DIR/M\xE3o_DIR/MedioA/MedioB"
+    m_Weight: 1
+  - m_Path: "Root/ColunaA/ColunaB/Peito_DIR/Ombro_DIR/Cotovelo_DIR/Punho_DIR/M\xE3o_DIR/MedioA/MedioB/MedioC"
+    m_Weight: 1
+  - m_Path: "Root/ColunaA/ColunaB/Peito_DIR/Ombro_DIR/Cotovelo_DIR/Punho_DIR/M\xE3o_DIR/MedioA/MedioB/MedioC/Medio_FIM"
+    m_Weight: 1
+  - m_Path: "Root/ColunaA/ColunaB/Peito_DIR/Ombro_DIR/Cotovelo_DIR/Punho_DIR/M\xE3o_DIR/MinimoA"
+    m_Weight: 1
+  - m_Path: "Root/ColunaA/ColunaB/Peito_DIR/Ombro_DIR/Cotovelo_DIR/Punho_DIR/M\xE3o_DIR/MinimoA/MinimoB"
+    m_Weight: 1
+  - m_Path: "Root/ColunaA/ColunaB/Peito_DIR/Ombro_DIR/Cotovelo_DIR/Punho_DIR/M\xE3o_DIR/MinimoA/MinimoB/MinimoC"
+    m_Weight: 1
+  - m_Path: "Root/ColunaA/ColunaB/Peito_DIR/Ombro_DIR/Cotovelo_DIR/Punho_DIR/M\xE3o_DIR/MinimoA/MinimoB/MinimoC/Minimo_FIM"
+    m_Weight: 1
+  - m_Path: "Root/ColunaA/ColunaB/Peito_DIR/Ombro_DIR/Cotovelo_DIR/Punho_DIR/M\xE3o_DIR/PolegarA"
+    m_Weight: 1
+  - m_Path: "Root/ColunaA/ColunaB/Peito_DIR/Ombro_DIR/Cotovelo_DIR/Punho_DIR/M\xE3o_DIR/PolegarA/PolegarB"
+    m_Weight: 1
+  - m_Path: "Root/ColunaA/ColunaB/Peito_DIR/Ombro_DIR/Cotovelo_DIR/Punho_DIR/M\xE3o_DIR/PolegarA/PolegarB/Polegar_FIM"
+    m_Weight: 1
+  - m_Path: Root/ColunaA/ColunaB/Peito_ESQ
+    m_Weight: 1
+  - m_Path: Root/ColunaA/ColunaB/Peito_ESQ/Ombro_ESQ
+    m_Weight: 1
+  - m_Path: Root/ColunaA/ColunaB/Peito_ESQ/Ombro_ESQ/Cotovelo_ESQ
+    m_Weight: 1
+  - m_Path: Root/ColunaA/ColunaB/Peito_ESQ/Ombro_ESQ/Cotovelo_ESQ/Punho_ESQ
+    m_Weight: 1
+  - m_Path: "Root/ColunaA/ColunaB/Peito_ESQ/Ombro_ESQ/Cotovelo_ESQ/Punho_ESQ/M\xE3o_ESQ"
+    m_Weight: 1
+  - m_Path: "Root/ColunaA/ColunaB/Peito_ESQ/Ombro_ESQ/Cotovelo_ESQ/Punho_ESQ/M\xE3o_ESQ/AnelarA
+      1"
+    m_Weight: 1
+  - m_Path: "Root/ColunaA/ColunaB/Peito_ESQ/Ombro_ESQ/Cotovelo_ESQ/Punho_ESQ/M\xE3o_ESQ/AnelarA
+      1/AnelarB 1"
+    m_Weight: 1
+  - m_Path: "Root/ColunaA/ColunaB/Peito_ESQ/Ombro_ESQ/Cotovelo_ESQ/Punho_ESQ/M\xE3o_ESQ/AnelarA
+      1/AnelarB 1/AnelarC 1"
+    m_Weight: 1
+  - m_Path: "Root/ColunaA/ColunaB/Peito_ESQ/Ombro_ESQ/Cotovelo_ESQ/Punho_ESQ/M\xE3o_ESQ/AnelarA
+      1/AnelarB 1/AnelarC 1/Anelar_FIM 1"
+    m_Weight: 1
+  - m_Path: "Root/ColunaA/ColunaB/Peito_ESQ/Ombro_ESQ/Cotovelo_ESQ/Punho_ESQ/M\xE3o_ESQ/IndicadorA
+      1"
+    m_Weight: 1
+  - m_Path: "Root/ColunaA/ColunaB/Peito_ESQ/Ombro_ESQ/Cotovelo_ESQ/Punho_ESQ/M\xE3o_ESQ/IndicadorA
+      1/IndicadorB 1"
+    m_Weight: 1
+  - m_Path: "Root/ColunaA/ColunaB/Peito_ESQ/Ombro_ESQ/Cotovelo_ESQ/Punho_ESQ/M\xE3o_ESQ/IndicadorA
+      1/IndicadorB 1/IndicadorC 1"
+    m_Weight: 1
+  - m_Path: "Root/ColunaA/ColunaB/Peito_ESQ/Ombro_ESQ/Cotovelo_ESQ/Punho_ESQ/M\xE3o_ESQ/IndicadorA
+      1/IndicadorB 1/IndicadorC 1/Indicador_FIm"
+    m_Weight: 1
+  - m_Path: "Root/ColunaA/ColunaB/Peito_ESQ/Ombro_ESQ/Cotovelo_ESQ/Punho_ESQ/M\xE3o_ESQ/MedioA
+      1"
+    m_Weight: 1
+  - m_Path: "Root/ColunaA/ColunaB/Peito_ESQ/Ombro_ESQ/Cotovelo_ESQ/Punho_ESQ/M\xE3o_ESQ/MedioA
+      1/MedioB 1"
+    m_Weight: 1
+  - m_Path: "Root/ColunaA/ColunaB/Peito_ESQ/Ombro_ESQ/Cotovelo_ESQ/Punho_ESQ/M\xE3o_ESQ/MedioA
+      1/MedioB 1/MedioC 1"
+    m_Weight: 1
+  - m_Path: "Root/ColunaA/ColunaB/Peito_ESQ/Ombro_ESQ/Cotovelo_ESQ/Punho_ESQ/M\xE3o_ESQ/MedioA
+      1/MedioB 1/MedioC 1/Medio_FIM 1"
+    m_Weight: 1
+  - m_Path: "Root/ColunaA/ColunaB/Peito_ESQ/Ombro_ESQ/Cotovelo_ESQ/Punho_ESQ/M\xE3o_ESQ/MinimoA
+      1"
+    m_Weight: 1
+  - m_Path: "Root/ColunaA/ColunaB/Peito_ESQ/Ombro_ESQ/Cotovelo_ESQ/Punho_ESQ/M\xE3o_ESQ/MinimoA
+      1/MinimoB 1"
+    m_Weight: 1
+  - m_Path: "Root/ColunaA/ColunaB/Peito_ESQ/Ombro_ESQ/Cotovelo_ESQ/Punho_ESQ/M\xE3o_ESQ/MinimoA
+      1/MinimoB 1/MinimoC 1"
+    m_Weight: 1
+  - m_Path: "Root/ColunaA/ColunaB/Peito_ESQ/Ombro_ESQ/Cotovelo_ESQ/Punho_ESQ/M\xE3o_ESQ/MinimoA
+      1/MinimoB 1/MinimoC 1/Minimo_FIM 1"
+    m_Weight: 1
+  - m_Path: "Root/ColunaA/ColunaB/Peito_ESQ/Ombro_ESQ/Cotovelo_ESQ/Punho_ESQ/M\xE3o_ESQ/PolegarA
+      1"
+    m_Weight: 1
+  - m_Path: "Root/ColunaA/ColunaB/Peito_ESQ/Ombro_ESQ/Cotovelo_ESQ/Punho_ESQ/M\xE3o_ESQ/PolegarA
+      1/PolegarB 1"
+    m_Weight: 1
+  - m_Path: "Root/ColunaA/ColunaB/Peito_ESQ/Ombro_ESQ/Cotovelo_ESQ/Punho_ESQ/M\xE3o_ESQ/PolegarA
+      1/PolegarB 1/Polegar_FIM 1"
+    m_Weight: 1
+  - m_Path: "Root/ColunaA/ColunaB/Pesco\xE7o"
+    m_Weight: 1
+  - m_Path: "Root/ColunaA/ColunaB/Pesco\xE7o/Cabe\xE7a"
+    m_Weight: 1
+  - m_Path: "Root/ColunaA/ColunaB/Pesco\xE7o/Cabe\xE7a/Cabe\xE7a_FIM"
+    m_Weight: 1
+  - m_Path: Root/Quadril
+    m_Weight: 0
+  - m_Path: Root/Quadril/Perna_DIR
+    m_Weight: 0
+  - m_Path: Root/Quadril/Perna_DIR/Joelho_DIR
+    m_Weight: 0
+  - m_Path: Root/Quadril/Perna_DIR/Joelho_DIR/Tornozelo_DIR
+    m_Weight: 0
+  - m_Path: "Root/Quadril/Perna_DIR/Joelho_DIR/Tornozelo_DIR/P\xE9_DIR"
+    m_Weight: 0
+  - m_Path: "Root/Quadril/Perna_DIR/Joelho_DIR/Tornozelo_DIR/P\xE9_DIR/P\xE9_FIM"
+    m_Weight: 0
+  - m_Path: Root/Quadril/Perna_ESQ
+    m_Weight: 0
+  - m_Path: Root/Quadril/Perna_ESQ/Joelho_ESQ
+    m_Weight: 0
+  - m_Path: Root/Quadril/Perna_ESQ/Joelho_ESQ/Pornozelo_ESQ
+    m_Weight: 0
+  - m_Path: "Root/Quadril/Perna_ESQ/Joelho_ESQ/Pornozelo_ESQ/P\xE9_ESQ"
+    m_Weight: 0
+  - m_Path: "Root/Quadril/Perna_ESQ/Joelho_ESQ/Pornozelo_ESQ/P\xE9_ESQ/P\xE9_FIM
+      1"
+    m_Weight: 0

@@ -7,14 +7,14 @@ public class Checkpoint : MonoBehaviour
     public GameObject textpoint;
 
     private RespawnBrain rB;
-    public TakeDamagePlayer tdP;
+    public PlayerController playCon;
     public float checkpointHeal;
 
     // Start is called before the first frame update
     void Start()
     {
         rB = GameObject.FindGameObjectWithTag("respawnBrain").GetComponent<RespawnBrain>();
-        checkpointHeal = tdP.HP;
+        checkpointHeal = playCon.HP;
     }
 
     // Update is called once per frame
@@ -25,10 +25,10 @@ public class Checkpoint : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Player")
+        if (other.gameObject.CompareTag("Player"))
         {
             Instantiate(textpoint, new Vector3(transform.position.x, transform.position.y + 2, transform.position.z), textpoint.transform.rotation);
-            tdP.HP = checkpointHeal;
+            playCon.HP = checkpointHeal;
             rB.lastCheckpointPos = transform.position;
             Destroy(gameObject);
         }

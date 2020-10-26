@@ -10,11 +10,19 @@ public class EnemyNav : MonoBehaviour
     public NavMeshAgent agent;
     public GameObject target;
 
-    //public Animator anim;
+    public Animator anim;
 
     public bool iFrames = false;
     public bool stunFrames = false;
     public float HP;
+
+    public float enSpeed;
+
+    //public GameObject handColEsq;
+    //public GameObject handColDir;
+    //public GameObject armColEsq;
+    //public GameObject armColDir;
+    public GameObject[] attackCol;
     public enum IaState
     {
         Asleep,
@@ -30,8 +38,28 @@ public class EnemyNav : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        target = GameObject.FindGameObjectWithTag("Player");
+        //attackCol = GameObject.FindGameObjectsWithTag("attackCol");
+        //handColEsq = GameObject.Find("HandColEsq");
+        //handColDir = GameObject.Find("HandColDir");
+        //armColEsq = GameObject.Find("ArmColEsq");
+        //armColDir = GameObject.Find("ArmColDir");
+
+        agent = GetComponent<NavMeshAgent>();
+        anim = GetComponent<Animator>();
+        agent.speed = Random.Range(5, 20);
+        anim.SetFloat("Velocity", agent.speed / 5);
+
+        if (agent.speed > 10)
+        {
+            anim.SetInteger("SpeedVerifier", 2);
+        }
+        else
+        {
+            anim.SetInteger("SpeedVerifier", 1);
+        }
         currentState = IaState.Follow;
+        target = GameObject.FindGameObjectWithTag("Player");
+
     }
 
     // Update is called once per frame
@@ -61,22 +89,56 @@ public class EnemyNav : MonoBehaviour
                 Dead();
                 break;
         }
+
+        if (anim.GetCurrentAnimatorStateInfo(1).IsName("Ataque"))
+        {
+            for (int i = 0; i < attackCol.Length; i++)
+            {
+                attackCol[i].SetActive(true);
+                Debug.Log("atkCOlOn");
+            }
+        }
+        else
+        {
+            for (int i = 0; i < attackCol.Length; i++)
+            {
+                attackCol[i].SetActive(false);
+                Debug.Log("atkColOff");
+            }
+
+        }
+
     }
 
     void Asleep()
     {
-
     }
+    public bool atkColDone = true;
     void Follow()
     {
         agent.isStopped = false;
         agent.SetDestination(target.transform.position);
-        //anim.SetBool("Attack", false);
+        RotateTowards(target.transform);
+
+        //if (agent.speed > 10)
+        //{
+        //    anim.SetInteger("SpeedVerifier", 2);
+        //}
+        //else
+        //{
+        //    anim.SetInteger("SpeedVerifier", 1);
+        //}
+
 
     }
     void Attack()
     {
-
+        Debug.Log("attack");
+        RotateTowards(target.transform);
+        //anim.speed = 1;
+        agent.isStopped = true;//?
+        anim.SetTrigger("Attack");
+        currentState = IaState.Follow;
     }
     void Hurt()
     {
@@ -108,11 +170,35 @@ public class EnemyNav : MonoBehaviour
     void Dead()
     {
         agent.isStopped = true;
+        anim.speed = 0;
+    }
+
+    public void AtkIn()
+    {
+        for (int i = 0; i < attackCol.Length; i++)
+        {
+            attackCol[i].SetActive(true);
+        }
+    }
+    public void AtkOut()
+    {
+        for (int i = 0; i < attackCol.Length; i++)
+        {
+            attackCol[i].SetActive(false);
+        }
+    }
+
+    public float rotationSpeed = 10f;
+    private void RotateTowards(Transform target)
+    {
+        Vector3 direction = (target.position - transform.position).normalized;
+        Quaternion lookRotation = Quaternion.LookRotation(direction);
+        transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * rotationSpeed);
     }
 
     void OnTriggerEnter(Collider other)
     {
-        if (!iFrames && !stunFrames && other.gameObject.tag == "Shot")
+        if (!iFrames && !stunFrames && other.gameObject.CompareTag("Shot"))
         {
             if (HP > 0)
             {
@@ -126,7 +212,7 @@ public class EnemyNav : MonoBehaviour
                 currentState = IaState.Dead;//trocar pra dying
             }
         }
-        else if (!iFrames && !stunFrames && other.gameObject.tag == "Sword")
+        else if (!iFrames && !stunFrames && other.gameObject.CompareTag("Sword"))
         {
             if (HP > 0)
             {
@@ -139,7 +225,7 @@ public class EnemyNav : MonoBehaviour
                 currentState = IaState.Dead;//trocar pra dying
             }
         }
-        else if (!stunFrames && other.gameObject.tag == "StunAttack")
+        else if (!stunFrames && other.gameObject.CompareTag("StunAttack"))
         {
             if (HP > 0)
             {

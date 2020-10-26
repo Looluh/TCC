@@ -11,10 +11,17 @@ public class Teleswap : MonoBehaviour
 
     public AudioSource audS;
     public AudioClip audC;
+
+    public PlayerController pC;
+    public float currCountdownValue;
+    public bool cooldown = false;
+
     // Start is called before the first frame update
     void Start()
     {
+        player = GameObject.FindGameObjectWithTag("Player").transform;
         brain = GameObject.FindWithTag("respawnBrain").transform;
+        pC = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
     }
 
     // Update is called once per frame
@@ -25,17 +32,52 @@ public class Teleswap : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Shot"))
+        if (other.gameObject.CompareTag("Shot") && !cooldown)
         {
-            brain.transform.position = player.transform.position;
-
-            player.GetComponent<CharacterController>().enabled = false;
-            player.transform.position = new Vector3(myself.transform.position.x, player.transform.position.y + 0.15f, myself.transform.position.z) ;
-            player.GetComponent<CharacterController>().enabled = true;
-
-            myself.transform.position = new Vector3(brain.transform.position.x, myself.transform.position.y, brain.transform.position.z);
-
-            audS.PlayOneShot(audC);
+            StartCoroutine(TeleCountdown());
         }
     }
+
+    public void Teleport()
+    {
+        brain.transform.position = player.transform.position;
+
+        player.GetComponent<CharacterController>().enabled = false;
+        player.transform.position = new Vector3(myself.transform.position.x, player.transform.position.y + 0.15f, myself.transform.position.z);
+        player.GetComponent<CharacterController>().enabled = true;
+
+        myself.transform.position = new Vector3(brain.transform.position.x, myself.transform.position.y, brain.transform.position.z);
+
+        audS.PlayOneShot(audC);
+
+        StartCoroutine(StartCountdown());
+    }
+    public IEnumerator StartCountdown(float countdownValue = 2)
+    {
+        currCountdownValue = countdownValue;
+        while (currCountdownValue > 0)
+        {
+            Debug.Log("Countdown: " + currCountdownValue);
+            yield return new WaitForSeconds(1.0f);
+            currCountdownValue--;
+        }
+
+        if (currCountdownValue <= 0)
+        {
+            cooldown = false;
+
+            Debug.Log("enum");
+        }
+    }
+
+    public IEnumerator TeleCountdown()
+    {
+        cooldown = true;
+        Debug.Log("TeleCountdown");
+        pC.currentState = PlayerController.PlayerState.Canalization;
+        yield return new WaitForSeconds(1.0f);
+        //pC.currentState = PlayerController.PlayerState.Idle;
+        Teleport();
+    }
+
 }
