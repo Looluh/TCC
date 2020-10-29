@@ -26,6 +26,7 @@ public class ChangeCamera : MonoBehaviour
         {
             currentCa.gameObject.SetActive(false);
             changeToCa.gameObject.SetActive(true);
+            Destroy(gameObject);
         }
     }
 }

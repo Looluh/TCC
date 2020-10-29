@@ -23,6 +23,8 @@ public class EnemyNav : MonoBehaviour
     //public GameObject armColEsq;
     //public GameObject armColDir;
     public GameObject[] attackCol;
+
+    public Material enMat;
     public enum IaState
     {
         Asleep,
@@ -48,7 +50,7 @@ public class EnemyNav : MonoBehaviour
         anim = GetComponent<Animator>();
         agent.speed = Random.Range(5, 20);
         anim.SetFloat("Velocity", agent.speed / 5);
-
+        enMat = GetComponentInChildren<Renderer>().material;
         if (agent.speed > 10)
         {
             anim.SetInteger("SpeedVerifier", 2);
@@ -95,7 +97,7 @@ public class EnemyNav : MonoBehaviour
             for (int i = 0; i < attackCol.Length; i++)
             {
                 attackCol[i].SetActive(true);
-                Debug.Log("atkCOlOn");
+                Debug.Log("atkColOn");
             }
         }
         else
@@ -136,7 +138,7 @@ public class EnemyNav : MonoBehaviour
         Debug.Log("attack");
         RotateTowards(target.transform);
         //anim.speed = 1;
-        agent.isStopped = true;//?
+        //agent.isStopped = true;//?
         anim.SetTrigger("Attack");
         currentState = IaState.Follow;
     }
@@ -153,9 +155,13 @@ public class EnemyNav : MonoBehaviour
     }
     void Stun()
     {
+        enMat.color = Color.blue;
+        enMat.SetColor("_EmissionColor", Color.blue);
         agent.isStopped = true;
         if (!stunFrames)
         {
+            enMat.color = Color.white;
+            enMat.SetColor("_EmissionColor", Color.white);
             currentState = IaState.Follow;
         }
 
@@ -169,6 +175,7 @@ public class EnemyNav : MonoBehaviour
     }
     void Dead()
     {
+        enMat.SetVector("_EmissionColor", Color.white * 1000f);
         agent.isStopped = true;
         anim.speed = 0;
     }

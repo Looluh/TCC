@@ -77,9 +77,7 @@ public class PlayerController : MonoBehaviour
                 Dead();
                 break;
         }
-        playeraxis = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
         //Vector3 movimentoGlobal = transform.TransformDirection(playeraxis * playerSpeed);
-        cctrl.SimpleMove(playeraxis * playerSpeed);//Move?
 
         //método do professor
         /*groundedPlayer = cctrl.isGrounded;
@@ -95,42 +93,45 @@ public class PlayerController : MonoBehaviour
 
 
         //novo, teste de direção do massa
+        if (currentState != PlayerState.Dead && currentState != PlayerState.Victory)
+        {
+            playeraxis = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
+            cctrl.SimpleMove(playeraxis * playerSpeed);//Move?
+            if (Input.GetKey(KeyCode.W))
+            {
+                transform.rotation = Quaternion.Euler(0, 0, 0);
+            }
+            if (Input.GetKey(KeyCode.S))
+            {
+                transform.rotation = Quaternion.Euler(0, 180, 0);
+            }
+            if (Input.GetKey(KeyCode.D))
+            {
+                transform.rotation = Quaternion.Euler(0, 90, 0);
+            }
+            if (Input.GetKey(KeyCode.A))
+            {
+                transform.rotation = Quaternion.Euler(0, -90, 0);
+            }
 
-        if (Input.GetKey(KeyCode.W))
-        {
-            transform.rotation = Quaternion.Euler(0, 0, 0);
-        }
-        if (Input.GetKey(KeyCode.S))
-        {
-            transform.rotation = Quaternion.Euler(0, 180, 0);
-        }
-        if (Input.GetKey(KeyCode.D))
-        {
-            transform.rotation = Quaternion.Euler(0, 90, 0);
-        }
-        if (Input.GetKey(KeyCode.A))
-        {
-            transform.rotation = Quaternion.Euler(0, -90, 0);
-        }
+            if (Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.A))
+            {
+                transform.rotation = Quaternion.Euler(0, -45, 0);
+            }
+            if (Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.D))
+            {
+                transform.rotation = Quaternion.Euler(0, 45, 0);
+            }
 
-        if (Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.A))
-        {
-            transform.rotation = Quaternion.Euler(0, -45, 0);
+            if (Input.GetKey(KeyCode.S) && Input.GetKey(KeyCode.D))
+            {
+                transform.rotation = Quaternion.Euler(0, 135, 0);
+            }
+            if (Input.GetKey(KeyCode.S) && Input.GetKey(KeyCode.A))
+            {
+                transform.rotation = Quaternion.Euler(0, 225, 0);
+            }
         }
-        if (Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.D))
-        {
-            transform.rotation = Quaternion.Euler(0, 45, 0);
-        }
-
-        if (Input.GetKey(KeyCode.S) && Input.GetKey(KeyCode.D))
-        {
-            transform.rotation = Quaternion.Euler(0, 135, 0);
-        }
-        if (Input.GetKey(KeyCode.S) && Input.GetKey(KeyCode.A))
-        {
-            transform.rotation = Quaternion.Euler(0, 225, 0);
-        }
-
         if (Input.GetMouseButtonDown(0) && noOfClicks < 3)
         {
             swordCol1.SetActive(true);

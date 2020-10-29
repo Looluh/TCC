@@ -86,6 +86,8 @@
     <Compile Include="Assets\Scripts\SmoothFollow.cs" />
     <Compile Include="Assets\Scripts\TimedButtonOff.cs" />
     <Compile Include="Assets\Scripts2\PlayerPos.cs" />
+    <Compile Include="Assets\liner.cs" />
+    <Compile Include="Assets\SoulMove.cs" />
     <Compile Include="Assets\Scripts2\TextureChange.cs" />
     <Compile Include="Assets\UIScripts\MainMenu.cs" />
     <Compile Include="Assets\NastyWizard_CelSobel\Demo\ROTATE.cs" />
@@ -99,6 +101,7 @@
     <Compile Include="Assets\AttackColControl.cs" />
     <Compile Include="Assets\Scripts2\TextureBlink.cs" />
     <Compile Include="Assets\OutlineToolkit\Script\EdgeDetect.cs" />
+    <Compile Include="Assets\SoulFeedback.cs" />
     <Compile Include="Assets\Scripts\SpawnEnemy.cs" />
     <Compile Include="Assets\Scripts2\TextureMove.cs" />
     <Compile Include="Assets\UIScripts\PauseMenu.cs" />
@@ -113,7 +116,7 @@
     <Compile Include="Assets\Scripts2\CamFix.cs" />
     <Compile Include="Assets\UIScripts\OptionsMenu.cs" />
     <Compile Include="Assets\Scripts\EnemyNav.cs" />
-    <Compile Include="Assets\liner.cs" />
+    <Compile Include="Assets\SoulCounter.cs" />
   </ItemGroup>
   <ItemGroup>
      <None Include="Assets\Ciconia Studio\Shaders\Double Sided Shaders\Double Sided Transparent Diffuse Bump.shader" />

@@ -12,6 +12,7 @@ TagManager:
   - StunAttack
   - attackCol
   - EnemyShot
+  - SoulTarget
   layers:
   - Default
   - TransparentFX
@@ -26,8 +27,8 @@ TagManager:
   - Shot
   - Sword
   - Player
-  - 
-  - 
+  - Soul
+  - SoulTarget
   - 
   - 
   - 
