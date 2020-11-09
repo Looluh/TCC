@@ -384,6 +384,7 @@ MonoBehaviour:
   anim: {fileID: 0}
   iFrames: 0
   stunFrames: 0
+  attacking: 0
   HP: 0
   enSpeed: 0
   attackCol:
@@ -391,9 +392,15 @@ MonoBehaviour:
   - {fileID: 6797114239558903185}
   - {fileID: 6797114239378410871}
   - {fileID: 6797114239797029443}
+  enMat: {fileID: 0}
+  playerDetect: {fileID: 0}
+  enDeadParticle: {fileID: 1499986404583750289, guid: 3f2598f1a443fb7479af354c0f5d99da,
+    type: 3}
+  startAsleep: 0
   currentState: 0
-  atkColDone: 0
+  currentFollow: 0
   rotationSpeed: 10
+  range: 25
 --- !u!195 &1479863665740788134
 NavMeshAgent:
   m_ObjectHideFlags: 0

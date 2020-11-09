@@ -11,7 +11,9 @@ public class SimpleButton : MonoBehaviour
     public GameObject activated;
     public GameObject deactivated;
     public GameObject player;
-    public Animator[] anim;
+    public GameObject[] doors;
+    public Animator[] doorAnim;
+    public AudioSource[] doorAudS;
     public bool ok = true;
 
     public Animator glowA;
@@ -37,6 +39,13 @@ public class SimpleButton : MonoBehaviour
         Hippo,
     }
     public ColorGlow currColorGlow;
+
+    public AudioClip audC;
+
+    public AudioSource sparkAS;
+    public AudioClip sparkAC;
+
+    public GameObject[] dustParticles;
 
     // Start is called before the first frame update
     void Start()
@@ -68,6 +77,14 @@ public class SimpleButton : MonoBehaviour
             currColorGlow = ColorGlow.Hippo;
         }
 
+        for (int i = 0; i < doors.Length; i++)
+        {
+            doorAnim[i] = doors[i].GetComponent<Animator>();
+            doorAudS[i] = doors[i].GetComponent<AudioSource>();
+            dustParticles[i] = doors[i].transform.GetChild(0).gameObject;
+        }
+
+        sparkAS = GetComponent<AudioSource>();
     }
 
 
@@ -77,12 +94,12 @@ public class SimpleButton : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E) && (player.transform.position - transform.position).sqrMagnitude < range * range && !on && ok)// /?
         {
             On();
-            StartCoroutine("OkCheck");
+            StartCoroutine(OkCheck());
         }
         else if (Input.GetKeyDown(KeyCode.E) && (player.transform.position - transform.position).sqrMagnitude < range * range && on && ok)// /?
         {
             Off();
-            StartCoroutine("OkCheck");
+            StartCoroutine(OkCheck());
         }//else if (Input.GetKeyDown(KeyCode.E) && (player.transform.position - transform.position).sqrMagnitude < range * range && on && anim[].GetCurrentAnimatorStateInfo(0).normalizedTime > 1 && !anim.IsInTransition(0))// /?
 
     }
@@ -92,12 +109,11 @@ public class SimpleButton : MonoBehaviour
 
     void On()
     {
-        for (int i = 0; i < anim.Length; i++)
+        for (int i = 0; i < doors.Length; i++)
         {
-            //anim[i].Play("DoorClose");
-            anim[i].SetBool("Aberto", false);
+            doorAudS[i].PlayOneShot(audC);
+            doorAnim[i].SetBool("Aberto", false);
         }
-
 
         on = true;
         Instantiate(activated, new Vector3(transform.position.x, transform.position.y + 2, transform.position.z), activated.transform.rotation);
@@ -105,10 +121,10 @@ public class SimpleButton : MonoBehaviour
 
     void Off()
     {
-        for (int i = 0; i < anim.Length; i++)
+        for (int i = 0; i < doors.Length; i++)
         {
-            //anim[i].Play("DoorOpen");
-            anim[i].SetBool("Aberto", true);
+            doorAudS[i].PlayOneShot(audC);
+            doorAnim[i].SetBool("Aberto", true);
         }
 
         on = false;
@@ -118,6 +134,10 @@ public class SimpleButton : MonoBehaviour
     public IEnumerator OkCheck()
     {
         ok = false;
+        for (int i = 0; i < doors.Length; i++)
+        {
+            dustParticles[i].SetActive(true);
+        }
 
         switch (currColorGlow)
         {
@@ -136,8 +156,14 @@ public class SimpleButton : MonoBehaviour
         }
 
         glowA.SetTrigger("Glow");
+        sparkAS.PlayOneShot(sparkAC);
 
         yield return new WaitForSeconds(2f);
+
+        for (int i = 0; i < doors.Length; i++)
+        {
+            dustParticles[i].SetActive(false);
+        }
         ok = true;
     }
 }

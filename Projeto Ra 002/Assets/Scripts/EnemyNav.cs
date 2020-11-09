@@ -14,6 +14,7 @@ public class EnemyNav : MonoBehaviour
 
     public bool iFrames = false;
     public bool stunFrames = false;
+    public bool attacking = false;
     public float HP;
 
     public float enSpeed;
@@ -25,18 +26,30 @@ public class EnemyNav : MonoBehaviour
     public GameObject[] attackCol;
 
     public Material enMat;
+
+    public GameObject playerDetect;
+    public GameObject enDeadParticle;
+
+    public bool startAsleep;
     public enum IaState
     {
         Asleep,
         Follow,
+        Look,
         Attack,
         Hurt,
         Stun,
         Dying,
-        Dead,
     }
     public IaState currentState;
 
+    public enum FollowState
+    {
+        Walk,
+        Run,
+    }
+
+    public FollowState currentFollow;
     // Start is called before the first frame update
     void Start()
     {
@@ -45,7 +58,7 @@ public class EnemyNav : MonoBehaviour
         //handColDir = GameObject.Find("HandColDir");
         //armColEsq = GameObject.Find("ArmColEsq");
         //armColDir = GameObject.Find("ArmColDir");
-
+        playerDetect = transform.GetChild(2).gameObject;
         agent = GetComponent<NavMeshAgent>();
         anim = GetComponent<Animator>();
         agent.speed = Random.Range(5, 20);
@@ -53,15 +66,25 @@ public class EnemyNav : MonoBehaviour
         enMat = GetComponentInChildren<Renderer>().material;
         if (agent.speed > 10)
         {
-            anim.SetInteger("SpeedVerifier", 2);
+            //anim.SetInteger("SpeedVerifier", 2);
+            currentFollow = FollowState.Run;
         }
         else
         {
-            anim.SetInteger("SpeedVerifier", 1);
+            //anim.SetInteger("SpeedVerifier", 1);
+            currentFollow = FollowState.Walk;
         }
-        currentState = IaState.Follow;
         target = GameObject.FindGameObjectWithTag("Player");
-
+        if (startAsleep)
+        {
+            currentState = IaState.Asleep;
+            InvokeRepeating("VerifyPlayerDistance", 0.1f, 1.5f);
+        }
+        else
+        {
+            currentState = IaState.Follow;
+        }
+        //print(anim.speed);
     }
 
     // Update is called once per frame
@@ -75,6 +98,9 @@ public class EnemyNav : MonoBehaviour
             case IaState.Follow:
                 Follow();
                 break;
+            case IaState.Look:
+                Look();
+                break;
             case IaState.Attack:
                 Attack();
                 break;
@@ -87,12 +113,9 @@ public class EnemyNav : MonoBehaviour
             case IaState.Dying:
                 Dying();
                 break;
-            case IaState.Dead:
-                Dead();
-                break;
         }
 
-        if (anim.GetCurrentAnimatorStateInfo(1).IsName("Ataque"))
+        /*if (anim.GetCurrentAnimatorStateInfo(1).IsName("Ataque"))
         {
             for (int i = 0; i < attackCol.Length; i++)
             {
@@ -109,18 +132,27 @@ public class EnemyNav : MonoBehaviour
             }
 
         }
-
+        */
     }
 
     void Asleep()
     {
+        //:)
     }
-    public bool atkColDone = true;
     void Follow()
     {
         agent.isStopped = false;
         agent.SetDestination(target.transform.position);
         RotateTowards(target.transform);
+        switch (currentFollow)
+        {
+            case FollowState.Walk:
+                anim.SetInteger("SpeedVerifier", 1);
+                break;
+            case FollowState.Run:
+                anim.SetInteger("SpeedVerifier", 2);
+                break;
+        }
 
         //if (agent.speed > 10)
         //{
@@ -130,8 +162,11 @@ public class EnemyNav : MonoBehaviour
         //{
         //    anim.SetInteger("SpeedVerifier", 1);
         //}
-
-
+    }
+    void Look()
+    {
+        agent.SetDestination(target.transform.position);
+        RotateTowards(target.transform);
     }
     void Attack()
     {
@@ -139,8 +174,9 @@ public class EnemyNav : MonoBehaviour
         RotateTowards(target.transform);
         //anim.speed = 1;
         //agent.isStopped = true;//?
+        StartCoroutine(AttackCol());
         anim.SetTrigger("Attack");
-        currentState = IaState.Follow;
+        currentState = IaState.Look;
     }
     void Hurt()
     {
@@ -168,16 +204,11 @@ public class EnemyNav : MonoBehaviour
     }
     void Dying()
     {
-        agent.isStopped = true;
-        //anim.SetBool("Attack", false);
-        //currentState = IaState.Follow;
-
-    }
-    void Dead()
-    {
+        Destroy(playerDetect);
         enMat.SetVector("_EmissionColor", Color.white * 1000f);
         agent.isStopped = true;
         anim.speed = 0;
+        StartCoroutine(Dead());
     }
 
     public void AtkIn()
@@ -216,7 +247,7 @@ public class EnemyNav : MonoBehaviour
             }
             else
             {
-                currentState = IaState.Dead;//trocar pra dying
+                currentState = IaState.Dying;//trocar pra dying
             }
         }
         else if (!iFrames && !stunFrames && other.gameObject.CompareTag("Sword"))
@@ -229,7 +260,7 @@ public class EnemyNav : MonoBehaviour
             }
             else
             {
-                currentState = IaState.Dead;//trocar pra dying
+                currentState = IaState.Dying;//trocar pra dying
             }
         }
         else if (!stunFrames && other.gameObject.CompareTag("StunAttack"))
@@ -242,7 +273,7 @@ public class EnemyNav : MonoBehaviour
             }
             else
             {
-                currentState = IaState.Dead;//trocar pra dying
+                currentState = IaState.Dying;//trocar pra dying
             }
         }
 
@@ -259,5 +290,46 @@ public class EnemyNav : MonoBehaviour
         stunFrames = true;
         yield return new WaitForSeconds(5f);
         stunFrames = false;
+    }
+
+    public IEnumerator AttackCol()
+    {
+        if (!attacking)
+        {
+            attacking = true;
+            for (int i = 0; i < attackCol.Length; i++)
+            {
+                attackCol[i].SetActive(true);
+                Debug.Log("atkColOn");
+            }
+            yield return new WaitForSeconds(1.3f);
+            for (int i = 0; i < attackCol.Length; i++)
+            {
+                attackCol[i].SetActive(false);
+                Debug.Log("atkColOff");
+            }
+            attacking = false;
+        }
+    }
+
+    public float range;
+    public void VerifyPlayerDistance()
+    {
+        if (currentState != IaState.Dying || currentState != IaState.Stun)
+        {
+            CancelInvoke("VerifyPlayerDistance");
+        }
+        else if ((target.transform.position - transform.position).sqrMagnitude < range * range)
+        {
+            currentState = IaState.Follow;
+            CancelInvoke("VerifyPlayerDistance");
+        }
+    }
+
+    public IEnumerator Dead()
+    {
+        yield return new WaitForSeconds(1.8f);
+        Instantiate(enDeadParticle, transform.position, transform.rotation);
+        Destroy(gameObject);
     }
 }

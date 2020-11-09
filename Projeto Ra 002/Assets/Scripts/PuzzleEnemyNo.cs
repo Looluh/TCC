@@ -13,17 +13,25 @@ public class PuzzleEnemyNo : MonoBehaviour
     public float enemyNoNow = 0;
     public GameObject enemyToCount;
 
-    public Animator[] anim;
-    public  bool on;
+    public GameObject[] doors;
+    public Animator[] doorAnim;
+    public AudioSource[] doorAudS;
+    public bool on;
 
     public bool done = false;
+
+    public AudioClip audC;
 
     // Start is called before the first frame update
     void Start()
     {
-
+        for (int i = 0; i < doors.Length; i++)
+        {
+            doorAnim[i] = doors[i].GetComponent<Animator>();
+            doorAudS[i] = doors[i].GetComponent<AudioSource>();
+        }
     }
-    
+
 
     // Update is called once per frame
     void Update()
@@ -65,9 +73,10 @@ public class PuzzleEnemyNo : MonoBehaviour
 
     void On()
     {
-        for (int i = 0; i < anim.Length; i++)
+        for (int i = 0; i < doors.Length; i++)
         {
-            anim[i].SetBool("Aberto", true);
+            doorAudS[i].PlayOneShot(audC);
+            doorAnim[i].SetBool("Aberto", true);
         }
         //on = true;
 
@@ -76,9 +85,10 @@ public class PuzzleEnemyNo : MonoBehaviour
 
     void Off()
     {
-        for (int i = 0; i < anim.Length; i++)
+        for (int i = 0; i < doors.Length; i++)
         {
-            anim[i].SetBool("Aberto", false);
+            doorAudS[i].PlayOneShot(audC);
+            doorAnim[i].SetBool("Aberto", false);
         }
         //on = false;
 

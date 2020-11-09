@@ -17,7 +17,7 @@ public class SoulFeedback : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if ( enNav.currentState == EnemyNav.IaState.Dead)
+        if ( enNav.currentState == EnemyNav.IaState.Dying)
         {
             Instantiate(soul, enemy.transform.position, enemy.transform.rotation);
             Destroy(this);

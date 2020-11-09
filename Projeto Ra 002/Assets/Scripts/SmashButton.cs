@@ -9,15 +9,28 @@ public class SmashButton : MonoBehaviour
     public GameObject activated;
     public GameObject deactivated;
     public GameObject player;
-    public Animator[] anim;
-
+    public GameObject[] doors;
+    public Animator[] doorAnim;
+    public AudioSource[] doorAudS;
 
     private float range;
     public bool on;
+
+    public AudioClip audC;
+
+    public GameObject[] dustParticles;
+
     // Start is called before the first frame update
     void Start()
     {
         range = 5;
+
+        for (int i = 0; i < doors.Length; i++)
+        {
+            doorAnim[i] = doors[i].GetComponent<Animator>();
+            doorAudS[i] = doors[i].GetComponent<AudioSource>();
+            dustParticles[i] = doors[i].transform.GetChild(0).gameObject;
+        }
     }
 
     // Update is called once per frame
@@ -29,11 +42,14 @@ public class SmashButton : MonoBehaviour
 
             if (smashNo == 0)
             {
+                StartCoroutine(DoorDust());
+
                 if (on)
                 {
-                    for (int i = 0; i < anim.Length; i++)
+                    for (int i = 0; i < doors.Length; i++)
                     {
-                        anim[i].SetBool("Aberto", true);
+                        doorAudS[i].PlayOneShot(audC);
+                        doorAnim[i].SetBool("Aberto", true);
                     }
 
                     Instantiate(deactivated, new Vector3(transform.position.x, transform.position.y + 2, transform.position.z), deactivated.transform.rotation);
@@ -41,14 +57,30 @@ public class SmashButton : MonoBehaviour
 
                 else if (!on)
                 {
-                    for (int i = 0; i < anim.Length; i++)
+                    for (int i = 0; i < doors.Length; i++)
                     {
-                        anim[i].SetBool("Aberto", false);
+                        doorAudS[i].PlayOneShot(audC);
+                        doorAnim[i].SetBool("Aberto", false);
                     }
 
                     Instantiate(activated, new Vector3(transform.position.x, transform.position.y + 2, transform.position.z), activated.transform.rotation);
                 }
             }
+        }
+    }
+
+    public IEnumerator DoorDust()
+    {
+        for (int i = 0; i < doors.Length; i++)
+        {
+            dustParticles[i].SetActive(true);
+        }
+
+        yield return new WaitForSeconds(2f);
+
+        for (int i = 0; i < doors.Length; i++)
+        {
+            dustParticles[i].SetActive(false);
         }
     }
 }

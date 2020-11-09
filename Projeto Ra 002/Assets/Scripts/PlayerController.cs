@@ -38,6 +38,10 @@ public class PlayerController : MonoBehaviour
     //public float gravityValue = -9;
 
     // Start is called before the first frame update
+
+    public Camera cam;
+
+    public GameObject canvasLose;
     void Start()
     {
         anim = GetComponent<Animator>();
@@ -97,7 +101,29 @@ public class PlayerController : MonoBehaviour
         {
             playeraxis = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
             cctrl.SimpleMove(playeraxis * playerSpeed);//Move?
-            if (Input.GetKey(KeyCode.W))
+
+            Vector3 globalMov = cam.transform.TransformDirection(new Vector3(playeraxis.x, 0, playeraxis.z));
+            globalMov = new Vector3(globalMov.x, 0, globalMov.z);
+
+            //limita o exagero do input
+            if (playeraxis.magnitude > 1)
+                playeraxis.Normalize();
+
+            /*Vector3 movfinal = (globalMov).normalized * playeraxis.magnitude * playerSpeed;
+            movfinal += new Vector3(0, -9, 0);                                                       //movimentação do professor
+            cctrl.Move(movfinal);*/
+
+            //calcula quantos graus o personagem deve virar
+            float radtogo = Vector3.Dot(transform.right, globalMov.normalized) * 50;//20 é a velo q ele vira
+
+            //evita andar de re
+            if ((transform.forward - globalMov.normalized).magnitude > 1)
+            {
+                transform.Rotate(0, 1, 0);
+            }
+            transform.Rotate(0, radtogo, 0);
+
+            /*if (Input.GetKey(KeyCode.W))
             {
                 transform.rotation = Quaternion.Euler(0, 0, 0);
             }
@@ -130,24 +156,24 @@ public class PlayerController : MonoBehaviour
             if (Input.GetKey(KeyCode.S) && Input.GetKey(KeyCode.A))
             {
                 transform.rotation = Quaternion.Euler(0, 225, 0);
+            }*/
+            if (Input.GetMouseButtonDown(0) && noOfClicks < 3)
+            {
+                swordCol1.SetActive(true);
+                swordCol2.SetActive(true);
+                ComboStarter(); //combo
             }
-        }
-        if (Input.GetMouseButtonDown(0) && noOfClicks < 3)
-        {
-            swordCol1.SetActive(true);
-            swordCol2.SetActive(true);
-            ComboStarter(); //combo
-        }
 
-        if (timerCombo <= 0)
-        {
-            swordCol1.SetActive(false);
-            swordCol2.SetActive(false);
-            ResetCombo();
-        }
-        else
-        {
-            timerCombo -= Time.deltaTime;        //if (timerCombo > 0)
+            if (timerCombo <= 0)
+            {
+                swordCol1.SetActive(false);
+                swordCol2.SetActive(false);
+                ResetCombo();
+            }
+            else
+            {
+                timerCombo -= Time.deltaTime;        //if (timerCombo > 0)
+            }
         }
     }
 
@@ -200,12 +226,12 @@ public class PlayerController : MonoBehaviour
             UIDamage.SetTrigger("Play");
             anim.SetTrigger("Dead");
             iFrames = true;
-            Debug.Log("aaaa");
+
+            StartCoroutine(Die());
         }
     }
 
     #region TakeDamagePlayer
-    public GameObject lose;//canvas lose
     public bool iFrames = false;
     public float HP;
     void OnTriggerEnter(Collider other)
@@ -246,6 +272,12 @@ public class PlayerController : MonoBehaviour
         iFrames = true;
         yield return new WaitForSeconds(5f);
         iFrames = false;
+    }
+
+    public IEnumerator Die()
+    {
+        yield return new WaitForSeconds(3f);
+        canvasLose.SetActive(true);
     }
     #endregion
 

@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Look : MonoBehaviour
 {
-    [SerializeField]
-    private Camera mainCamera;
+    //[SerializeField]
+    public Camera mainCamera;
     public GunController theGun;
     public bool controller;
     //public Camera shootCam;

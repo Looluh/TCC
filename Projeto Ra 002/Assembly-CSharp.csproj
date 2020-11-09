@@ -57,11 +57,16 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\PuzzleEnemyNo.cs" />
     <Compile Include="Assets\Special.cs" />
+    <Compile Include="Assets\PatternMaster1.cs" />
+    <Compile Include="Assets\HeliCam.cs" />
     <Compile Include="Assets\Scripts\Teleswap.cs" />
     <Compile Include="Assets\Scripts\ShotAtButtonOff.cs" />
+    <Compile Include="Assets\SoulMove2.cs" />
     <Compile Include="Assets\Scripts\ShotAtTimedButtonOff.cs" />
+    <Compile Include="Assets\KeyGetA.cs" />
     <Compile Include="Assets\PlayerDetect.cs" />
     <Compile Include="Assets\Scripts\DeathPlane.cs" />
+    <Compile Include="Assets\ScriptChangeLook.cs" />
     <Compile Include="Assets\Scripts2\Checkpoint.cs" />
     <Compile Include="Assets\Scripts2\korea.cs" />
     <Compile Include="Assets\OutlineToolkit\Script\Demonstration_MeshProcessing.cs" />
@@ -70,6 +75,7 @@
     <Compile Include="Assets\Scripts2\LightRI.cs" />
     <Compile Include="Assets\Scripts2\AudioPlay.cs" />
     <Compile Include="Assets\Scripts\ShotAtTimedButtonOn.cs" />
+    <Compile Include="Assets\PatternButton.cs" />
     <Compile Include="Assets\Scripts\GunController.cs" />
     <Compile Include="Assets\UIScripts\uiClick.cs" />
     <Compile Include="Assets\Scripts\SwordButton.cs" />
@@ -92,6 +98,7 @@
     <Compile Include="Assets\UIScripts\MainMenu.cs" />
     <Compile Include="Assets\NastyWizard_CelSobel\Demo\ROTATE.cs" />
     <Compile Include="Assets\Scripts\ShotAtButtonOn.cs" />
+    <Compile Include="Assets\KeyGetB.cs" />
     <Compile Include="Assets\Scripts\GodController.cs" />
     <Compile Include="Assets\Scripts\SmashButton.cs" />
     <Compile Include="Assets\UIScripts\WinLose.cs" />
@@ -100,6 +107,8 @@
     <Compile Include="Assets\Scripts\TakeDamageEnemy.cs" />
     <Compile Include="Assets\AttackColControl.cs" />
     <Compile Include="Assets\Scripts2\TextureBlink.cs" />
+    <Compile Include="Assets\ButtonSound.cs" />
+    <Compile Include="Assets\SoulCounter.cs" />
     <Compile Include="Assets\OutlineToolkit\Script\EdgeDetect.cs" />
     <Compile Include="Assets\SoulFeedback.cs" />
     <Compile Include="Assets\Scripts\SpawnEnemy.cs" />
@@ -107,8 +116,13 @@
     <Compile Include="Assets\UIScripts\PauseMenu.cs" />
     <Compile Include="Assets\Scripts2\RespawnBrain.cs" />
     <Compile Include="Assets\UIScripts\DestroyText.cs" />
+    <Compile Include="Assets\Level tiles\RotateStatue.cs" />
     <Compile Include="Assets\Scripts\ChangeCamera.cs" />
+    <Compile Include="Assets\PatternMaster.cs" />
     <Compile Include="Assets\Scripts\SwordTrigger.cs" />
+    <Compile Include="Assets\SoulMove1.cs" />
+    <Compile Include="Assets\KeyMaster.cs" />
+    <Compile Include="Assets\Level tiles\AnimStop.cs" />
     <Compile Include="Assets\OutlineToolkit\Script\MeshProcessor.cs" />
     <Compile Include="Assets\Scripts\TakeDamagePlayer.cs" />
     <Compile Include="Assets\Scripts\IAControl.cs" />
@@ -116,7 +130,7 @@
     <Compile Include="Assets\Scripts2\CamFix.cs" />
     <Compile Include="Assets\UIScripts\OptionsMenu.cs" />
     <Compile Include="Assets\Scripts\EnemyNav.cs" />
-    <Compile Include="Assets\SoulCounter.cs" />
+    <Compile Include="Assets\CloseDoor.cs" />
   </ItemGroup>
   <ItemGroup>
      <None Include="Assets\Ciconia Studio\Shaders\Double Sided Shaders\Double Sided Transparent Diffuse Bump.shader" />
@@ -130,6 +144,7 @@
      <None Include="Assets\OutlineToolkit\Shader\NamedStandard.shader" />
      <None Include="Assets\DualTextured\Assets\Shaders\Dual_Transparent_Lightup.shader" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Bitmap.shader" />
+     <None Include="Assets\SpawnerPortal\orangespiral.shader" />
      <None Include="Assets\DualTextured\Assets\Shaders\Dual_Textured_Specular.shader" />
      <None Include="Assets\Mylit.shader" />
      <None Include="Assets\DualTextured\Assets\Shaders\Dual_Transparent.shader" />
@@ -155,6 +170,7 @@
      <None Include="Assets\Ciconia Studio\Shaders\Double Sided Shaders\Double Sided Standard Diffuse Bump.shader" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro_Surface.cginc" />
      <None Include="Assets\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
+     <None Include="Assets\tunnel.shader" />
      <None Include="Assets\DualTextured\Assets\Shaders\Dual_Transparent_Bumped_Specular.shader" />
      <None Include="Assets\OutlineToolkit\Happy Flower\happy flower care instructions.txt" />
      <None Include="Assets\OutlineToolkit\Shader\ProcessedEdges.shader" />
@@ -162,6 +178,7 @@
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile Masking.shader" />
      <None Include="Assets\DualTextured\Assets\Shaders\Dual_Transparent_Specular.shader" />
      <None Include="Assets\NastyWizard_CelSobel\CelShadingSobel\Shaders\Post\PostFunctions.cginc" />
+     <None Include="Assets\Enemy\testyu.shader" />
      <None Include="Assets\OutlineToolkit\README.txt" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF Overlay.shader" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Bitmap-Mobile.shader" />
@@ -171,6 +188,7 @@
      <None Include="Assets\DualTextured\Assets\Shaders\Dual_Textured.shader" />
      <None Include="Assets\OutlineToolkit\Shader\OutlineDepthDependant.shader" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile.shader" />
+     <None Include="Assets\NewUnlitShader.shader" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Sprite.shader" />
     <Reference Include="UnityEngine">
       <HintPath>C:\Program Files\Unity\Hub\Editor\2020.1.7f1\Editor\Data\Managed\UnityEngine\UnityEngine.dll</HintPath>
