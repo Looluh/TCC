@@ -22,10 +22,10 @@ public class TimedButtonOn : MonoBehaviour
     public Light glowL;
     public Material glowM;
 
-    public bool frog;
+    /*public bool frog;
     public bool owl;
     public bool dragonfly;
-    public bool hippo;
+    public bool hippo;*/
 
     public Color frogC;
     public Color owlC;
@@ -56,7 +56,26 @@ public class TimedButtonOn : MonoBehaviour
         on = false;
         range = 5;
 
-        if (frog)
+        switch (currColorGlow)
+        {
+            case ColorGlow.Frog:
+                glowM.SetColor("_EmissionColor", frogC);
+                glowL.color = frogC;
+                break;
+            case ColorGlow.Owl:
+                glowM.SetColor("_EmissionColor", owlC);
+                glowL.color = owlC;
+                break;
+            case ColorGlow.Dragonfly:
+                glowM.SetColor("_EmissionColor", dragonflyC);
+                glowL.color = dragonflyC;
+                break;
+            case ColorGlow.Hippo:
+                glowM.SetColor("_EmissionColor", hippoC);
+                glowL.color = hippoC;
+                break;
+        }
+        /*if (frog)
         {
             glowM.SetColor("_EmissionColor", frogC);
             glowL.color = frogC;
@@ -79,7 +98,7 @@ public class TimedButtonOn : MonoBehaviour
             glowM.SetColor("_EmissionColor", hippoC);
             glowL.color = hippoC;
             currColorGlow = ColorGlow.Hippo;
-        }
+        }*/
 
         for (int i = 0; i < doors.Length; i++)
         {

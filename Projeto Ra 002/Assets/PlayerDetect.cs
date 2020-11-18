@@ -16,13 +16,16 @@ public class PlayerDetect : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
     void OnTriggerStay(Collider other)
     {
-        if (other.gameObject.CompareTag("Player") && !attacking)
+        if (other.gameObject.CompareTag("Player") && !enNav.attacking)//!attacking
         {
-            StartCoroutine(Attack());
+            if (enNav.currentState != EnemyNav.IaState.Dying && enNav.currentState != EnemyNav.IaState.Stun)
+            {
+                StartCoroutine(Attack());
+            }
         }
     }
 

@@ -194,8 +194,10 @@ public class EnemyNav : MonoBehaviour
         enMat.color = Color.blue;
         enMat.SetColor("_EmissionColor", Color.blue);
         agent.isStopped = true;
+        anim.speed = 0;
         if (!stunFrames)
         {
+            anim.speed = 1;
             enMat.color = Color.white;
             enMat.SetColor("_EmissionColor", Color.white);
             currentState = IaState.Follow;

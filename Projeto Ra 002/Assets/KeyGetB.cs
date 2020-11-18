@@ -27,6 +27,7 @@ public class KeyGetB : MonoBehaviour
             {
                 keyM.keyGottenB = true;
                 Destroy(gameObject);
+                canvasCollect.SetActive(false);
             }
         }
 

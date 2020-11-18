@@ -57,7 +57,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        switch (currentState)
+        switch (currentState)//maquina de estados do jogador
         {
             case PlayerState.Idle:
                 Idle();
@@ -97,7 +97,7 @@ public class PlayerController : MonoBehaviour
 
 
         //novo, teste de direção do massa
-        if (currentState != PlayerState.Dead && currentState != PlayerState.Victory)
+        if (currentState != PlayerState.Dead && currentState != PlayerState.Victory)//inputs de movimentação e ataque
         {
             playeraxis = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
             cctrl.SimpleMove(playeraxis * playerSpeed);//Move?
@@ -267,14 +267,14 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public IEnumerator TakeDamage()
+    public IEnumerator TakeDamage()//frames de invincibilidade após levar dano
     {
         iFrames = true;
         yield return new WaitForSeconds(5f);
         iFrames = false;
     }
 
-    public IEnumerator Die()
+    public IEnumerator Die()//chamado ao morrer, dá um tempo antes de aparecer a tela de derrota
     {
         yield return new WaitForSeconds(3f);
         canvasLose.SetActive(true);
@@ -282,7 +282,7 @@ public class PlayerController : MonoBehaviour
     #endregion
 
     #region Combo
-    void ComboStarter()
+    void ComboStarter()//começa o combo
     {
         if (canClick)
         {
@@ -321,7 +321,7 @@ public class PlayerController : MonoBehaviour
         //anim.t
     }
 
-    void ResetCombo()
+    void ResetCombo()//reinicia o combo
     {
         anim.SetInteger("Attack", 0);
         noOfClicks = 0;
@@ -329,13 +329,13 @@ public class PlayerController : MonoBehaviour
         canClick = true;
     }
 
-    public void ComboCheck()
+    public void ComboCheck()//continua o combo, chamado no meio das animações de ataque
     {
 
         canClick = true;
-        //noOfClicks = 0;
+        /*//noOfClicks = 0;
         //anim.SetInteger("Attack", noOfClicks);
-        /*if (anim.GetCurrentAnimatorStateInfo(0).IsName("Ataque") || anim.GetCurrentAnimatorStateInfo(0).IsName("AtaqueRun") && noOfClicks == 1)
+        if (anim.GetCurrentAnimatorStateInfo(0).IsName("Ataque") || anim.GetCurrentAnimatorStateInfo(0).IsName("AtaqueRun") && noOfClicks == 1)
         {//If the first animation is still playing and only 1 click has happened, return to idle
             anim.SetInteger("Attack", 0);
             canClick = true;

@@ -11,6 +11,7 @@ public class SoulMove1 : MonoBehaviour
 
     public SoulCounter soulC;
     public float moveSpeed;
+    public ParticleSystem soulParSys;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,6 +21,7 @@ public class SoulMove1 : MonoBehaviour
         conS.weight = 1;
         aimC.SetSource(0, conS);
         soulC = GameObject.FindGameObjectWithTag("SoulTarget1").GetComponent<SoulCounter>();
+        soulParSys = GetComponentInChildren<ParticleSystem>();
     }
 
     // Update is called once per frame
@@ -33,8 +35,10 @@ public class SoulMove1 : MonoBehaviour
     {
         if (col.gameObject.CompareTag("SoulTarget1"))
         {
+            soulParSys.Stop();
+            GetComponent<Renderer>().enabled = false;
             soulC.Count();
-            Destroy(gameObject);
+            Destroy(gameObject, 2);
         }
     }
 }
