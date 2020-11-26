@@ -33,7 +33,7 @@ public class ShotAtTimedButtonOff : MonoBehaviour
     void Start()
     {
         on = false;
-        for (int i = 0; i < doors.Length; i++)
+        for (int i = 0; i < doors.Length; i++)//pega varios componentes de cada porta
         {
             doorAnim[i] = doors[i].GetComponent<Animator>();
             doorAudS[i] = doors[i].GetComponent<AudioSource>();
@@ -47,15 +47,15 @@ public class ShotAtTimedButtonOff : MonoBehaviour
 
     }
 
-    void OnCollisionEnter(Collision collision)
+    void OnCollisionEnter(Collision collision)//se o player atirou em
     {
-        if (collision.collider.CompareTag("Shot") && !on)//adicionar limitador
+        if (collision.collider.CompareTag("Shot") && !on)
         {
             StartCoroutine(StartCountdown());
         }
     }
 
-    public IEnumerator StartCountdown(float countdownValue = 10)
+    public IEnumerator StartCountdown(float countdownValue = 10)//inicia temporizador pra manter a(s) porta(s) aberta(s), troca a cor do Ra (ballgod), toca som
     {
         switch (currColorGlow)
         {
@@ -75,7 +75,7 @@ public class ShotAtTimedButtonOff : MonoBehaviour
         StartCoroutine(DoorDust());
 
         currCountdownValue = countdownValue;
-        On();
+        Off();
         while (currCountdownValue > 0)
         {
             Debug.Log("Countdown: " + currCountdownValue);
@@ -85,7 +85,7 @@ public class ShotAtTimedButtonOff : MonoBehaviour
 
         if (currCountdownValue <= 0)
         {
-            Off();
+            On();
             Debug.Log("enum");
         }
     }
@@ -117,7 +117,7 @@ public class ShotAtTimedButtonOff : MonoBehaviour
 
         Instantiate(deactivated, new Vector3(transform.position.x, transform.position.y + 2, transform.position.z), deactivated.transform.rotation);
     }
-    public IEnumerator DoorDust()
+    public IEnumerator DoorDust()//ativa particulas e espera pra desativar
     {
         for (int i = 0; i < doors.Length; i++)
         {

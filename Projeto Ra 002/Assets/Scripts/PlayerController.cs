@@ -33,6 +33,9 @@ public class PlayerController : MonoBehaviour
 
     public float timerCombo;
     AnimationClip[] clips;
+
+    public AudioSource playerAudS;
+    public AudioClip swordAudC;
     //public bool groundedPlayer;
     //public Vector3 playerVelocity;
     //public float gravityValue = -9;
@@ -52,6 +55,8 @@ public class PlayerController : MonoBehaviour
         swordCol1 = GameObject.Find("KhoCol1");
         swordCol2 = GameObject.Find("KhoCol2");
         currentState = PlayerState.Idle;
+
+        playerAudS = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -287,6 +292,7 @@ public class PlayerController : MonoBehaviour
         if (canClick)
         {
             noOfClicks++;
+            playerAudS.PlayOneShot(swordAudC);
             //timerCombo += 1f;
             if (noOfClicks == 1)
             {

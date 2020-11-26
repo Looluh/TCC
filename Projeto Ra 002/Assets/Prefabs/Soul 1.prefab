@@ -155,6 +155,7 @@ MonoBehaviour:
   aimC: {fileID: 0}
   soulC: {fileID: 0}
   moveSpeed: 0.1
+  soulParSys: {fileID: 0}
 --- !u!1001 &8055361630513355637
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -171,21 +172,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_RootOrder
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5060313817093355165, guid: c546accc541cfd944a8919e967f6763a,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.6435
-      objectReference: {fileID: 0}
-    - target: {fileID: 5060313817093355165, guid: c546accc541cfd944a8919e967f6763a,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.6435
-      objectReference: {fileID: 0}
-    - target: {fileID: 5060313817093355165, guid: c546accc541cfd944a8919e967f6763a,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.6435
       objectReference: {fileID: 0}
     - target: {fileID: 5060313817093355165, guid: c546accc541cfd944a8919e967f6763a,
         type: 3}

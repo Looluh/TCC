@@ -11,7 +11,7 @@ public class Checkpoint : MonoBehaviour
     public float checkpointHeal;
 
     // Start is called before the first frame update
-    void Start()
+    void Start()//pega checkpoint e vida inicial do jogador
     {
         rB = GameObject.FindGameObjectWithTag("respawnBrain").GetComponent<RespawnBrain>();
         checkpointHeal = playCon.HP;
@@ -23,7 +23,7 @@ public class Checkpoint : MonoBehaviour
 
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider other)//salva checkpoint, cura jogador
     {
         if (other.gameObject.CompareTag("Player"))
         {

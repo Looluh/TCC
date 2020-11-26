@@ -14,7 +14,7 @@ public class LightRI : MonoBehaviour
     public float randomTime;
 
     // Start is called before the first frame update
-    void Start()
+    void Start()//pega e randomiza luz
     {
         li = GetComponent<Light>();
         random = Random.Range(0.0f, 65535.0f); 
@@ -22,7 +22,7 @@ public class LightRI : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void Update()//mexe na intensidade e no alcance da luz
     {
         /*timer += Time.deltaTime;
         li.intensity += oscillate(timer, 10, 0.01f);

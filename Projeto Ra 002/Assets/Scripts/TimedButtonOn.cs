@@ -51,10 +51,13 @@ public class TimedButtonOn : MonoBehaviour
     public ColorGlow currColorGlow;
 
     // Start is called before the first frame update
-    void Start()
+    void Start()//define a cor e range do botão, define cor que deus ra brilha, pega varios componentes de cada porta
     {
         on = false;
         range = 5;
+
+        glowM = gameObject.GetComponentsInChildren<Renderer>()[1].material;
+        glowM.EnableKeyword("_EMISSION");
 
         switch (currColorGlow)
         {
@@ -111,7 +114,7 @@ public class TimedButtonOn : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void Update()//verifica se o player está proximo, apertou E, se já não está fechando as portas
     {
         if (Input.GetKeyDown(KeyCode.E) && (player.transform.position - transform.position).sqrMagnitude < range * range && !on)// /?
         {
@@ -119,7 +122,7 @@ public class TimedButtonOn : MonoBehaviour
         }
     }
 
-    public IEnumerator StartCountdown(float countdownValue = 10)
+    public IEnumerator StartCountdown(float countdownValue = 10)//inicia temporizador pra manter a(s) porta(s) fechada, troca a cor do Ra (ballgod), toca som
     {
         switch (currColorGlow)
         {

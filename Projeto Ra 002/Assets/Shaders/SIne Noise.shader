@@ -53,9 +53,9 @@
                 fixed4 col = tex2D(_MainTex, i.uv);
                 // apply fog
                 //UNITY_APPLY_FOG(i.fogCoord, col);
-                float2 uv = (2 * i.uv) - 2 / 2;//= fragCoord / iResolution.y;
-                float3 q = float3(uv, _Time.y * 0.2);
                 //float3 q = float3(uv, _Time, 1);
+                float2 uv = (2 * i.uv) - 2 / 2;//meio do polígono, equivale a //= fragCoord / iResolution.y;
+                float3 q = float3(uv, _Time.y * 0.2);
                 float3 c = float3(0, 0, 0);
                 for (int a = 0; a < 8; a++) 
                 {
@@ -71,7 +71,7 @@
                 fixed4 fragColor = float4(lerp(float3(ca, cb, cc), c, 0.5) * .15 + .5, 1.);
                 return dot((fragColor * col * _Color), float3(0.3, 0.59, 0.11));//remover o dot e o float3 pra deixar com cor: 
                                                                                 //return fragColor*col*_Color;
-                //return col;
+                //return col;                                                   //col funciona como um stencyl
             }
             ENDCG
         }

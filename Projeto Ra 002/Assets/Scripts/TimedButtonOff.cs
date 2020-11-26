@@ -55,6 +55,9 @@ public class TimedButtonOff : MonoBehaviour
         on = false;
         range = 5;
 
+        glowM = gameObject.GetComponentsInChildren<Renderer>()[1].material;
+        glowM.EnableKeyword("_EMISSION");
+
         switch (currColorGlow)
         {
             case ColorGlow.Frog:

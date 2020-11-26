@@ -48,9 +48,12 @@ public class SimpleButton : MonoBehaviour
     public GameObject[] dustParticles;
 
     // Start is called before the first frame update
-    void Start()
+    void Start()//define a cor e range do botão, pega varios componentes de cada porta
     {
         range = 5;
+
+        glowM = gameObject.GetComponentsInChildren<Renderer>()[1].material;
+        glowM.EnableKeyword("_EMISSION");
 
         switch (currColorGlow)
         {
@@ -109,7 +112,7 @@ public class SimpleButton : MonoBehaviour
 
 
     // Update is called once per frame
-    void Update()
+    void Update()//verifica se o player está proximo, apertou E, se a porta está aberta ou fechada, se já não está abrindo as portas
     {
         if (Input.GetKeyDown(KeyCode.E) && (player.transform.position - transform.position).sqrMagnitude < range * range && !on && ok)// /?
         {
@@ -127,19 +130,7 @@ public class SimpleButton : MonoBehaviour
     //if (anim[i].GetCurrentAnimatorStateInfo(0).normalizedTime <= 0 && anim[i].IsInTransition(0))
     //should do: checks if animation is playing then check if it is transitioning
 
-    void On()
-    {
-        for (int i = 0; i < doors.Length; i++)
-        {
-            doorAudS[i].PlayOneShot(audC);
-            doorAnim[i].SetBool("Aberto", false);
-        }
-
-        on = true;
-        Instantiate(activated, new Vector3(transform.position.x, transform.position.y + 2, transform.position.z), activated.transform.rotation);
-    }
-
-    void Off()
+    void On()//fecha as portas, toca som e instancia mensagem
     {
         for (int i = 0; i < doors.Length; i++)
         {
@@ -147,11 +138,23 @@ public class SimpleButton : MonoBehaviour
             doorAnim[i].SetBool("Aberto", true);
         }
 
+        on = true;
+        Instantiate(activated, new Vector3(transform.position.x, transform.position.y + 2, transform.position.z), activated.transform.rotation);
+    }
+
+    void Off()//abre as portas, toca som e instancia mensagem
+    {
+        for (int i = 0; i < doors.Length; i++)
+        {
+            doorAudS[i].PlayOneShot(audC);
+            doorAnim[i].SetBool("Aberto", false);
+        }
+
         on = false;
         Instantiate(deactivated, new Vector3(transform.position.x, transform.position.y + 2, transform.position.z), deactivated.transform.rotation);
     }
 
-    public IEnumerator OkCheck()
+    public IEnumerator OkCheck()//ativa as particulas, troca a cor do Ra (ballgod), toca som e espera pra desativar as particulas
     {
         ok = false;
         for (int i = 0; i < doors.Length; i++)

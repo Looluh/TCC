@@ -5,10 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class uiClick : MonoBehaviour
 {
-    public GameObject player;
     void Start()
     {
-        player = GameObject.Find("Player 1");
+
     }
 
     public void Recomeco()
@@ -19,9 +18,19 @@ public class uiClick : MonoBehaviour
         */
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
+
+    public void NextLevel()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
     public void QuitGame()
     {
         Application.Quit();
+    }
+
+    public void Menu()
+    {
+        SceneManager.LoadScene(0);
     }
 
 }

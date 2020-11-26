@@ -22,13 +22,16 @@ public class PuzzleEnemyNo : MonoBehaviour
 
     public AudioClip audC;
 
+    public GameObject[] dustParticles;
+
     // Start is called before the first frame update
-    void Start()
+    void Start()//componentes das portas
     {
         for (int i = 0; i < doors.Length; i++)
         {
             doorAnim[i] = doors[i].GetComponent<Animator>();
             doorAudS[i] = doors[i].GetComponent<AudioSource>();
+            dustParticles[i] = doors[i].transform.GetChild(0).gameObject;
         }
     }
 
@@ -39,7 +42,7 @@ public class PuzzleEnemyNo : MonoBehaviour
 
     }
 
-    void OnTriggerEnter(Collider other)
+    void OnTriggerEnter(Collider other)//detecta inimigo entrando e conta, verifica se tem a quantidade certa
     {
         if (other.gameObject.CompareTag("Enemy") && !done)
         {
@@ -62,7 +65,7 @@ public class PuzzleEnemyNo : MonoBehaviour
         }
     }
 
-    void OnTriggerExit(Collider other)
+    void OnTriggerExit(Collider other)//detecta inimigo saindo e desconta
     {
         if (other.gameObject.CompareTag("Enemy") && !done)
         {
@@ -71,7 +74,7 @@ public class PuzzleEnemyNo : MonoBehaviour
         }
     }
 
-    void On()
+    void On()//abre as portas, toca som, ativa particulas e instancia mensagem
     {
         for (int i = 0; i < doors.Length; i++)
         {
@@ -79,11 +82,13 @@ public class PuzzleEnemyNo : MonoBehaviour
             doorAnim[i].SetBool("Aberto", true);
         }
         //on = true;
+        StartCoroutine(DoorDust());
+
 
         Instantiate(deactivated, new Vector3(transform.position.x, transform.position.y + 2, transform.position.z), deactivated.transform.rotation);
     }
 
-    void Off()
+    void Off()//fecha as portas, toca som, ativa particulas e instancia mensagem
     {
         for (int i = 0; i < doors.Length; i++)
         {
@@ -91,9 +96,27 @@ public class PuzzleEnemyNo : MonoBehaviour
             doorAnim[i].SetBool("Aberto", false);
         }
         //on = false;
+        StartCoroutine(DoorDust());
+
 
         Instantiate(activated, new Vector3(transform.position.x, transform.position.y + 2, transform.position.z), activated.transform.rotation);
     }
+
+    public IEnumerator DoorDust()//ativa particulas e espera pra desativar
+    {
+        for (int i = 0; i < doors.Length; i++)
+        {
+            dustParticles[i].SetActive(true);
+        }
+
+        yield return new WaitForSeconds(2f);
+
+        for (int i = 0; i < doors.Length; i++)
+        {
+            dustParticles[i].SetActive(false);
+        }
+    }
+
 
 }
 

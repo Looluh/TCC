@@ -94,11 +94,7 @@ MonoBehaviour:
   on: 0
   glowA: {fileID: 4163844370031792857}
   glowL: {fileID: 5037353065346260127}
-  glowM: {fileID: 2100000, guid: 6d872ee0eb333e742a11a802d7a04f99, type: 2}
-  frog: 1
-  owl: 0
-  dragonfly: 0
-  hippo: 0
+  glowM: {fileID: 0}
   frogC: {r: 0, g: 0.5882353, b: 0.24705884, a: 1}
   owlC: {r: 0.6901961, g: 0.49803925, b: 0.2901961, a: 1}
   dragonflyC: {r: 0.40000004, g: 0.14117648, b: 0.5176471, a: 1}
@@ -107,6 +103,7 @@ MonoBehaviour:
   audC: {fileID: 0}
   sparkAS: {fileID: 0}
   sparkAC: {fileID: 8300000, guid: 31eeff4aa7a8b31488fde395f9407b19, type: 3}
+  dustParticles: []
   currColorGlow: 0
 --- !u!208 &8059910588546301385
 NavMeshObstacle:

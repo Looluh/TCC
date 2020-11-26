@@ -16,6 +16,7 @@ TagManager:
   - Firepoint
   - SoulTarget1
   - SoulTarget2
+  - SwapBrain
   layers:
   - Default
   - TransparentFX
@@ -33,8 +34,8 @@ TagManager:
   - Soul
   - SoulTarget
   - Door
-  - 
-  - 
+  - IgnoreDirLi
+  - Floor
   - 
   - 
   - 

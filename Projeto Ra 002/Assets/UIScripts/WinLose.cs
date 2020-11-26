@@ -8,21 +8,28 @@ public class WinLose : MonoBehaviour
 
     public PlayerController playCon;
 
+    public GameObject player;
     private void Start()
     {
-        playCon = GameObject.Find("PlayerChar").GetComponent<PlayerController>();
+        player = GameObject.FindGameObjectWithTag("Player");
+        playCon = player.GetComponent<PlayerController>();
     }
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player") && playCon.currentState != PlayerController.PlayerState.Victory)
         {
             playCon.currentState = PlayerController.PlayerState.Victory;
-            Invoke("Win", 4);
+            Time.timeScale = 0.1f;
+
+            player.GetComponent<Collider>().enabled = false;
+
+            Invoke("Win", 0.4f);
         }
     }
 
     public void Win()
     {
+        Time.timeScale = 1;
         win.SetActive(true);
     }
 }

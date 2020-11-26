@@ -20,10 +20,10 @@ public class LightTele : MonoBehaviour
     public AudioSource[] aud;
     private AudioSource tempAUD;
 
-    public bool frog;
+    /*public bool frog;
     public bool owl;
     public bool dragonfly;
-    public bool hippo;
+    public bool hippo;*/
 
     public Color frogC;
     public Color owlC;
@@ -31,10 +31,51 @@ public class LightTele : MonoBehaviour
     public Color hippoC;
 
     public AudioClip auC;
-    // Start is called before the first frame update
-    void Start()
+
+    public enum ColorTele
     {
-        if (frog)
+        Frog,
+        Owl,
+        Dragonfly,
+        Hippo,
+    }
+    public ColorTele currColorTele;
+
+    // Start is called before the first frame update
+    void Start()//define a cor do candleHolder
+    {
+        switch (currColorTele)
+        {
+            case ColorTele.Frog:
+                midLI.color = frogC;
+                for (int i = 0; i < li.Length; i++)
+                {
+                    li[i].color = frogC;
+                }
+                break;
+            case ColorTele.Owl:
+                midLI.color = owlC;
+                for (int i = 0; i < li.Length; i++)
+                {
+                    li[i].color = owlC;
+                }
+                break;
+            case ColorTele.Dragonfly:
+                midLI.color = dragonflyC;
+                for (int i = 0; i < li.Length; i++)
+                {
+                    li[i].color = dragonflyC;
+                }
+                break;
+            case ColorTele.Hippo:
+                midLI.color = hippoC;
+                for (int i = 0; i < li.Length; i++)
+                {
+                    li[i].color = hippoC;
+                }
+                break;
+        }
+        /*if (frog)
         {
             midLI.color = frogC;
             for (int i = 0; i < li.Length; i++)
@@ -65,17 +106,17 @@ public class LightTele : MonoBehaviour
             {
                 li[i].color = hippoC;
             }
-        }
+        }*/
 
     }
 
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnCollisionEnter(Collision collision)//verifica se já não está fazendo e faz
     {
         if (!on)
             StartCoroutine(LightOnCountdown());
     }
-    public void Shuffle()
+    public void Shuffle()//embaralha a ordem das luzes nos cantos
     {
         for (int i = 0; i < li.Length - 1; i++)
         {
@@ -100,7 +141,7 @@ public class LightTele : MonoBehaviour
         }*/
 
     }
-    public IEnumerator LightOnCountdown(float countdownValueOn = 10)
+    public IEnumerator LightOnCountdown(float countdownValueOn = 10)//liga uma luz de cada vez, sempre a do meio primeiro
     {
         on = true;
         Shuffle();
@@ -141,12 +182,10 @@ public class LightTele : MonoBehaviour
                 aud[3].PlayOneShot(auC);
                 StartCoroutine(LightOffCountdown());
             }
-
-
         }
     }
-    public IEnumerator LightOffCountdown(float countdownValueOff = 10)
-    {
+    public IEnumerator LightOffCountdown(float countdownValueOff = 10)//desliga uma luz de cada vez na mesma ordem em que foram ligadas,
+    {                                                                 //exceto que sempre a do meio primeiro desliga por último
         //Shuffle();
         currCountdownValueOff = countdownValueOff;
         while (currCountdownValueOff > 0)

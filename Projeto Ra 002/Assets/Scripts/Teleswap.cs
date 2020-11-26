@@ -5,9 +5,12 @@ using UnityEngine;
 
 public class Teleswap : MonoBehaviour
 {
-    public Transform player;
+    public GameObject player;
+    public GameObject brain;
+
+    public Transform playerPos;
     public Transform myself;
-    public Transform brain;
+    public Transform brainPos;
 
     public AudioSource audS;
     public AudioClip audC;
@@ -17,11 +20,14 @@ public class Teleswap : MonoBehaviour
     public bool cooldown = false;
 
     // Start is called before the first frame update
-    void Start()
+    void Start()//jogador, brain, playercontroller
     {
-        player = GameObject.FindGameObjectWithTag("Player").transform;
-        brain = GameObject.FindWithTag("respawnBrain").transform;
-        pC = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
+        player = GameObject.FindGameObjectWithTag("Player");
+        brain = GameObject.FindWithTag("SwapBrain");
+
+        playerPos = player.transform;
+        brainPos = brain.transform;
+        pC = player.GetComponent<PlayerController>();
     }
 
     // Update is called once per frame
@@ -30,29 +36,37 @@ public class Teleswap : MonoBehaviour
         
     }
 
-    private void OnTriggerEnter(Collider other)
+    //private void OnTriggerEnter(Collider other)//verifica tiro no trigger
+    //{
+    //    if (other.gameObject.CompareTag("Shot") && !cooldown)
+    //    {
+    //        StartCoroutine(TeleCountdown());
+    //    }
+    //}
+
+    private void OnCollisionEnter(Collision collision)//verifica tiro no collider
     {
-        if (other.gameObject.CompareTag("Shot") && !cooldown)
+        if (collision.gameObject.CompareTag("Shot") && !cooldown)
         {
             StartCoroutine(TeleCountdown());
         }
     }
 
-    public void Teleport()
+    public void Teleport()//teleporta de maneira triangular, 
     {
-        brain.transform.position = player.transform.position;
+        brainPos.transform.position = playerPos.transform.position;
 
-        player.GetComponent<CharacterController>().enabled = false;
-        player.transform.position = new Vector3(myself.transform.position.x, player.transform.position.y + 0.15f, myself.transform.position.z);
-        player.GetComponent<CharacterController>().enabled = true;
+        playerPos.GetComponent<CharacterController>().enabled = false;
+        playerPos.transform.position = new Vector3(myself.transform.position.x, playerPos.transform.position.y + 0.15f, myself.transform.position.z);
+        playerPos.GetComponent<CharacterController>().enabled = true;
 
-        myself.transform.position = new Vector3(brain.transform.position.x, myself.transform.position.y, brain.transform.position.z);
+        myself.transform.position = new Vector3(brainPos.transform.position.x, myself.transform.position.y, brainPos.transform.position.z);
 
         audS.PlayOneShot(audC);
 
         StartCoroutine(StartCountdown());
     }
-    public IEnumerator StartCountdown(float countdownValue = 2)
+    public IEnumerator StartCountdown(float countdownValue = 2)//inicia cooldown
     {
         currCountdownValue = countdownValue;
         while (currCountdownValue > 0)
@@ -70,7 +84,7 @@ public class Teleswap : MonoBehaviour
         }
     }
 
-    public IEnumerator TeleCountdown()
+    public IEnumerator TeleCountdown()//espera um pouco antes de teleportar, altera estado do jogador
     {
         cooldown = true;
         Debug.Log("TeleCountdown");

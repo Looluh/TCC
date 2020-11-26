@@ -59,7 +59,7 @@ public class ShotAtButtonOff : MonoBehaviour
             for (int i = 0; i < doors.Length; i++)
             {
                 doorAudS[i].PlayOneShot(audC);
-                doorAnim[i].SetBool("Aberto", true);
+                doorAnim[i].SetBool("Aberto", false);
             }
             done = true;
             Instantiate(deactivated, new Vector3(transform.position.x, transform.position.y + 2, transform.position.z), deactivated.transform.rotation);

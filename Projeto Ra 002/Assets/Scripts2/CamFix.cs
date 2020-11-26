@@ -12,7 +12,7 @@ public class CamFix : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void Update()//old, unused, quick fix
     {
         Quaternion originalRot = transform.rotation;
         transform.rotation = Quaternion.Normalize(originalRot);

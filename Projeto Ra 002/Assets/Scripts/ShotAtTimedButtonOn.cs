@@ -7,7 +7,6 @@ public class ShotAtTimedButtonOn : MonoBehaviour
     //começa desligado e aí liga
     public GameObject activated;
     public GameObject deactivated;
-    public GameObject player;
     public float currCountdownValue;
     public GameObject[] doors;
     public Animator[] doorAnim;
@@ -31,7 +30,7 @@ public class ShotAtTimedButtonOn : MonoBehaviour
     public ColorGlow currColorGlow;
 
     // Start is called before the first frame update
-    void Start()
+    void Start()//pega varios componentes de cada porta
     {
         on = false;
         for (int i = 0; i < doors.Length; i++)
@@ -48,15 +47,15 @@ public class ShotAtTimedButtonOn : MonoBehaviour
 
     }
 
-    void OnCollisionEnter(Collision collision)
+    void OnCollisionEnter(Collision collision)//se o player atirou em
     {
-        if (collision.collider.CompareTag("Shot") && !on)//adicionar limitador
+        if (collision.collider.CompareTag("Shot") && !on)
         {
             StartCoroutine(StartCountdown());
         }
     }
 
-    public IEnumerator StartCountdown(float countdownValue = 10)
+    public IEnumerator StartCountdown(float countdownValue = 10)//inicia temporizador pra manter a(s) porta(s) fechada(s), troca a cor do Ra (ballgod), toca som
     {
         switch (currColorGlow)
         {
@@ -75,7 +74,7 @@ public class ShotAtTimedButtonOn : MonoBehaviour
         }
 
         currCountdownValue = countdownValue;
-        Off();
+        On();
         while (currCountdownValue > 0)
         {
             Debug.Log("Countdown: " + currCountdownValue);
@@ -85,12 +84,12 @@ public class ShotAtTimedButtonOn : MonoBehaviour
 
         if(currCountdownValue <= 0)
         {
-            On();
+            Off();
             Debug.Log("enum");
         }
     }
 
-    void On()
+    void On()//abre as portas, toca som, ativa particulas e instancia mensagem
     {
         for (int i = 0; i < doors.Length; i++)
         {
@@ -99,12 +98,12 @@ public class ShotAtTimedButtonOn : MonoBehaviour
         }
         StartCoroutine(DoorDust());
 
-        on = false;
+        on = true;
 
         Instantiate(activated, new Vector3(transform.position.x, transform.position.y + 2, transform.position.z), activated.transform.rotation);
     }
 
-    void Off()
+    void Off()//fecha as portas, toca som, ativa particulas e instancia mensagem
     {
         for (int i = 0; i < doors.Length; i++)
         {
@@ -113,11 +112,11 @@ public class ShotAtTimedButtonOn : MonoBehaviour
         }
         StartCoroutine(DoorDust());
 
-        on = true;
+        on = false;
 
         Instantiate(deactivated, new Vector3(transform.position.x, transform.position.y + 2, transform.position.z), deactivated.transform.rotation);
     }
-    public IEnumerator DoorDust()
+    public IEnumerator DoorDust()//ativa particulas e espera pra desativar
     {
         for (int i = 0; i < doors.Length; i++)
         {

@@ -73,6 +73,10 @@ Shader "Unlit/orangespiral"
                 float c = (b * sin(length(center) - .1)) *2;
 
                 fixed4 coll = lerp(float4(0, 0, 0, 1), float4(0.5, 0.25, 0, 1), c);//fragColor
+                //fixed4 fragColor = float4(1,1,1,1);
+                //fragColor.rgb = float3(1, 1, 1);
+                //fragColor.a = float(1);
+                //return fragColor;
                 return coll;
                 //return col;
             }

@@ -8,7 +8,7 @@ public class PlayerPos : MonoBehaviour
     public GameObject player;
     public CharacterController cC;
     // Start is called before the first frame update
-    void Start()
+    void Start()//Places player in the last checkpoint
     {
         rB = GameObject.FindGameObjectWithTag("respawnBrain").GetComponent<RespawnBrain>();
         cC.enabled = false;
@@ -21,4 +21,5 @@ public class PlayerPos : MonoBehaviour
     {
         
     }
+    
 }

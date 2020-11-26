@@ -22,6 +22,10 @@ public class RotateStatue : MonoBehaviour
     public GameObject[] dustParticles;
 
     public GameObject raEyes;
+
+    public GameObject[] currentCa;
+    public GameObject[] changeToCa;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -35,12 +39,12 @@ public class RotateStatue : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void Update()//raycast nas portas para abrí-las quando possível
     {
         RaycastHit hit;
         int layerMask = 1 << 15;
         //layerMask = ~layerMask;//inverte a mascara: afeta tudo exceto a mascara
-        if (Physics.Raycast(raEyes.transform.position, raEyes.transform.forward*75, out hit, Mathf.Infinity, layerMask))
+        if (Physics.Raycast(raEyes.transform.position, raEyes.transform.forward * 75, out hit, Mathf.Infinity, layerMask))
         {
             //Debug.DrawRay(raEyes.transform.position, raEyes.transform.forward * 100, Color.blue);
             //Debug.Log("Did Hit");
@@ -76,23 +80,70 @@ public class RotateStatue : MonoBehaviour
 
     }
 
-    private void OnTriggerStay(Collider other)
+    private void OnTriggerEnter(Collider other)//troca a câmera de volta
     {
         if (other.CompareTag("Player"))
         {
+            for (int i = 0; i < changeToCa.Length; i++)
+            {
+                currentCa[i].gameObject.SetActive(false);
+                changeToCa[i].gameObject.SetActive(true);
+            }
+        }
+
+    }
+
+    private void OnTriggerStay(Collider other)//rotaciona a estátua, troca a camera
+    {
+        if (other.CompareTag("Player"))
+        {
+            //if (Input.GetKeyDown(KeyCode.E))
+            //{
+            //    for (int i = 0; i < changeToCa.Length; i++)
+            //    {
+            //        currentCa[i].gameObject.SetActive(false);
+            //        changeToCa[i].gameObject.SetActive(true);
+            //    }
+            //}
+
             if (Input.GetKey(KeyCode.E))
             {
                 objToRotate.transform.Rotate(Vector3.up * speed * Time.deltaTime);
+                //for (int i = 0; i < changeToCa.Length; i++)
+                //{
+                //    currentCa[i].gameObject.SetActive(false);
+                //    changeToCa[i].gameObject.SetActive(true);
+                //}
                 //VerifyAngle();
+            }
+
+            //if (Input.GetKeyUp(KeyCode.E))
+            //{
+            //    for (int i = 0; i < changeToCa.Length; i++)
+            //    {
+            //        currentCa[i].gameObject.SetActive(true);
+            //        changeToCa[i].gameObject.SetActive(false);
+            //    }
+            //
+            //}
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+
+            for (int i = 0; i < changeToCa.Length; i++)
+            {
+                currentCa[i].gameObject.SetActive(true);
+                changeToCa[i].gameObject.SetActive(false);
             }
         }
     }
 
     public void VerifyAngle()//old, discarded, barely works
     {
-
-
-
 
         if (!done[0] && keyA && objToRotate.transform.eulerAngles.y >= 70 && objToRotate.transform.eulerAngles.y <= 80)
         {

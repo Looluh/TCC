@@ -31,6 +31,7 @@ public class EnemyNav : MonoBehaviour
     public GameObject enDeadParticle;
 
     public bool startAsleep;
+    public Rigidbody rbEnemy;
     public enum IaState
     {
         Asleep,
@@ -51,7 +52,7 @@ public class EnemyNav : MonoBehaviour
 
     public FollowState currentFollow;
     // Start is called before the first frame update
-    void Start()
+    void Start()//pega varios componentes, randomiza velocidade do inimigos e das animações, define se o inimigo começa seguindo o jogador ou não
     {
         //attackCol = GameObject.FindGameObjectsWithTag("attackCol");
         //handColEsq = GameObject.Find("HandColEsq");
@@ -64,6 +65,7 @@ public class EnemyNav : MonoBehaviour
         agent.speed = Random.Range(5, 20);
         anim.SetFloat("Velocity", agent.speed / 5);
         enMat = GetComponentInChildren<Renderer>().material;
+        rbEnemy = GetComponent<Rigidbody>();
         if (agent.speed > 10)
         {
             //anim.SetInteger("SpeedVerifier", 2);
@@ -88,7 +90,7 @@ public class EnemyNav : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void Update()//maquina de estado do inimigo e condição de animação de idle
     {
         switch (currentState)
         {
@@ -115,6 +117,8 @@ public class EnemyNav : MonoBehaviour
                 break;
         }
 
+        anim.SetFloat("Magnitude", agent.velocity.magnitude);
+
         /*if (anim.GetCurrentAnimatorStateInfo(1).IsName("Ataque"))
         {
             for (int i = 0; i < attackCol.Length; i++)
@@ -135,11 +139,11 @@ public class EnemyNav : MonoBehaviour
         */
     }
 
-    void Asleep()
+    void Asleep()//vazio, InvokeRepeating do VerifyPlayerDistance() iniciado no Start
     {
         //:)
     }
-    void Follow()
+    void Follow()//segue o jogador e define a animação a ser usada
     {
         agent.isStopped = false;
         agent.SetDestination(target.transform.position);
@@ -163,12 +167,12 @@ public class EnemyNav : MonoBehaviour
         //    anim.SetInteger("SpeedVerifier", 1);
         //}
     }
-    void Look()
+    void Look()//só segue o jogador
     {
         agent.SetDestination(target.transform.position);
         RotateTowards(target.transform);
     }
-    void Attack()
+    void Attack()//ataca o player e vai pra look
     {
         Debug.Log("attack");
         RotateTowards(target.transform);
@@ -178,9 +182,9 @@ public class EnemyNav : MonoBehaviour
         anim.SetTrigger("Attack");
         currentState = IaState.Look;
     }
-    void Hurt()
+    void Hurt()//iframes
     {
-        agent.isStopped = true;
+        //agent.isStopped = true;
 
         //anim.SetTrigger("Hit");
         if (!iFrames)
@@ -189,11 +193,11 @@ public class EnemyNav : MonoBehaviour
         }
 
     }
-    void Stun()
+    void Stun()//fica parado até o fim do tempo, troca de cor
     {
         enMat.color = Color.blue;
         enMat.SetColor("_EmissionColor", Color.blue);
-        agent.isStopped = true;
+        //agent.isStopped = true;
         anim.speed = 0;
         if (!stunFrames)
         {
@@ -204,7 +208,7 @@ public class EnemyNav : MonoBehaviour
         }
 
     }
-    void Dying()
+    void Dying()//início da morte: destroi trigger de ataque, fica branco, parado, congela a animação
     {
         Destroy(playerDetect);
         enMat.SetVector("_EmissionColor", Color.white * 1000f);
@@ -229,14 +233,14 @@ public class EnemyNav : MonoBehaviour
     }
 
     public float rotationSpeed = 10f;
-    private void RotateTowards(Transform target)
+    private void RotateTowards(Transform target)//olha em direção ao personagem
     {
         Vector3 direction = (target.position - transform.position).normalized;
         Quaternion lookRotation = Quaternion.LookRotation(direction);
         transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * rotationSpeed);
     }
 
-    void OnTriggerEnter(Collider other)
+    void OnTriggerEnter(Collider other)//detecta se foi atacado
     {
         if (!iFrames && !stunFrames && other.gameObject.CompareTag("Shot"))
         {
@@ -281,20 +285,20 @@ public class EnemyNav : MonoBehaviour
 
     }
 
-    public IEnumerator IFrames()
+    public IEnumerator IFrames()//iframes tempo
     {
         iFrames = true;
         yield return new WaitForSeconds(1f);
         iFrames = false;
     }
-    public IEnumerator StunFrames()
+    public IEnumerator StunFrames()//stunframes tempo
     {
         stunFrames = true;
         yield return new WaitForSeconds(5f);
         stunFrames = false;
     }
 
-    public IEnumerator AttackCol()
+    public IEnumerator AttackCol()//corotina de ataque
     {
         if (!attacking)
         {
@@ -314,21 +318,22 @@ public class EnemyNav : MonoBehaviour
         }
     }
 
-    public float range;
-    public void VerifyPlayerDistance()
+    public float range;//distancia q deve estar do jogador
+    public void VerifyPlayerDistance()//verifica distancia do jogador e persegue
     {
-        if (currentState != IaState.Dying || currentState != IaState.Stun)
+        if (currentState == IaState.Dying || currentState == IaState.Stun)
         {
             CancelInvoke("VerifyPlayerDistance");
         }
         else if ((target.transform.position - transform.position).sqrMagnitude < range * range)
         {
+            print((target.transform.position - transform.position).sqrMagnitude);
             currentState = IaState.Follow;
             CancelInvoke("VerifyPlayerDistance");
         }
     }
 
-    public IEnumerator Dead()
+    public IEnumerator Dead()//morte: some com ele e instancia particulas após certo tempo
     {
         yield return new WaitForSeconds(1.8f);
         Instantiate(enDeadParticle, transform.position, transform.rotation);
