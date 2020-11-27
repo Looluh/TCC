@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Teleshot : MonoBehaviour
 {
-    public Transform player;
+    public Transform playerPos;
     public Transform myself;
     public bool cooldown = false;
     public float currCountdownValue;
@@ -13,12 +13,14 @@ public class Teleshot : MonoBehaviour
 
     public PlayerController pC;
 
+    public CharacterController playerCC;
+
     // Start is called before the first frame update
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player").transform;
+        playerPos = GameObject.FindGameObjectWithTag("Player").transform;
         tB = GetComponentsInChildren<TextureBlink>();
-        pC = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
+        //pC = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
     }
 
     // Update is called once per frame
@@ -37,9 +39,9 @@ public class Teleshot : MonoBehaviour
 
     public void Teleport()
     {
-        player.GetComponent<CharacterController>().enabled = false;
-        player.transform.position = new Vector3(myself.transform.position.x, player.transform.position.y, myself.transform.position.z);
-        player.GetComponent<CharacterController>().enabled = true;
+        playerCC.enabled = false;
+        playerPos.position = new Vector3(myself.position.x, playerPos.position.y + 0.15f, myself.position.z);
+        playerCC.enabled = true;
         StartCoroutine(StartCountdown());
     }
 

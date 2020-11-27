@@ -22,8 +22,7 @@ public class DisplayHP : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player");
         imageBar = GameObject.Find("HP Bar").GetComponent<Image>();
-        playerCon = player.GetComponent<PlayerController>();
-        hp = playerCon.HP;
+        //playerCon = player.GetComponent<PlayerController>();
     }
 
     // Update is called once per frame
@@ -31,6 +30,7 @@ public class DisplayHP : MonoBehaviour
     {
         //GetComponent<TextMeshProUGUI>().text = "Health:" + player.GetComponent<PlayerController>().HP.ToString();//velha HUD
         //Debug.Log(player.GetComponent("TakeDamagePlayer"));
+        hp = playerCon.HP;
 
         imageBar.fillAmount = GetHPNormalized();
     }

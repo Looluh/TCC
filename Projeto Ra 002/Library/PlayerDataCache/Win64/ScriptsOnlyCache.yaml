@@ -478,7 +478,7 @@ ScriptsOnlyBuild:
     className: HeliCam
   - hash:
       serializedVersion: 2
-      Hash: 52af4c36919d19b7106f37ed4638e06d
+      Hash: 493967dcd3b4812503e474d45e755315
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Teleswap
@@ -838,7 +838,7 @@ ScriptsOnlyBuild:
     className: Demonstration_NoclipController
   - hash:
       serializedVersion: 2
-      Hash: 69123dac8c6bb698d2e382d18d85b9da
+      Hash: 7dee25b720a0d1ca9f741255442063a4
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Teleshot
@@ -1416,4 +1416,4 @@ ScriptsOnlyBuild:
   scenePathNames:
   - Assets/Scenes/Menu.unity
   - Assets/Scenes/LV_1R.unity
-  playerPath: C:/Users/Chic/Desktop/massa1108/buildtest2/Ra Resurgence.exe
+  playerPath: C:/Users/Chic/Desktop/massa1108/buildtest4/Ra Resurgence.exe

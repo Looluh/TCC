@@ -19,6 +19,7 @@ public class Teleswap : MonoBehaviour
     public float currCountdownValue;
     public bool cooldown = false;
 
+    public CharacterController playerCC;
     // Start is called before the first frame update
     void Start()//jogador, brain, playercontroller
     {
@@ -27,7 +28,7 @@ public class Teleswap : MonoBehaviour
 
         playerPos = player.transform;
         brainPos = brain.transform;
-        pC = player.GetComponent<PlayerController>();
+        //pC = player.GetComponent<PlayerController>();
     }
 
     // Update is called once per frame
@@ -54,13 +55,13 @@ public class Teleswap : MonoBehaviour
 
     public void Teleport()//teleporta de maneira triangular, 
     {
-        brainPos.transform.position = playerPos.transform.position;
+        brainPos.position = playerPos.position;
 
-        playerPos.GetComponent<CharacterController>().enabled = false;
-        playerPos.transform.position = new Vector3(myself.transform.position.x, playerPos.transform.position.y + 0.15f, myself.transform.position.z);
-        playerPos.GetComponent<CharacterController>().enabled = true;
+        playerCC.enabled = false;
+        playerPos.position = new Vector3(myself.position.x, playerPos.position.y + 0.15f, myself.position.z);
+        playerCC.enabled = true;
 
-        myself.transform.position = new Vector3(brainPos.transform.position.x, myself.transform.position.y, brainPos.transform.position.z);
+        myself.transform.position = new Vector3(brainPos.position.x, myself.position.y, brainPos.position.z);
 
         audS.PlayOneShot(audC);
 

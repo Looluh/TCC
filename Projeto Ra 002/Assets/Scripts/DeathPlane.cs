@@ -9,7 +9,7 @@ public class DeathPlane : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        playCon = player.GetComponent<PlayerController>();
+        //playCon = player.GetComponent<PlayerController>();
     }
 
     // Update is called once per frame
