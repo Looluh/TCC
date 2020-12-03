@@ -28,7 +28,7 @@ public class SoulMove1 : MonoBehaviour
     void Update()
     {
         //transform.LookAt(target);
-        transform.Translate(transform.forward * moveSpeed);
+        transform.Translate(transform.forward * moveSpeed * Time.deltaTime);
     }
 
     private void OnCollisionEnter(Collision col)

@@ -9,25 +9,34 @@ public class WinLose : MonoBehaviour
     public PlayerController playCon;
 
     public GameObject player;
-    private void Start()
+
+    //public Collider[] playerCol;
+
+    public Collider enVerifyPlayer;
+    private void Start()//pega o jogador, dá o level como iniciado
     {
         player = GameObject.FindGameObjectWithTag("Player");
-        playCon = player.GetComponent<PlayerController>();
+        //playerCol = player.GetComponents<Collider>();
+        //playCon = player.GetComponent<PlayerController>();
+        RespawnBrain.instance.gameState = true;
     }
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider other)//verifica se é o jogador e seu estado, muda estado, finaliza jogo, deixa o jogo mais lento e invoca win
     {
         if (other.CompareTag("Player") && playCon.currentState != PlayerController.PlayerState.Victory)
         {
             playCon.currentState = PlayerController.PlayerState.Victory;
+            RespawnBrain.instance.gameState = false;
+
             Time.timeScale = 0.1f;
 
-            player.GetComponent<Collider>().enabled = false;
+            //for (int i = 0; i < playerCol.Length; i++)
+            //    playerCol[i].enabled = false;
 
             Invoke("Win", 0.4f);
         }
     }
 
-    public void Win()
+    public void Win()//volta o jogo pra velocidade normal, instancia mensagem de vitória
     {
         Time.timeScale = 1;
         win.SetActive(true);

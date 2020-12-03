@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Teleshot : MonoBehaviour
 {
+    public GameObject player;
+
     public Transform playerPos;
     public Transform myself;
     public bool cooldown = false;
@@ -15,11 +17,14 @@ public class Teleshot : MonoBehaviour
 
     public CharacterController playerCC;
 
+    public Vector3 place;
     // Start is called before the first frame update
     void Start()
     {
         playerPos = GameObject.FindGameObjectWithTag("Player").transform;
         tB = GetComponentsInChildren<TextureBlink>();
+        place = new Vector3(myself.position.x, playerPos.position.y + 0.15f, myself.position.z);
+
         //pC = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
     }
 
@@ -39,10 +44,23 @@ public class Teleshot : MonoBehaviour
 
     public void Teleport()
     {
+        Debug.Log("pos original player " + playerPos.position);
+        //playerCC.Move(Vector3.zero);
         playerCC.enabled = false;
-        playerPos.position = new Vector3(myself.position.x, playerPos.position.y + 0.15f, myself.position.z);
+        pC.enabled = false;
+        //playerPos.parent = playerCC.transform;
+
+        //playerPos.position = place;
+        pC.Teleport(place);
+
+        //playerPos.SetPositionAndRotation(place, Quaternion.identity);
+        //playerPos.position.Set(place.x, place.y, place.z);
+        Debug.Log("pos original obj " + place);
+        pC.enabled = true;
         playerCC.enabled = true;
+        Debug.Log("pos final player " + playerPos.position);
         StartCoroutine(StartCountdown());
+        
     }
 
     public IEnumerator StartCountdown(float countdownValue = 2)
@@ -78,6 +96,8 @@ public class Teleshot : MonoBehaviour
         pC.currentState = PlayerController.PlayerState.Canalization;
         yield return new WaitForSeconds(1.0f);
         //pC.currentState = PlayerController.PlayerState.Idle;
+        Debug.Log("teleport");
+
         Teleport();
     }
 

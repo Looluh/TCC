@@ -20,7 +20,7 @@ public class PlayerDetect : MonoBehaviour
     }
     void OnTriggerStay(Collider other)//detecta se o jogador tá no trigger
     {
-        if (other.gameObject.CompareTag("Player") && !enNav.attacking)//!attacking
+        if (other.gameObject.CompareTag("Player") && !enNav.attacking && RespawnBrain.instance.gameState)//!attacking
         {
             if (enNav.currentState != EnemyNav.IaState.Dying && enNav.currentState != EnemyNav.IaState.Stun)
             {

@@ -27,7 +27,14 @@ namespace UnityStandardAssets.Utility
         void Start()
         {
             rB = GameObject.FindGameObjectWithTag("respawnBrain").GetComponent<RespawnBrain>();
-            height = rB.height;
+            if (SceneManager.GetActiveScene().buildIndex == 1)
+            {
+                height = rB.height;
+            }
+            else if (SceneManager.GetActiveScene().buildIndex == 2)
+            {
+                height = rB.height * 2.5f;
+            }
         }
 
         public void UpdateCamera()

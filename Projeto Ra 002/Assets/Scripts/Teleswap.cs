@@ -20,6 +20,8 @@ public class Teleswap : MonoBehaviour
     public bool cooldown = false;
 
     public CharacterController playerCC;
+
+    public bool ccOn = true;
     // Start is called before the first frame update
     void Start()//jogador, brain, playercontroller
     {
@@ -34,7 +36,12 @@ public class Teleswap : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        /*
+        if (!ccOn)
+            playerCC.enabled = false;
+        else if (ccOn)
+            playerCC.enabled = true;
+        */
     }
 
     //private void OnTriggerEnter(Collider other)//verifica tiro no trigger
@@ -58,7 +65,12 @@ public class Teleswap : MonoBehaviour
         brainPos.position = playerPos.position;
 
         playerCC.enabled = false;
-        playerPos.position = new Vector3(myself.position.x, playerPos.position.y + 0.15f, myself.position.z);
+        //ccOn = false;
+        //Destroy(playerCC);
+        //playerPos.position = new Vector3(myself.position.x, playerPos.position.y + 0.15f, myself.position.z);
+        pC.Teleport(new Vector3(myself.position.x, playerPos.position.y + 0.15f, myself.position.z));
+
+        //ccOn = true;
         playerCC.enabled = true;
 
         myself.transform.position = new Vector3(brainPos.position.x, myself.position.y, brainPos.position.z);

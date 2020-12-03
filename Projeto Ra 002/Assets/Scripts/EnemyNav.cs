@@ -24,6 +24,7 @@ public class EnemyNav : MonoBehaviour
     //public GameObject armColEsq;
     //public GameObject armColDir;
     public GameObject[] attackCol;
+    public Collider[] enColliders;
 
     public Material enMat;
 
@@ -65,6 +66,7 @@ public class EnemyNav : MonoBehaviour
         agent.speed = Random.Range(5, 20);
         anim.SetFloat("Velocity", agent.speed / 5);
         enMat = GetComponentInChildren<Renderer>().material;
+        enColliders = GetComponents<Collider>();
         rbEnemy = GetComponent<Rigidbody>();
         if (agent.speed > 10)
         {
@@ -92,6 +94,14 @@ public class EnemyNav : MonoBehaviour
     // Update is called once per frame
     void Update()//maquina de estado do inimigo e condição de animação de idle
     {
+        if (!RespawnBrain.instance.gameState)
+        {
+            for (int i = 0; i < enColliders.Length; i++)
+            {
+                enColliders[i].enabled = false;
+            }
+            currentState = IaState.Asleep;
+        }
         switch (currentState)
         {
             case IaState.Asleep:

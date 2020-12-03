@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 
 public class RespawnBrain : MonoBehaviour 
 {
-    private static RespawnBrain instance;
+    public static RespawnBrain instance;
     //private static RespawnBrain _instance;
     //public static RespawnBrain Instance { get { return _instance; } }
     public Vector3 lastCheckpointPos;//checkpoint
@@ -21,6 +21,7 @@ public class RespawnBrain : MonoBehaviour
     public int currentScene = 0;
     public GameObject player;
 
+    public bool gameState;
     void Awake()//define volume e fov e guarda alterações q o player fizer -- verifica se já não existe um brain
     {
         height = 10;
@@ -50,6 +51,7 @@ public class RespawnBrain : MonoBehaviour
     private void Start()//define volume, n funciona no awake
     {
         audioMix.SetFloat("Volume", volume);
+        gameState = true;
     }
 
     void OnEnable()
@@ -64,11 +66,11 @@ public class RespawnBrain : MonoBehaviour
         SceneManager.sceneLoaded -= OnLevelFinishedLoading;
     }
 
-    void OnLevelFinishedLoading(Scene scene, LoadSceneMode mode)//configura posição inicial na cena, verifica se é a primeira vez carregando a cena
+    void OnLevelFinishedLoading(Scene scene, LoadSceneMode mode)//configura posição inicial na cena, verifica se é a primeira vez carregando a cena e se n é o menu
     {
         Debug.Log(mode);
         player = GameObject.FindGameObjectWithTag("Player");
-        if (currentScene != scene.buildIndex)
+        if (currentScene != scene.buildIndex && scene.buildIndex != 0)
         {
             print("aaaaaaaaaaaaaaSeráa???????");
             currentScene = scene.buildIndex;

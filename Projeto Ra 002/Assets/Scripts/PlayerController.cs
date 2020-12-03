@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
 
     Vector3 playeraxis;
     public CharacterController cctrl;
+    //public Rigidbody playerRB;
 
     public Animator UIDamage;
     public Animator anim;
@@ -57,6 +58,9 @@ public class PlayerController : MonoBehaviour
         currentState = PlayerState.Idle;
 
         playerAudS = GetComponent<AudioSource>();
+
+
+        //playerRB = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
@@ -106,6 +110,9 @@ public class PlayerController : MonoBehaviour
         {
             playeraxis = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
             cctrl.SimpleMove(playeraxis * playerSpeed);//Move?
+            //playerRB.velocity = playeraxis * playerSpeed * Time.deltaTime;//controle rigidbody
+
+
 
             Vector3 globalMov = cam.transform.TransformDirection(new Vector3(playeraxis.x, 0, playeraxis.z));
             globalMov = new Vector3(globalMov.x, 0, globalMov.z);
@@ -127,6 +134,14 @@ public class PlayerController : MonoBehaviour
                 transform.Rotate(0, 1, 0);
             }
             transform.Rotate(0, radtogo, 0);
+
+
+            if (Input.GetKeyDown(KeyCode.T))
+            {
+                transform.position = new Vector3(1.4f, -0.6f, 13.79f);
+            }
+
+
 
             /*if (Input.GetKey(KeyCode.W))
             {
@@ -184,7 +199,7 @@ public class PlayerController : MonoBehaviour
 
     void Idle()
     {
-        if (cctrl.velocity.magnitude > 0.1f)
+        if (cctrl.velocity.magnitude > 0.1f)//playerRB quando rigidbody
         {
             currentState = PlayerState.Run;
         }
@@ -371,4 +386,9 @@ public class PlayerController : MonoBehaviour
         }*/
     }
     #endregion
+
+    public void Teleport(Vector3 playerPos)
+    {
+        transform.position = playerPos;
+    }
 }

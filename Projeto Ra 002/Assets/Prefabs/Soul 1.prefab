@@ -154,7 +154,7 @@ MonoBehaviour:
   target: {fileID: 0}
   aimC: {fileID: 0}
   soulC: {fileID: 0}
-  moveSpeed: 0.1
+  moveSpeed: 10
   soulParSys: {fileID: 0}
 --- !u!1001 &8055361630513355637
 PrefabInstance:

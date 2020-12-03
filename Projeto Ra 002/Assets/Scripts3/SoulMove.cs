@@ -28,7 +28,7 @@ public class SoulMove : MonoBehaviour
     void Update()//move a alma na direção do alvo
     {
         //transform.LookAt(target);
-        transform.Translate(transform.forward * moveSpeed);
+        transform.Translate(transform.forward * moveSpeed * Time.deltaTime);
     }
 
     private void OnCollisionEnter(Collision col)//destrói a alma e faz a contagem
