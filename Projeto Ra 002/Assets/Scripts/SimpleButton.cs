@@ -114,12 +114,12 @@ public class SimpleButton : MonoBehaviour
     // Update is called once per frame
     void Update()//verifica se o player está proximo, apertou E, se a porta está aberta ou fechada, se já não está abrindo as portas
     {
-        if (Input.GetKeyDown(KeyCode.E) && (player.transform.position - transform.position).sqrMagnitude < range * range && !on && ok)// /?
+        if (Input.GetButtonDown("Interact") && (player.transform.position - transform.position).sqrMagnitude < range * range && !on && ok)// /?
         {
             On();
             StartCoroutine(OkCheck());
         }
-        else if (Input.GetKeyDown(KeyCode.E) && (player.transform.position - transform.position).sqrMagnitude < range * range && on && ok)// /?
+        else if (Input.GetButtonDown("Interact") && (player.transform.position - transform.position).sqrMagnitude < range * range && on && ok)// /?
         {
             Off();
             StartCoroutine(OkCheck());

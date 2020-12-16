@@ -117,7 +117,7 @@ public class TimedButtonOff : MonoBehaviour
     void Update()
     {
 
-        if (Input.GetKeyDown(KeyCode.E) && (player.transform.position - transform.position).sqrMagnitude < range * range && !on)// /?
+        if (Input.GetButtonDown("Interact") && (player.transform.position - transform.position).sqrMagnitude < range * range && !on)// /?
         {
             StartCoroutine(StartCountdown());
         }

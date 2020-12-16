@@ -12,7 +12,7 @@ public class WinLose : MonoBehaviour
 
     //public Collider[] playerCol;
 
-    public Collider enVerifyPlayer;
+    //public Collider enVerifyPlayer;
     private void Start()//pega o jogador, dá o level como iniciado
     {
         player = GameObject.FindGameObjectWithTag("Player");

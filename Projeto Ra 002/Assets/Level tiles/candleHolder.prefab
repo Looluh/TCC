@@ -495,7 +495,7 @@ AudioSource:
   m_GameObject: {fileID: 4410752159316613892}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 24300002, guid: 9e9bba6e60fa15044bb0fb5261b09377,
+  OutputAudioMixerGroup: {fileID: 5775632895185221597, guid: 9e9bba6e60fa15044bb0fb5261b09377,
     type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
@@ -790,7 +790,7 @@ AudioSource:
   m_GameObject: {fileID: 4410752159687074167}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 24300002, guid: 9e9bba6e60fa15044bb0fb5261b09377,
+  OutputAudioMixerGroup: {fileID: 5775632895185221597, guid: 9e9bba6e60fa15044bb0fb5261b09377,
     type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
@@ -1085,7 +1085,7 @@ AudioSource:
   m_GameObject: {fileID: 4410752159976601197}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 24300002, guid: 9e9bba6e60fa15044bb0fb5261b09377,
+  OutputAudioMixerGroup: {fileID: 5775632895185221597, guid: 9e9bba6e60fa15044bb0fb5261b09377,
     type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
@@ -1380,7 +1380,7 @@ AudioSource:
   m_GameObject: {fileID: 4410752160127989825}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 24300002, guid: 9e9bba6e60fa15044bb0fb5261b09377,
+  OutputAudioMixerGroup: {fileID: 5775632895185221597, guid: 9e9bba6e60fa15044bb0fb5261b09377,
     type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
@@ -1675,7 +1675,7 @@ AudioSource:
   m_GameObject: {fileID: 4410752160324526823}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 24300002, guid: 9e9bba6e60fa15044bb0fb5261b09377,
+  OutputAudioMixerGroup: {fileID: 5775632895185221597, guid: 9e9bba6e60fa15044bb0fb5261b09377,
     type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
@@ -1890,15 +1890,12 @@ MonoBehaviour:
   - {fileID: 1043706840}
   - {fileID: 1247748115}
   - {fileID: 938631327}
-  frog: 0
-  owl: 1
-  dragonfly: 0
-  hippo: 0
   frogC: {r: 0, g: 0.5882353, b: 0.24705884, a: 0}
   owlC: {r: 0.6901961, g: 0.49803925, b: 0.2901961, a: 0}
   dragonflyC: {r: 0.26666668, g: 0.09019608, b: 0.32941177, a: 0}
   hippoC: {r: 0.32156864, g: 0.7294118, b: 0.62352943, a: 0}
   auC: {fileID: 8300000, guid: 0070e9a54c108ee48824b5d452b19597, type: 3}
+  currColorTele: 0
 --- !u!1 &5644997270024262216
 GameObject:
   m_ObjectHideFlags: 0

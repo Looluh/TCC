@@ -36,7 +36,7 @@ public class SmashButton : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E) && (player.transform.position - transform.position).sqrMagnitude < range * range)
+        if (Input.GetButtonDown("Interact") && (player.transform.position - transform.position).sqrMagnitude < range * range)
         {
             smashNo--;
 

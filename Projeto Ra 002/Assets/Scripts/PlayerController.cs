@@ -46,6 +46,8 @@ public class PlayerController : MonoBehaviour
     public Camera cam;
 
     public GameObject canvasLose;
+
+    public Vector3 playerVelocity;
     void Start()
     {
         anim = GetComponent<Animator>();
@@ -109,10 +111,18 @@ public class PlayerController : MonoBehaviour
         if (currentState != PlayerState.Dead && currentState != PlayerState.Victory)//inputs de movimentação e ataque
         {
             playeraxis = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
-            cctrl.SimpleMove(playeraxis * playerSpeed);//Move?
+            //cctrl.SimpleMove(playeraxis * playerSpeed);//Move?
             //playerRB.velocity = playeraxis * playerSpeed * Time.deltaTime;//controle rigidbody
-
-
+            if (cctrl.isGrounded)
+            {
+                cctrl.Move(playeraxis * Time.deltaTime * playerSpeed * 2);
+            }
+            else if (!cctrl.isGrounded)
+            {
+                cctrl.Move(playeraxis * Time.deltaTime * playerSpeed*1.5f);
+                cctrl.Move( new Vector3(0, -9.81f * Time.deltaTime, 0));
+                //playerVelocity.y += -9.81f * Time.deltaTime;
+            }
 
             Vector3 globalMov = cam.transform.TransformDirection(new Vector3(playeraxis.x, 0, playeraxis.z));
             globalMov = new Vector3(globalMov.x, 0, globalMov.z);
@@ -136,10 +146,10 @@ public class PlayerController : MonoBehaviour
             transform.Rotate(0, radtogo, 0);
 
 
-            if (Input.GetKeyDown(KeyCode.T))
-            {
-                transform.position = new Vector3(1.4f, -0.6f, 13.79f);
-            }
+            //if (Input.GetKeyDown(KeyCode.T))
+            //{
+            //    transform.position = new Vector3(1.4f, -0.6f, 13.79f);
+            //}
 
 
 
@@ -177,7 +187,7 @@ public class PlayerController : MonoBehaviour
             {
                 transform.rotation = Quaternion.Euler(0, 225, 0);
             }*/
-            if (Input.GetMouseButtonDown(0) && noOfClicks < 3)
+            if (Input.GetButtonDown("Fire1") && noOfClicks < 3)
             {
                 swordCol1.SetActive(true);
                 swordCol2.SetActive(true);
@@ -199,15 +209,17 @@ public class PlayerController : MonoBehaviour
 
     void Idle()
     {
-        if (cctrl.velocity.magnitude > 0.1f)//playerRB quando rigidbody
+        if (playeraxis.magnitude > 0.1)//(cctrl.velocity.magnitude > 0.1f)//playerRB quando rigidbody
         {
             currentState = PlayerState.Run;
         }
     }
     void Run()
     {
-        anim.SetFloat("Velocity", cctrl.velocity.magnitude);
-        if (cctrl.velocity.magnitude < 0.1f)
+        //anim.SetFloat("Velocity", cctrl.velocity.magnitude);
+        anim.SetFloat("Velocity", playeraxis.magnitude);
+
+        if (playeraxis.magnitude < 0.1f)//(cctrl.velocity.magnitude < 0.1f)
         {
             currentState = PlayerState.Idle;
         }
@@ -390,5 +402,6 @@ public class PlayerController : MonoBehaviour
     public void Teleport(Vector3 playerPos)
     {
         transform.position = playerPos;
+        //cctrl.SimpleMove(Vector3.zero);
     }
 }

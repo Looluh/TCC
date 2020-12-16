@@ -35,7 +35,7 @@ public class StunAttack : MonoBehaviour
 
         imageBar.fillAmount = GetManaNormalized();
 
-        if (Input.GetKeyDown(KeyCode.Q) )
+        if (Input.GetButtonDown("SpAttack"))
         {
             TrySpendMana(100);
         }

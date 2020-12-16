@@ -11,7 +11,7 @@ public class KeyGetB : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            if (Input.GetKey(KeyCode.E))
+            if (Input.GetButtonDown("Interact"))
             {
                 keyM.keyGottenB = true;
                 Destroy(gameObject);

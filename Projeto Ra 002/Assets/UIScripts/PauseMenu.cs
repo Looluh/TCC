@@ -11,6 +11,7 @@ public class PauseMenu : MonoBehaviour
     public GameObject PauseUi;
     public GameObject OptionsUi;
 
+    //public 
     // Update is called once per frame
     void Update()
     {
@@ -39,6 +40,18 @@ public class PauseMenu : MonoBehaviour
         OptionsUi.SetActive(false);
         Time.timeScale = 0f;
         GameIsPaused = true;
+    }
+
+    public void RestartCheckpoint()
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+    public void RestartBeginning()
+    {
+        Time.timeScale = 1f;
+        RespawnBrain.instance.ResetCheckpoint();
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     public void LoadMenu()

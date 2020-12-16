@@ -116,7 +116,7 @@ public class TimedButtonOn : MonoBehaviour
     // Update is called once per frame
     void Update()//verifica se o player está proximo, apertou E, se já não está fechando as portas
     {
-        if (Input.GetKeyDown(KeyCode.E) && (player.transform.position - transform.position).sqrMagnitude < range * range && !on)// /?
+        if (Input.GetButtonDown("Interact") && (player.transform.position - transform.position).sqrMagnitude < range * range && !on)// /?
         {
             StartCoroutine(StartCountdown());
         }

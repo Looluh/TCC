@@ -19,7 +19,11 @@ public class KeyMaster : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        if (RespawnBrain.instance.keyA)
+            keyGottenA = true;
+        if (RespawnBrain.instance.keyB)
+            keyGottenB = true;
+
     }
 
     // Update is called once per frame
@@ -32,13 +36,13 @@ public class KeyMaster : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            if (!doneA && keyGottenA && Input.GetKey(KeyCode.E))
+            if (!doneA && keyGottenA && Input.GetButton("Interact"))
             {
                 doneA = true;
                 rotStat.keyA = true;
                 keyA.SetActive(true);
             }
-            if (!doneB && keyGottenB && Input.GetKey(KeyCode.E))
+            if (!doneB && keyGottenB && Input.GetButton("Interact"))
             {
                 doneB = true;
                 rotStat.keyB = true;

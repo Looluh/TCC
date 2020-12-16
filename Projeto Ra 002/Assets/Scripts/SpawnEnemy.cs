@@ -22,11 +22,13 @@ public class SpawnEnemy : MonoBehaviour
     public SpawnerState state;
 
     public GameObject[] newEnemy;
+    public Collider col;
     // Start is called before the first frame update
     void Start()
     {
         //state = SpawnerState.Off;
         enCounter = 0;
+        col = GetComponent<Collider>();
         //enCounter = new int[maxEnemiesTotal];
         //InvokeRepeating("On", 15f, 12f);
     }
@@ -56,6 +58,7 @@ public class SpawnEnemy : MonoBehaviour
         if (other.gameObject.CompareTag("Player") && !doing)
         {
             doing = true;
+            col.enabled = false;
             //state = SpawnerState.On;
             InvokeRepeating("Off", 4, 4);
             //InvokeRepeating("On", 15f, 12f);

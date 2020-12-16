@@ -12,7 +12,8 @@ public class OptionsMenu : MonoBehaviour
 
     private RespawnBrain rB;
     private GameObject FoVSlider;
-    private GameObject VolumeSlider;
+    private GameObject sfxVolumeSlider;
+    private GameObject musicVolumeSlider;
     private float volume;
 
     Resolution[] resolutions;
@@ -22,11 +23,13 @@ public class OptionsMenu : MonoBehaviour
     void Start()
     {
         FoVSlider = GameObject.Find("FoV Slider");
-        VolumeSlider = GameObject.Find("Volume Slider");
+        sfxVolumeSlider = GameObject.Find("SFX Volume Slider");
+        musicVolumeSlider = GameObject.Find("Music Volume Slider");
         rB = GameObject.FindGameObjectWithTag("respawnBrain").GetComponent<RespawnBrain>();
 
         FoVSlider.GetComponent<Slider>().value = rB.height;
-        VolumeSlider.GetComponent<Slider>().value = rB.volume;
+        sfxVolumeSlider.GetComponent<Slider>().value = rB.sfxVolume;
+        musicVolumeSlider.GetComponent<Slider>().value = rB.musicVolume;
 
         //SetVolume(volume);
         //SetFoV();
@@ -58,11 +61,18 @@ public class OptionsMenu : MonoBehaviour
         Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);
     }
 
-    public void SetVolume(float volume)
+    public void SetSFXVolume()
     {
-        rB.volume = GameObject.Find("Volume Slider").GetComponent<Slider>().value;
-        audioMix.SetFloat("Volume", rB.volume);
+        rB.sfxVolume = GameObject.Find("SFX Volume Slider").GetComponent<Slider>().value;
+        audioMix.SetFloat("sfxVolume", rB.sfxVolume);
     }
+
+    public void SetMusicVolume()
+    {
+        rB.musicVolume = GameObject.Find("Music Volume Slider").GetComponent<Slider>().value;
+        audioMix.SetFloat("musicVolume", rB.musicVolume);
+    }
+
 
     public void SetQuality(int qualityIndex)
     {

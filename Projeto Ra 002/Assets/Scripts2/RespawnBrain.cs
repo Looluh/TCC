@@ -11,9 +11,11 @@ public class RespawnBrain : MonoBehaviour
     //private static RespawnBrain _instance;
     //public static RespawnBrain Instance { get { return _instance; } }
     public Vector3 lastCheckpointPos;//checkpoint
+    public Vector3 playerStartPos;
 
     public float height;
-    public float volume;
+    public float sfxVolume;
+    public float musicVolume;
     public AudioMixer audioMix;
 
     //public SmoothFollow cameraScript;
@@ -22,11 +24,18 @@ public class RespawnBrain : MonoBehaviour
     public GameObject player;
 
     public bool gameState;
+
+    public bool keyA = false;
+    public bool keyB = false;
+    public bool keyC = false;
+    public bool keyD = false;
+
     void Awake()//define volume e fov e guarda alterações q o player fizer -- verifica se já não existe um brain
     {
         height = 10;
-        volume = 0;
-        
+        sfxVolume = 0;
+        musicVolume = 0;
+
         //if (_instance != null && _instance != this)
         //{
         //    Destroy(this.gameObject);
@@ -50,7 +59,8 @@ public class RespawnBrain : MonoBehaviour
 
     private void Start()//define volume, n funciona no awake
     {
-        audioMix.SetFloat("Volume", volume);
+        audioMix.SetFloat("sfxVolume", sfxVolume);
+        audioMix.SetFloat("musicVolume", musicVolume);
         gameState = true;
     }
 
@@ -73,8 +83,13 @@ public class RespawnBrain : MonoBehaviour
         if (currentScene != scene.buildIndex && scene.buildIndex != 0)
         {
             print("aaaaaaaaaaaaaaSeráa???????");
+            keyA = false;
+            keyB = false;
+            keyC = false;
+            keyD = false;
             currentScene = scene.buildIndex;
             lastCheckpointPos = player.transform.position;
+            playerStartPos = player.transform.position;
         }
 
         /*switch (scene.buildIndex)
@@ -100,5 +115,10 @@ public class RespawnBrain : MonoBehaviour
         //Debug.Log("Level Loaded");
         //Debug.Log(scene.name);
         //Debug.Log(mode);
+    }
+
+    public void ResetCheckpoint()
+    {
+        lastCheckpointPos = playerStartPos;
     }
 }

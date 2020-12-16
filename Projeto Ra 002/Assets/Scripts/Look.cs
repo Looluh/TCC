@@ -35,12 +35,12 @@ public class Look : MonoBehaviour
                 transform.LookAt(new Vector3(pointToLook.x, transform.position.y, pointToLook.z));
             }
 
-            if (Input.GetMouseButtonDown(1))
+            if (Input.GetButtonDown("Fire2"))
             {
                 theGun.isFiring = true;
             }
 
-            if (Input.GetMouseButtonUp(1))
+            if (Input.GetButtonUp("Fire2"))
             {
                 theGun.isFiring = false;
             }
@@ -55,12 +55,12 @@ public class Look : MonoBehaviour
                 transform.rotation = Quaternion.LookRotation(playerDirection, Vector3.up);
             }
 
-            if (Input.GetKeyDown(KeyCode.Joystick1Button5))//right bumper on xbox controller - can also use the fire1 stuff
+            if (Input.GetButtonDown("Fire2"))//right bumper on xbox controller - can also use the fire1 stuff Input.GetKeyUp(KeyCode.Joystick1Button5)
             {
                 theGun.isFiring = true;
             }
 
-            if (Input.GetKeyUp(KeyCode.Joystick1Button5))
+            if (Input.GetButtonUp("Fire2"))
             {
                 theGun.isFiring = false;
             }
